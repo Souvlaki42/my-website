@@ -11,7 +11,6 @@ async function execute() {
 		if (window.location.hostname !== "souvlaki42.github.io") {
 			urlPrefix = ".html";
 		}
-		console.log(`${domainUrl}/down${urlPrefix}`);
 		if (maintenanceMode && window.location.href !== `${domainUrl}/down${urlPrefix}`) window.location.href = `down${urlPrefix}`;
 	}
 execute();
