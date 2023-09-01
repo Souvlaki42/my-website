@@ -1,17 +1,19 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '../styles/global.css';
+import { ViewTransitions } from "astro:transitions";
+import "../styles/global.css";
 
 interface Props {
 	title: string;
 	description: string;
 	image?: string;
+	viewTransitions?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
+const { title, description, image = "/posts/blog-placeholder-1.jpg", viewTransitions = true } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -31,6 +33,9 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+
+<!-- View Transitions API -->
+{viewTransitions && <ViewTransitions />}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
