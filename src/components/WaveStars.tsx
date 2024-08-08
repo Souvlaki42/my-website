@@ -16,4 +16,4 @@ export const WaveStars = () => {
 			<div className="absolute bottom-5 left-0 z-[999] h-[100px] w-full animate-[wave2_2s_linear_infinite] bg-[url('/wave.png')] bg-[length:1000px_100px] opacity-70"></div>
 		</div>
 	);
-};
+}

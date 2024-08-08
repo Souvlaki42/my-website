@@ -8,10 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      keyframes: {
+        wave: {
+          "0%": { "background-position-x": "1000px" },
+          "100%": { "background-position-x": "0px" },
+        },
+        wave2: {
+          "0%": { "background-position-x": "0px" },
+          "100%": { "background-position-x": "1000px" },
+        },
       },
     },
   },
