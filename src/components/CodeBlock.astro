@@ -1,0 +1,13 @@
+---
+import { Code } from "astro:components";
+
+type Props = Omit<Parameters<typeof Code>[number], "wrap"> & {
+	alignment?: "left" | "center" | "right";
+};
+
+const { theme, alignment = "left", ...rest } = Astro.props;
+---
+
+<div class={`w-full m-2 text-${alignment}`}>
+	<Code wrap theme={theme ?? "catppuccin-mocha"} {...rest} />
+</div>

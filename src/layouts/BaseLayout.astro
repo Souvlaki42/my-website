@@ -1,0 +1,33 @@
+---
+import Waves from "../components/Waves.astro";
+
+type Props = {
+	title?: string;
+	children: any;
+};
+
+const BASE_TITLE = "Souvlaki42";
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{!title ? BASE_TITLE : `${title} - ${BASE_TITLE}`}</title>
+		<style is:global>
+			* {
+				@apply m-0 box-border p-0;
+			}
+		</style>
+	</head>
+	<body
+		class="flex min-h-screen flex-col items-center justify-center bg-[#1e1e2e]"
+	>
+		<slot>Nothing is here. Maybe this page doesn't exist yet.</slot>
+		<Waves />
+	</body>
+</html>

@@ -1,0 +1,41 @@
+---
+import CodeBlock from "../components/CodeBlock.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+	<main class="flex min-h-screen flex-col justify-start p-24">
+		<CodeBlock code={`fmt.Println("👋 Hello, World!");`} lang={"go"} />
+		<CodeBlock
+			code={`print("I'm Souvlaki42")`}
+			lang={"python"}
+			alignment="center"
+			class={"font-extrabold text-xl"}
+		/>
+		<CodeBlock
+			code={`System.out.println("I live in Greece 🇬🇷");`}
+			lang={"java"}
+			alignment="right"
+		/>
+		<CodeBlock
+			code={`<h1>I'm full with passion and will to learn...</h1>`}
+			lang={"jsx"}
+			alignment="center"
+		/>
+		<CodeBlock
+			code={`println!("I like coding, playing games, swimming and listening to music");`}
+			lang={"rust"}
+		/>
+		<CodeBlock
+			code={"console.log(`My projects use:\n1. Typescript,\n2. Next.js/React,\n3. Astro,\n4. SQL,\n5. Golang,\n6. Python,\n7. Rust\n And more...`);"}
+			lang={"typescript"}
+			alignment="center"
+		/>
+		<CodeBlock
+			code={`SELECT * FROM projects WHERE curiosity = "high"; -- Click to explore the results!`}
+			lang={"sql"}
+			theme={"night-owl"}
+			class="rounded p-1 m-2 cursor-pointer hover:opacity-80"
+		/>
+	</main>
+</BaseLayout>
