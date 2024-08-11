@@ -1,41 +1,85 @@
 ---
-import CodeBlock from "../components/CodeBlock.astro";
+import Code from "../components/Code.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-	<main class="flex min-h-screen flex-col justify-start p-24">
-		<CodeBlock code={`fmt.Println("👋 Hello, World!");`} lang={"go"} />
-		<CodeBlock
+	<main class="flex min-h-screen flex-col p-12">
+		<Code
+			code={`fmt.Println("👋 Hello, World!");`}
+			lang={"go"}
+			alignment="left"
+		/>
+		<Code
 			code={`print("I'm Souvlaki42")`}
 			lang={"python"}
-			alignment="center"
 			class={"font-extrabold text-xl"}
+			alignment="center"
 		/>
-		<CodeBlock
+		<Code
 			code={`System.out.println("I live in Greece 🇬🇷");`}
 			lang={"java"}
 			alignment="right"
 		/>
-		<CodeBlock
+		<Code
 			code={`<h1>I'm full with passion and will to learn...</h1>`}
 			lang={"jsx"}
 			alignment="center"
 		/>
-		<CodeBlock
+		<Code
 			code={`println!("I like coding, playing games, swimming and listening to music");`}
 			lang={"rust"}
+			alignment="left"
 		/>
-		<CodeBlock
-			code={"console.log(`My projects use:\n1. Typescript,\n2. Next.js/React,\n3. Astro,\n4. SQL,\n5. Golang,\n6. Python,\n7. Rust\n And more...`);"}
+		<Code
+			code={"console.log(`I've worked with:\n1. Typescript,\n2. Next.js/React,\n3. Astro,\n4. SQL,\n5. Golang,\n6. Python,\n7. Rust\n And more...`);"}
 			lang={"typescript"}
 			alignment="center"
 		/>
-		<CodeBlock
-			code={`SELECT * FROM projects WHERE curiosity = "high"; -- Click to explore the results!`}
+		<Code
+			code={`SELECT * FROM projects WHERE curiosity = "high"; -- Take a look at my projects!`}
 			lang={"sql"}
-			theme={"night-owl"}
-			class="rounded p-1 m-2 cursor-pointer hover:opacity-80"
+			theme={"dark-plus"}
+			class="rounded p-1 cursor-pointer hover:opacity-80"
+			alignment="left"
+			href="/projects"
 		/>
+		<Code
+			code={`/^.*My blog articles.*$/g (?# You might find something interesting there)`}
+			theme={"dark-plus"}
+			lang={"regexp"}
+			class="rounded p-1 cursor-pointer hover:opacity-80"
+			alignment="center"
+			href="/blog"
+		/>
+		<Code
+			code={`echo "Reach out to me in Twitter/X and GitHub: "`}
+			lang={"bash"}
+			alignment="right"
+		/>
+		<footer class="flex justify-between z-10 m-4">
+			<span class="text-white"
+				>Assets by brgfx on <a
+					href="https://www.freepik.com/free-vector/set-paradise-island_26213415.htm"
+					class="text-sky-blue hover:text-light-blue font-bold underline"
+					>Freepik.com</a
+				></span
+			>
+			<span class="text-white">
+				© Souvlaki42 {new Date().getFullYear()}
+			</span>
+			<div>
+				<a
+					href="https://x.com/souvlaki42"
+					class="m-2 text-right text-sky-blue hover:text-light-blue font-bold underline"
+					>Twitter/X</a
+				>
+				<a
+					href="https://github.com/souvlaki42"
+					class="m-2 text-right text-sky-blue hover:text-light-blue font-bold underline"
+					>GitHub</a
+				>
+			</div>
+		</footer>
 	</main>
 </BaseLayout>

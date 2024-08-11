@@ -1,0 +1,29 @@
+---
+import { Code as AstroCode } from "astro:components";
+
+type Props = Omit<Parameters<typeof AstroCode>[number], "wrap"> & {
+	href?: string;
+	alignment?: "left" | "center" | "right";
+};
+
+const {
+	theme = "catppuccin-mocha",
+	href,
+	alignment = "left",
+	...rest
+} = Astro.props;
+
+const className = `m-2 w-full text-${alignment}`;
+---
+
+{
+	href ? (
+		<a href={href} class={className}>
+			<AstroCode tabindex={-1} wrap theme={theme} {...rest} />
+		</a>
+	) : (
+		<span class={className}>
+			<AstroCode tabindex={-1} wrap theme={theme} {...rest} />
+		</span>
+	)
+}
