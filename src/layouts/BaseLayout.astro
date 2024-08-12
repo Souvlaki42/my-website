@@ -1,6 +1,4 @@
 ---
-import Waves from "../components/Waves.astro";
-
 type Props = {
 	title?: string;
 	description?: string;
@@ -25,10 +23,12 @@ const { title, description = "My corner of the internet" } = Astro.props;
 			* {
 				@apply m-0 box-border p-0;
 			}
+			.link {
+				@apply font-bold text-sky-blue underline hover:text-light-blue;
+			}
 		</style>
 	</head>
 	<body class="flex min-h-screen flex-col items-center justify-center bg-mocha">
 		<slot>Nothing is here. Maybe this page doesn't exist yet.</slot>
-		<Waves />
 	</body>
 </html>

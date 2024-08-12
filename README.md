@@ -17,8 +17,11 @@ Follow these instructions to set up the project locally.
 
 Ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/en/) (v14.x or later)
-- [npm](https://www.npmjs.com/) (v6.x or later)
+- [Bun](https://bun.sh) (v1.1.20 or later)
+  OR
+- [Node.js](https://nodejs.org/en/) (v20.x or later)
+- [npm](https://www.npmjs.com/) (v10.x or later)
+  (Might work with others as well)
 
 ### Installation
 

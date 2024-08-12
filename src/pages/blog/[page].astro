@@ -1,0 +1,125 @@
+---
+import Code from "../../components/Code.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import type { Page, PaginateFunction } from "astro";
+import type { InferEntrySchema } from "astro:content";
+import type { Render } from "astro:content";
+
+export async function getStaticPaths({
+	paginate,
+}: {
+	paginate: PaginateFunction;
+}) {
+	const posts = await getCollection("blog");
+	return paginate(posts, { pageSize: 12 });
+}
+
+type Props = {
+	page: Page<{
+		id: string;
+		slug: string;
+		body: string;
+		collection: "blog";
+		data: InferEntrySchema<"blog">;
+		render(): Render[".md"];
+	}>;
+};
+
+const { page } = Astro.props;
+
+const posts = page.data;
+---
+
+<BaseLayout title={`Blog page ${page.currentPage}`}>
+	<main class="flex min-h-screen flex-col p-12">
+		<header class="w-full text-center space-x-2">
+			<a href="/" class="link">Homepage</a>
+			<a href={page.url.current} class="link">Blog</a>
+			<a href="/projects" class="link">Projects</a>
+		</header>
+		<section id="description" class="m-8">
+			<Code
+				as="h1"
+				code="# Welcome to my blog!"
+				lang={"markdown"}
+				alignment="center"
+			/>
+			<Code
+				as="h2"
+				code="## This is where I throw my random pieces of knowledge or experience I get for being a developer."
+				lang={"markdown"}
+				alignment="center"
+			/>
+			<Code
+				as="h3"
+				code="### I encourage you to take a look. One wise man once said that what we have to say, will be useful to somebody."
+				lang={"markdown"}
+				alignment="center"
+			/>
+		</section>
+		<section
+			id="posts"
+			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+		>
+			{
+				posts.map((post) => {
+					const {
+						data: { title, summary, tags, createdDate, modifiedDate },
+						slug,
+					} = post;
+					return (
+						<a
+							href={`/blog/${slug}`}
+							class="block w-full max-w-md p-6 bg-[#313244] rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105"
+						>
+							<article>
+								<h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">{title}</h2>
+								<p class="text-[#A6ADC8] mb-4">{summary}</p>
+								<div class="flex flex-wrap items-center mb-4">
+									{tags.map((tag) => (
+										<span class="bg-[#45475A] text-[#F5E0DC] text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
+											{tag}
+										</span>
+									))}
+								</div>
+								<div class="text-sm text-[#BAC2DE]">
+									<p>Created: {createdDate}</p>
+									{createdDate !== modifiedDate && (
+										<p>Modified: {modifiedDate}</p>
+									)}
+								</div>
+							</article>
+						</a>
+					);
+				})
+			}
+		</section>
+		<section
+			id="pagination"
+			class="w-full flex justify-center items-center m-4 space-x-4"
+		>
+			{
+				page.url.prev && (
+					<a
+						href={page.url.prev}
+						class="text-[#6CB4FF] hover:text-[#94D0FF] font-semibold"
+					>
+						Previous
+					</a>
+				)
+			}
+			<span class="text-white font-semibold">{page.currentPage}</span>
+			{
+				page.url.next && (
+					<a
+						href={page.url.next}
+						class="text-[#6CB4FF] hover:text-[#94D0FF] font-semibold"
+					>
+						Next
+					</a>
+				)
+			}
+		</section>
+	</main>
+</BaseLayout>
