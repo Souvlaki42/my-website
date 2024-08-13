@@ -1,34 +1,46 @@
 ---
+import { AppConfig } from "../lib/utils";
+
 type Props = {
-	title?: string;
-	description?: string;
-	children: any;
+  title?: string;
+  description?: string;
+  children: any;
 };
 
-const BASE_TITLE = "Souvlaki42";
+const { title: BASE_TITLE, description: BASE_DESCRIPTION, site } = AppConfig;
 
-const { title, description = "My corner of the internet" } = Astro.props;
+const { title, description = BASE_DESCRIPTION } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
-		<meta title={title ? `${title} - ${BASE_TITLE}` : BASE_TITLE} />
-		<title>{title ? `${title} - ${BASE_TITLE}` : BASE_TITLE}</title>
-		<style is:global>
-			* {
-				@apply m-0 box-border p-0;
-			}
-			.link {
-				@apply font-bold text-sky-blue underline hover:text-light-blue;
-			}
-		</style>
-	</head>
-	<body class="flex min-h-screen flex-col items-center justify-center bg-mocha">
-		<slot>Nothing is here. Maybe this page doesn't exist yet.</slot>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={BASE_TITLE}
+      href={`${site}rss.xml`}
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta title={title ? `${title} - ${BASE_TITLE}` : BASE_TITLE} />
+    <title>{title ? `${title} - ${BASE_TITLE}` : BASE_TITLE}</title>
+    <style is:global>
+      html {
+        scrollbar-gutter: stable;
+      }
+      * {
+        @apply m-0 box-border p-0;
+      }
+      .link {
+        @apply font-bold text-sky-blue underline hover:text-light-blue;
+      }
+    </style>
+  </head>
+  <body class="flex min-h-screen flex-col items-center justify-center bg-mocha">
+    <slot>Nothing is here. Maybe this page doesn't exist yet.</slot>
+  </body>
 </html>

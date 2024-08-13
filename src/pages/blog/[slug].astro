@@ -2,61 +2,70 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Code from "../../components/Code.astro";
+import Comments from "../../components/Comments.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection("blog");
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: {
-			post,
-		},
-	}));
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: {
+      post,
+    },
+  }));
 }
 
 const { post } = Astro.props;
 const { title, summary, createdDate, modifiedDate, tags } = post.data;
 const { Content } = await post.render();
+
+const page = Astro.url.searchParams.get("page") ?? "1";
 ---
 
 <BaseLayout title={title} description={summary}>
-	<main
-		class="flex min-h-screen flex-col p-12 justify-start text-center text-white"
-	>
-		<header class="w-full text-center space-x-2">
-			<a href="/" class="link">Homepage</a>
-			<a href="/blog/1" class="link">Blog</a>
-			<a href="/projects" class="link">Projects</a>
-		</header>
-		<section id="frontmatter">
-			<Code as="h1" code={`# ${title}`} lang={"markdown"} alignment="center" />
-			<Code
-				as="h2"
-				code={`## ${summary}`}
-				lang={"markdown"}
-				alignment="center"
-			/>
-			<div class="justify-between">
-				<div>
-					<Code
-						as="h3"
-						code={`### ${tags.join(", ")}`}
-						lang={"markdown"}
-						alignment="center"
-					/>
-				</div>
-				<small
-					><Code
-						as="h3"
-						code={`#### Created: ${createdDate}${createdDate !== modifiedDate ? `- Modified: ${modifiedDate}` : ""}`}
-						lang={"markdown"}
-						alignment="center"
-					/></small
-				>
-			</div>
-		</section>
-		<hr class="m-4" />
-		<section id="content">
-			<Content />
-		</section>
-	</main>
+  <main
+    class="flex min-h-screen flex-col p-12 justify-start text-center text-white"
+  >
+    <header class="w-full text-center space-x-2">
+      <a href="/" class="link">Homepage</a>
+      <a href="/blog/1" class="link">Blog</a>
+      <a href="/projects" class="link">Projects</a>
+    </header>
+    <section id="frontmatter">
+      <Code as="h1" code={`# ${title}`} lang={"markdown"} alignment="center" />
+      <Code
+        as="h2"
+        code={`## ${summary}`}
+        lang={"markdown"}
+        alignment="center"
+      />
+      <div class="justify-between">
+        <div>
+          <Code
+            as="h3"
+            code={`### ${tags.join(", ")}`}
+            lang={"markdown"}
+            alignment="center"
+          />
+        </div>
+        <small
+          ><Code
+            as="h3"
+            code={`#### Created: ${createdDate}${createdDate !== modifiedDate ? `- Modified: ${modifiedDate}` : ""}`}
+            lang={"markdown"}
+            alignment="center"
+          /></small
+        >
+      </div>
+    </section>
+    <hr class="m-4" />
+    <article
+      id="article"
+      role="article"
+      class="prose mx-auto mt-8 max-w-3xl prose-pre:border-[1px] prose-pre:border-skin-line prose-pre:border-solid"
+    >
+      <Content />
+    </article>
+    <a href={`/blog/${page}`} class="link mt-8">← Go back</a>
+    <Comments />
+  </main>
 </BaseLayout>
