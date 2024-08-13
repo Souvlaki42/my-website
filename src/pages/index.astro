@@ -1,6 +1,8 @@
 ---
 import Code from "../components/Code.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+export const prerender = true;
 ---
 
 <BaseLayout>
@@ -50,7 +52,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       lang={"regexp"}
       class="rounded p-1 cursor-pointer hover:opacity-80"
       alignment="center"
-      href="/blog/1"
+      href="/blog"
     />
     <Code
       code={`echo "Reach out to me in Twitter/X and GitHub: "`}

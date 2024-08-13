@@ -5,6 +5,12 @@ import { getCollection } from "astro:content";
 
 export const GET: APIRoute = async () => {
   const posts = await getCollection("blog");
+  posts.sort((a, b) => {
+    return (
+      new Date(b.data.modifiedDate).getTime() -
+      new Date(a.data.modifiedDate).getTime()
+    );
+  });
 
   return rss({
     title: AppConfig.title,
