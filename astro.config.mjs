@@ -12,21 +12,26 @@ export default defineConfig({
   adapter: vercel(),
   site: AppConfig.site,
   prefetch: {
-    prefetchAll: true
+    prefetchAll: true,
   },
   experimental: {
-    actions: true
+    actions: true,
   },
-  integrations: [tailwind(), AutoImport({
-    imports: ["./src/components/Code.astro"]
-  }), mdx(), sitemap()],
+  integrations: [
+    tailwind(),
+    AutoImport({
+      imports: ["./src/components/Code.astro"],
+    }),
+    mdx(),
+    sitemap(),
+  ],
   markdown: {
     shikiConfig: {
       theme: "catppuccin-mocha",
-      wrap: true
-    }
+      wrap: true,
+    },
   },
   devToolbar: {
-    enabled: false
-  }
+    enabled: false,
+  },
 });

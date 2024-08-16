@@ -21,6 +21,7 @@
     "@typescript-eslint/parser": "^8.1.0",
     "astro": "^4.13.3",
     "astro-auto-import": "^0.4.2",
+    "dompurify": "^3.1.6",
     "eslint": "^9.9.0",
     "eslint-plugin-astro": "^1.2.3",
     "fuse.js": "^7.0.0",
@@ -28,6 +29,7 @@
     "typescript": "^5.5.4"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.5",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.6"

@@ -24,4 +24,7 @@ pnpm-debug.log*
 .idea/
 
 # Vercel folder
-.vercel/
+.vercel
+
+# Unlighthouse
+.unlighthouse

@@ -2,54 +2,24 @@
 import { Code as AstroCode } from "astro:components";
 
 type Props = Omit<Parameters<typeof AstroCode>[number], "wrap"> & {
-	href?: string;
-	alignment?: "left" | "center" | "right";
-	as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  href?: string;
+  alignment?: "left" | "center" | "right";
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
 };
 
 const {
-	theme = "catppuccin-mocha",
-	href,
-	as,
-	alignment = "left",
-	...rest
+  theme = "catppuccin-mocha",
+  href,
+  as = "span",
+  alignment = "left",
+  ...rest
 } = Astro.props;
 
 const className = `m-2 w-full text-${alignment}`;
+
+const Element = href ? "a" : as;
 ---
 
-{
-	href ? (
-		<a href={href} class={className}>
-			<AstroCode tabindex={-1} wrap theme={theme} {...rest} />
-		</a>
-	) : as === "h1" ? (
-		<h1 class={className}>
-			<AstroCode tabindex={-1} wrap theme={theme} {...rest} />
-		</h1>
-	) : as === "h2" ? (
-		<h2 class={className}>
-			<AstroCode tabindex={-1} wrap theme={theme} {...rest} />
-		</h2>
-	) : as === "h3" ? (
-		<h3 class={className}>
-			<AstroCode tabindex={-1} wrap theme={theme} {...rest} />
-		</h3>
-	) : as === "h4" ? (
-		<h4 class={className}>
-			<AstroCode tabindex={-1} wrap theme={theme} {...rest} />
-		</h4>
-	) : as === "h5" ? (
-		<h5 class={className}>
-			<AstroCode tabindex={-1} wrap theme={theme} {...rest} />
-		</h5>
-	) : as === "h6" ? (
-		<h6 class={className}>
-			<AstroCode tabindex={-1} wrap theme={theme} {...rest} />
-		</h6>
-	) : (
-		<span class={className}>
-			<AstroCode tabindex={-1} wrap theme={theme} {...rest} />
-		</span>
-	)
-}
+<Element href={href} class={className}
+  ><AstroCode tabindex={-1} wrap theme={theme} {...rest} /></Element
+>
