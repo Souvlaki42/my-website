@@ -8,16 +8,6 @@ export default {
         "sky-blue": "#6CB4FF",
         "light-blue": "#94D0FF",
       },
-      keyframes: {
-        wave: {
-          "0%": { "background-position-x": "1000px" },
-          "100%": { "background-position-x": "0px" },
-        },
-        wave2: {
-          "0%": { "background-position-x": "0px" },
-          "100%": { "background-position-x": "1000px" },
-        },
-      },
     },
   },
   plugins: [],

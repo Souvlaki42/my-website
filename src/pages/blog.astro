@@ -70,18 +70,31 @@ const hasPrevious = data?.hasPrevious;
           {posts.map((post) => {
             const { title, summary, tags, createdDate, modifiedDate, slug } =
               post;
+
+            const postLink = `/blog/${slug}?page=${page}&per_page=${perPage}${search ? `&search=${search}` : ""}`;
             return (
-              <a
-                href={`/blog/${slug}?page=${page}&per_page=${perPage}${search ? `&search=${search}` : ""}`}
-                class="w-full flex flex-col justify-center items-center p-6 bg-[#313244] rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105"
-              >
-                <h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">{title}</h2>
+              <article class="w-full relative flex flex-col justify-center items-center p-6 bg-[#313244] rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
+                <h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">
+                  <a
+                    href={postLink}
+                    class="text-sky-blue hover:text-light-blue hover:underline"
+                  >
+                    {title}
+                  </a>
+                </h2>
                 <p class="text-[#A6ADC8] mb-4">{summary}</p>
+                <a
+                  href={postLink}
+                  class="absolute w-full h-full top-0 left-0 no-underline text-transparent z-[-1]"
+                />
                 <div class="flex flex-wrap items-center mb-4">
                   {tags.map((tag) => (
-                    <span class="bg-[#45475A] text-[#F5E0DC] text-xs font-medium m-1 px-2.5 py-0.5 rounded">
+                    <a
+                      href={`/blog?page=${page}&per_page=${perPage}&search=tags:${tag}`}
+                      class="bg-[#45475A] text-[#F5E0DC] text-xs font-medium m-1 px-2.5 py-0.5 rounded hover:underline"
+                    >
                       {tag}
-                    </span>
+                    </a>
                   ))}
                 </div>
                 <div class="text-sm text-[#BAC2DE]">
@@ -90,7 +103,7 @@ const hasPrevious = data?.hasPrevious;
                     <p>Modified: {modifiedDate}</p>
                   )}
                 </div>
-              </a>
+              </article>
             );
           })}
         </section>
