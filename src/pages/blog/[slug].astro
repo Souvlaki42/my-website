@@ -2,10 +2,10 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Code from "../../components/Code.astro";
 import Comments from "../../components/Comments.astro";
-import { server } from "../../lib/actions";
+import api from "../../lib/api";
 
 const { slug = "" } = Astro.params;
-const { data: post, error } = await server.getPost({ slug });
+const { data: post, error } = await api.getPost({ slug });
 
 if (error) console.error(error.message);
 if (!post) throw new Error("Post must exist");

@@ -1,0 +1,38 @@
+---
+type Props = {
+  page?: string;
+  perPage?: string;
+  route: string;
+  hasNext?: boolean;
+  hasPrevious?: boolean;
+};
+
+const { page = "1", perPage = "12", route, hasNext, hasPrevious } = Astro.props;
+---
+
+<section
+  id="pagination"
+  class="w-full flex justify-center items-center m-4 space-x-4"
+>
+  {
+    hasPrevious && (
+      <a
+        href={`${route}?page=${Number(page) - 1}&per_page=${Number(perPage)}`}
+        class="text-[#6CB4FF] hover:text-[#94D0FF] font-semibold"
+      >
+        Previous
+      </a>
+    )
+  }
+  <span class="text-white font-semibold">{Number(page)}</span>
+  {
+    hasNext && (
+      <a
+        href={`${route}?page=${Number(page) + 1}&per_page=${Number(perPage)}`}
+        class="text-[#6CB4FF] hover:text-[#94D0FF] font-semibold"
+      >
+        Next
+      </a>
+    )
+  }
+</section>

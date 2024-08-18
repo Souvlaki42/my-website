@@ -1,0 +1,43 @@
+---
+type Props = {
+  search?: string;
+};
+
+const { search } = Astro.props;
+---
+
+<section id="search-section" class="m-4">
+  <form class="w-full text-center" data-form>
+    <input
+      type="search"
+      name="search"
+      id="search"
+      maxlength="24"
+      placeholder="Enter a search term..."
+      class="w-full rounded-lg p-2 bg-mocha border-2 border-sky-blue focus-within:border-light-blue text-white font-medium outline-none"
+      value={search ?? ""}
+    />
+    <p class="text-md text-white">
+      You can also prioritize searching for title, summary or tags by prefixing
+      your search term by these keywords followed by a colon. (e.g.
+      tags:example)
+    </p>
+  </form>
+</section>
+<script>
+  import DOMPurify from "dompurify";
+  const form = document.querySelector<HTMLFormElement>("[data-form]");
+  if (!form) throw new Error("Search form was not found!");
+  form.addEventListener("submit", (e: SubmitEvent) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    let searchQuery = formData.get("search")?.toString();
+    searchQuery = DOMPurify.sanitize(searchQuery ?? "");
+    const searchParams = new URLSearchParams(window.location.search);
+    const url = new URL("/blog", window.location.origin);
+    url.searchParams.set("search", searchQuery);
+    url.searchParams.set("page", searchParams.get("page") ?? "1");
+    url.searchParams.set("per_page", searchParams.get("per_page") ?? "12");
+    window.location.assign(url.toString());
+  });
+</script>

@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import AutoImport from "astro-auto-import";
 import mdx from "@astrojs/mdx";
@@ -16,6 +16,11 @@ export default defineConfig({
   },
   experimental: {
     actions: true,
+    env: {
+      schema: {
+        GITHUB_TOKEN: envField.string({ context: "server", access: "secret" }),
+      },
+    },
   },
   integrations: [
     tailwind(),

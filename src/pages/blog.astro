@@ -1,16 +1,18 @@
 ---
 import Code from "../components/Code.astro";
+import Pagination from "../components/Pagination.astro";
+import Search from "../components/Search.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { server } from "../lib/actions";
+import api from "../lib/api";
 
 const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
 
-const { data, error } = await server.getPosts({
+const { data, error } = await api.getPosts({
   page: Number(page),
   perPage: Number(perPage),
-  searchQuery: search,
+  searchQuery: search
 });
 
 if (error) console.error(error.message);
@@ -28,7 +30,7 @@ const hasPrevious = data?.hasPrevious;
       <a href="/projects" class="link">Projects</a>
       <a href="/rss.xml" class="link">RSS</a>
     </header>
-    <section id="description" class="m-4">
+    <section id="info" class="m-4">
       <Code
         as="h1"
         code="# Welcome to my blog!"
@@ -48,19 +50,7 @@ const hasPrevious = data?.hasPrevious;
         alignment="center"
       />
     </section>
-    <section id="search-section" class="m-4">
-      <form class="w-full text-center" data-form>
-        <input
-          type="search"
-          name="search"
-          id="search"
-          maxlength="24"
-          placeholder="Enter a search term..."
-          class="w-full rounded-lg p-2 bg-mocha border-2 border-sky-blue focus-within:border-light-blue text-white font-medium outline-none"
-          value={search ?? ""}
-        />
-      </form>
-    </section>
+    <Search search={search} />
     {
       posts && posts.length > 0 ? (
         <section
@@ -115,48 +105,12 @@ const hasPrevious = data?.hasPrevious;
         </section>
       )
     }
-    <section
-      id="pagination"
-      class="w-full flex justify-center items-center m-4 space-x-4"
-    >
-      {
-        hasPrevious && (
-          <a
-            href={`/blog?page=${Number(page) - 1}&per_page=${Number(perPage)}`}
-            class="text-[#6CB4FF] hover:text-[#94D0FF] font-semibold"
-          >
-            Previous
-          </a>
-        )
-      }
-      <span class="text-white font-semibold">{Number(page)}</span>
-      {
-        hasNext && (
-          <a
-            href={`/blog?page=${Number(page) + 1}&per_page=${Number(perPage)}`}
-            class="text-[#6CB4FF] hover:text-[#94D0FF] font-semibold"
-          >
-            Next
-          </a>
-        )
-      }
-    </section>
+    <Pagination
+      route="/blog"
+      page={page}
+      perPage={perPage}
+      hasNext={hasNext}
+      hasPrevious={hasPrevious}
+    />
   </main>
-  <script>
-    import DOMPurify from "dompurify";
-    const form = document.querySelector<HTMLFormElement>("[data-form]");
-    if (!form) throw new Error("Search form was not found!");
-    form.addEventListener("submit", (e: SubmitEvent) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      let searchQuery = formData.get("search")?.toString();
-      searchQuery = DOMPurify.sanitize(searchQuery ?? "");
-      const searchParams = new URLSearchParams(window.location.search);
-      const url = new URL("/blog", window.location.origin);
-      url.searchParams.set("search", searchQuery);
-      url.searchParams.set("page", searchParams.get("page") ?? "1");
-      url.searchParams.set("per_page", searchParams.get("per_page") ?? "12");
-      window.location.assign(url.toString());
-    });
-  </script>
 </BaseLayout>
