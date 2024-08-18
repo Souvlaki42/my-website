@@ -78,6 +78,7 @@ const { posts, hasNext, hasPrevious } = data ?? {
                 <a
                   href={postLink}
                   class="absolute w-full h-full top-0 left-0 no-underline text-transparent z-[-1]"
+                  aria-label={title}
                 />
                 <div class="flex flex-wrap items-center mb-4">
                   {tags.map((tag) => (
