@@ -42,7 +42,7 @@ export const getPosts = defineAction({
     if (searchQuery) {
       const queryParts = searchQuery.split(":", 2);
       const possibleKey = queryParts[0].trim();
-      let instance: Fuse<(typeof formattedPosts)[number]>;
+      let instance: Fuse<Post>;
 
       if (isFuseKey(possibleKey)) {
         instance = FUSE_INSTANCES[possibleKey];

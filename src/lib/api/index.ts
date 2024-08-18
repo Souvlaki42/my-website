@@ -1,6 +1,7 @@
 import { defineAction, z } from "astro:actions";
 import { getEntry } from "astro:content";
 import { getPosts } from "./getPosts";
+import { getProjects } from "./getProjects";
 
 export default {
   getPost: defineAction({
@@ -10,5 +11,6 @@ export default {
       return post;
     }
   }),
-  getPosts
+  getPosts,
+  getProjects
 };

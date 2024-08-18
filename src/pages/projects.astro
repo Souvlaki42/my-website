@@ -9,7 +9,7 @@ const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
 
-const { data, error } = await api.getPosts({
+const { data, error } = await api.getProjects({
   page: Number(page),
   perPage: Number(perPage),
   searchQuery: search
@@ -17,58 +17,60 @@ const { data, error } = await api.getPosts({
 
 if (error) console.error(error.message);
 
-const { posts, hasNext, hasPrevious } = data ?? {
-  posts: [],
+const {
+  projects: allProjects,
+  hasNext,
+  hasPrevious
+} = data ?? {
+  projects: [],
   hasNext: false,
   hasPrevious: false
 };
+
+const projects = allProjects.filter((project) => !project.is_private);
 ---
 
-<BaseLayout title={"Blog"}>
+<BaseLayout title={"Projects"}>
   <main class="flex min-h-screen flex-col p-12">
     <header class="w-full text-center space-x-2">
       <a href="/" class="link">Homepage</a>
       <a href={"/blog"} class="link">Blog</a>
       <a href="/projects" class="link">Projects</a>
-      <a href="/rss.xml" class="link">RSS</a>
     </header>
     <section id="info" class="m-4">
       <Code
         as="h1"
-        code="# Welcome to my blog!"
+        code="# Welcome to my projects!"
         lang={"markdown"}
         alignment="center"
       />
       <Code
         as="h2"
-        code="## This is where I throw my random pieces of knowledge or experience I get for being a developer."
+        code="## This is where I showcase my somewhat interesting and/or valuables public projects with the world."
         lang={"markdown"}
         alignment="center"
       />
       <Code
         as="h3"
-        code="### I encourage you to take a look. One wise man once said that what we have to say, will be useful to somebody."
+        code="### I encourage you to take a look. Who knows, you might realize that I'll be a great resource for your company."
         lang={"markdown"}
         alignment="center"
       />
     </section>
     <Search search={search} />
     {
-      posts && posts.length > 0 ? (
+      projects && projects.length > 0 ? (
         <section
-          id="posts"
+          id="projects"
           class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
         >
-          {posts.map((post) => {
-            const { title, summary, tags, createdDate, modifiedDate, slug } =
-              post;
-
-            const postLink = `/blog/${slug}?page=${page}&per_page=${perPage}${search ? `&search=${search}` : ""}`;
+          {projects.map((project) => {
+            const { repo_url, title, summary, tags, pushed_at } = project;
             return (
               <article class="w-full relative flex flex-col justify-center items-center p-6 bg-[#313244] rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
                 <h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">
                   <a
-                    href={postLink}
+                    href={repo_url}
                     class="text-sky-blue hover:text-light-blue hover:underline"
                   >
                     {title}
@@ -76,13 +78,13 @@ const { posts, hasNext, hasPrevious } = data ?? {
                 </h2>
                 <p class="text-[#A6ADC8] mb-4">{summary}</p>
                 <a
-                  href={postLink}
+                  href={repo_url}
                   class="absolute w-full h-full top-0 left-0 no-underline text-transparent z-[-1]"
                 />
                 <div class="flex flex-wrap items-center mb-4">
                   {tags.map((tag) => (
                     <a
-                      href={`/blog?page=${page}&per_page=${perPage}&search=tags:${tag}`}
+                      href={`/projects?page=${page}&per_page=${perPage}&search=tags:${tag}`}
                       class="bg-[#45475A] text-[#F5E0DC] text-xs font-medium m-1 px-2.5 py-0.5 rounded hover:underline"
                     >
                       {tag}
@@ -90,9 +92,10 @@ const { posts, hasNext, hasPrevious } = data ?? {
                   ))}
                 </div>
                 <div class="text-sm text-[#BAC2DE]">
-                  <p>Created: {createdDate}</p>
-                  {createdDate !== modifiedDate && (
-                    <p>Modified: {modifiedDate}</p>
+                  {pushed_at && (
+                    <p>
+                      Last pushed: {new Date(pushed_at).toLocaleDateString()}
+                    </p>
                   )}
                 </div>
               </article>
@@ -108,7 +111,7 @@ const { posts, hasNext, hasPrevious } = data ?? {
       )
     }
     <Pagination
-      route="/blog"
+      route="/projects"
       page={page}
       perPage={perPage}
       hasNext={hasNext}

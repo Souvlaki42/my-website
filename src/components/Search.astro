@@ -6,38 +6,53 @@ type Props = {
 const { search } = Astro.props;
 ---
 
-<section id="search-section" class="m-4">
-  <form class="w-full text-center" data-form>
+<section id="search" class="m-4">
+  <form class="w-full flex items-center" data-form>
     <input
       type="search"
       name="search"
-      id="search"
-      maxlength="24"
+      id="search-query"
       placeholder="Enter a search term..."
       class="w-full rounded-lg p-2 bg-mocha border-2 border-sky-blue focus-within:border-light-blue text-white font-medium outline-none"
       value={search ?? ""}
+      title="You can prioritize searching for title, summary, or tags by prefixing your search term with these keywords followed by a colon. (e.g., tags:example)"
+      data-search-query
     />
-    <p class="text-md text-white">
-      You can also prioritize searching for title, summary or tags by prefixing
-      your search term by these keywords followed by a colon. (e.g.
-      tags:example)
-    </p>
+    <button
+      type="button"
+      class="ml-2 p-2 bg-sky-blue hover:bg-light-blue text-mocha font-medium rounded-lg"
+      aria-label="Clear search"
+      data-clear-search
+    >
+      Clear
+    </button>
   </form>
 </section>
 <script>
   import DOMPurify from "dompurify";
   const form = document.querySelector<HTMLFormElement>("[data-form]");
+  const clearSearchBtn = document.querySelector<HTMLButtonElement>(
+    "[data-clear-search]"
+  );
+  const searchInput = document.querySelector<HTMLInputElement>(
+    "[data-search-query]"
+  );
   if (!form) throw new Error("Search form was not found!");
+  if (!searchInput) throw new Error("Search input was not found!");
   form.addEventListener("submit", (e: SubmitEvent) => {
     e.preventDefault();
     const formData = new FormData(form);
     let searchQuery = formData.get("search")?.toString();
     searchQuery = DOMPurify.sanitize(searchQuery ?? "");
     const searchParams = new URLSearchParams(window.location.search);
-    const url = new URL("/blog", window.location.origin);
+    const url = new URL(window.location.pathname, window.location.origin);
     url.searchParams.set("search", searchQuery);
     url.searchParams.set("page", searchParams.get("page") ?? "1");
     url.searchParams.set("per_page", searchParams.get("per_page") ?? "12");
     window.location.assign(url.toString());
+  });
+  clearSearchBtn?.addEventListener("click", () => {
+    searchInput.value = "";
+    form.submit();
   });
 </script>
