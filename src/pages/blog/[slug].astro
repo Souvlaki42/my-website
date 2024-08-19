@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Code from "../../components/Code.astro";
 import Comments from "../../components/Comments.astro";
 import api from "../../lib/api";
+import Footer from "../../components/Footer.astro";
 
 const { slug = "" } = Astro.params;
 const { data: post, error } = await api.getPost({ slug });
@@ -20,14 +21,14 @@ const search = Astro.url.searchParams.get("search") ?? undefined;
 
 <BaseLayout title={title} description={summary}>
   <main
-    class="flex min-h-screen flex-col p-12 justify-start text-center text-white"
+    class="flex min-h-screen flex-col p-12 justify-start text-center text-white w-full"
   >
-    <header class="w-full text-center space-x-2">
-      <a href="/" class="link">Homepage</a>
-      <a href="/blog" class="link">Blog</a>
-      <a href="/projects" class="link">Projects</a>
-    </header>
-    <section id="frontmatter">
+    <header>
+      <nav data-swup-preload-all class="w-full text-center space-x-2">
+        <a href="/" class="link">Homepage</a>
+        <a href={"/blog"} class="link">Blog</a>
+        <a href="/projects" class="link">Projects</a>
+      </nav>
       <Code as="h1" code={`# ${title}`} lang={"markdown"} alignment="center" />
       <Code
         as="h2"
@@ -53,7 +54,7 @@ const search = Astro.url.searchParams.get("search") ?? undefined;
           /></small
         >
       </div>
-    </section>
+    </header>
     <hr class="m-4" />
     <article
       id="article"
@@ -63,9 +64,11 @@ const search = Astro.url.searchParams.get("search") ?? undefined;
       <Content />
     </article>
     <a
+      data-swup-preload
       href={`/blog?page=${page}&per_page=${perPage}${search ? `&search=${search}` : ""}`}
       class="link mt-8">← Go back</a
     >
     <Comments />
+    <Footer />
   </main>
 </BaseLayout>

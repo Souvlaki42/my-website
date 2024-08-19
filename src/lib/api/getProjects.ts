@@ -1,5 +1,5 @@
 import { defineAction, z } from "astro:actions";
-import { isFuseKey, makeFuseInstances } from "../utils";
+import { isFuseKey, makeFuseInstances, removeDuplicates } from "../utils";
 import type Fuse from "fuse.js";
 import { GITHUB_TOKEN } from "astro:env/server";
 
@@ -79,10 +79,9 @@ export const getProjects = defineAction({
         pushed_at
       } = project;
 
-      const tags = topics;
-      const checkLanguage =
-        language && !topics.some((topic) => topic.trim() === language.trim());
-      if (checkLanguage) tags.push(language.trim());
+      let tags = topics;
+      if (language) tags.push(language);
+      tags = removeDuplicates(tags);
 
       return {
         title: name,

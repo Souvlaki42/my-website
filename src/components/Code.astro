@@ -20,6 +20,6 @@ const className = `m-2 w-full text-${alignment}`;
 const Element = href ? "a" : as;
 ---
 
-<Element href={href} class={className}
+<Element href={href} class={className} data-swup-preload={Element === "a"}
   ><AstroCode tabindex={-1} wrap theme={theme} {...rest} /></Element
 >

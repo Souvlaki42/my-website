@@ -1,5 +1,6 @@
 ---
 import Code from "../components/Code.astro";
+import Footer from "../components/Footer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 export const prerender = true;
@@ -55,25 +56,10 @@ export const prerender = true;
       href="/blog"
     />
     <Code
-      code={`echo "Reach out to me in Twitter/X and GitHub: "`}
+      code={`echo "Don't hesitate to react out to me:"`}
       lang={"bash"}
       alignment="right"
     />
-    <footer class="flex justify-between z-10 m-4">
-      <span class="text-white">
-        © Souvlaki42 {new Date().getFullYear()}
-      </span>
-      <div>
-        <a href="https://x.com/souvlaki42" class="m-2 text-right link"
-          >Twitter/X</a
-        >
-        <a href="https://github.com/souvlaki42" class="m-2 text-right link"
-          >GitHub</a
-        >
-        <a href="mailto:souvlaki420@gmail.com" class="m-2 text-right link"
-          >Email</a
-        >
-      </div>
-    </footer>
+    <Footer />
   </main>
 </BaseLayout>

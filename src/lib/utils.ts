@@ -47,3 +47,7 @@ export const makeFuseInstances = <T>(data: T[]): Record<FuseKey, Fuse<T>> => {
 export const isFuseKey = (key: string): key is FuseKey => {
   return fuseKeys.some((fuseKey) => fuseKey === key);
 };
+
+export const removeDuplicates = (array: string[]) => {
+  return [...new Set(array.map((item) => item.toLowerCase()))];
+};

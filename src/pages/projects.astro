@@ -1,5 +1,6 @@
 ---
 import Code from "../components/Code.astro";
+import Footer from "../components/Footer.astro";
 import Pagination from "../components/Pagination.astro";
 import Search from "../components/Search.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -32,12 +33,12 @@ const projects = allProjects.filter((project) => !project.is_private);
 
 <BaseLayout title={"Projects"}>
   <main class="flex min-h-screen flex-col p-12">
-    <header class="w-full text-center space-x-2">
-      <a href="/" class="link">Homepage</a>
-      <a href={"/blog"} class="link">Blog</a>
-      <a href="/projects" class="link">Projects</a>
-    </header>
-    <section id="info" class="m-4">
+    <header class="m-4">
+      <nav data-swup-preload-all class="m-0 w-full text-center space-x-2">
+        <a href="/" class="link">Homepage</a>
+        <a href={"/blog"} class="link">Blog</a>
+        <a href="/projects" class="link">Projects</a>
+      </nav>
       <Code
         as="h1"
         code="# Welcome to my projects!"
@@ -56,7 +57,7 @@ const projects = allProjects.filter((project) => !project.is_private);
         lang={"markdown"}
         alignment="center"
       />
-    </section>
+    </header>
     <Search search={search} />
     {
       projects && projects.length > 0 ? (
@@ -65,12 +66,14 @@ const projects = allProjects.filter((project) => !project.is_private);
           class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
         >
           {projects.map((project) => {
-            const { repo_url, title, summary, tags, pushed_at } = project;
+            const { repo_url, title, summary, tags, pushed_at, homepage } =
+              project;
+            const project_url = homepage?.trim() ? homepage.trim() : repo_url;
             return (
               <article class="w-full relative flex flex-col justify-center items-center p-6 bg-[#313244] rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
                 <h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">
                   <a
-                    href={repo_url}
+                    href={project_url}
                     class="text-sky-blue hover:text-light-blue hover:underline"
                   >
                     {title}
@@ -78,7 +81,7 @@ const projects = allProjects.filter((project) => !project.is_private);
                 </h2>
                 <p class="text-[#A6ADC8] mb-4">{summary}</p>
                 <a
-                  href={repo_url}
+                  href={project_url}
                   class="absolute w-full h-full top-0 left-0 no-underline text-transparent z-[-1]"
                   aria-label={title}
                 />
@@ -123,5 +126,6 @@ const projects = allProjects.filter((project) => !project.is_private);
       hasPrevious={hasPrevious}
       search={search}
     />
+    <Footer />
   </main>
 </BaseLayout>

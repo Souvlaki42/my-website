@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Code from "../components/Code.astro";
+import Comments from "../components/Comments.astro";
+import api from "../lib/api";
+import Footer from "../components/Footer.astro";
+
+const { data, error } = await api.getNow();
+if (error) console.error(error.message);
+const { content, updated } = data ?? {
+  content: "Nothing special now...",
+  updated: new Date().toLocaleString()
+};
+---
+
+<BaseLayout title={"Now"}>
+  <main
+    class="flex min-h-screen flex-col p-12 justify-start text-center text-white w-full"
+  >
+    <header>
+      <nav data-swup-preload-all class="w-full text-center space-x-2">
+        <a href="/" class="link">Homepage</a>
+        <a href={"/blog"} class="link">Blog</a>
+        <a href="/projects" class="link">Projects</a>
+      </nav>
+      <Code
+        as="h1"
+        code={"# What am I doing now?"}
+        lang={"markdown"}
+        alignment="center"
+      />
+      <small
+        ><Code
+          as="h3"
+          code={`## Updated: ${new Date(updated).toLocaleString()}`}
+          lang={"markdown"}
+          alignment="center"
+        /></small
+      >
+    </header>
+    <hr class="m-4" />
+    <article
+      id="article"
+      role="article"
+      class="prose mx-auto mt-8 max-w-3xl prose-pre:border-[1px] prose-pre:border-skin-line prose-pre:border-solid"
+      set:html={content}
+    />
+    <Comments />
+    <Footer />
+  </main>
+</BaseLayout>

@@ -34,7 +34,16 @@ export default defineConfig({
     }),
     mdx(),
     sitemap(),
-    swup()
+    swup({
+      progress: true,
+      accessibility: true,
+      forms: true,
+      cache: false,
+      preload: {
+        hover: true,
+        visible: false
+      }
+    })
   ],
   markdown: {
     shikiConfig: {

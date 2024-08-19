@@ -1,6 +1,6 @@
 import { defineAction, z } from "astro:actions";
 import { getCollection, type ContentEntryMap } from "astro:content";
-import { isFuseKey, makeFuseInstances } from "../utils";
+import { isFuseKey, makeFuseInstances, removeDuplicates } from "../utils";
 import type Fuse from "fuse.js";
 
 type RawPost = ContentEntryMap["blog"][keyof ContentEntryMap["blog"]];
@@ -26,7 +26,15 @@ export const getPosts = defineAction({
         id,
         slug
       } = post;
-      return { id, slug, title, summary, tags, createdDate, modifiedDate };
+      return {
+        id,
+        slug,
+        title,
+        summary,
+        tags: removeDuplicates(tags),
+        createdDate,
+        modifiedDate
+      };
     });
 
     formattedPosts = formattedPosts.sort((a, b) => {

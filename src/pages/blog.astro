@@ -1,5 +1,6 @@
 ---
 import Code from "../components/Code.astro";
+import Footer from "../components/Footer.astro";
 import Pagination from "../components/Pagination.astro";
 import Search from "../components/Search.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -26,13 +27,12 @@ const { posts, hasNext, hasPrevious } = data ?? {
 
 <BaseLayout title={"Blog"}>
   <main class="flex min-h-screen flex-col p-12">
-    <header class="w-full text-center space-x-2">
-      <a href="/" class="link">Homepage</a>
-      <a href={"/blog"} class="link">Blog</a>
-      <a href="/projects" class="link">Projects</a>
-      <a href="/rss.xml" class="link">RSS</a>
-    </header>
-    <section id="info" class="m-4">
+    <header class="m-4">
+      <nav data-swup-preload-all class="m-0 w-full text-center space-x-2">
+        <a href="/" class="link">Homepage</a>
+        <a href="/blog" class="link">Blog</a>
+        <a href="/projects" class="link">Projects</a>
+      </nav>
       <Code
         as="h1"
         code="# Welcome to my blog!"
@@ -51,7 +51,7 @@ const { posts, hasNext, hasPrevious } = data ?? {
         lang={"markdown"}
         alignment="center"
       />
-    </section>
+    </header>
     <Search search={search} />
     {
       posts && posts.length > 0 ? (
@@ -116,5 +116,6 @@ const { posts, hasNext, hasPrevious } = data ?? {
       hasPrevious={hasPrevious}
       search={search}
     />
+    <Footer />
   </main>
 </BaseLayout>
