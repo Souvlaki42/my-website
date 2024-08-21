@@ -1,19 +1,19 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Code from "../components/Code.astro";
-import Comments from "../components/Comments.astro";
-import api from "../lib/api";
-import Footer from "../components/Footer.astro";
+import Base from "@/layouts/Base.astro";
+import Code from "@/components/Code.astro";
+import Comments from "@/components/Comments.astro";
+import { api } from "@/api";
+import Footer from "@/components/Footer.astro";
 
 const { data, error } = await api.getNow();
-if (error) console.error(error.message);
+if (error) Astro.redirect("/500");
 const { content, updated } = data ?? {
   content: "Nothing special now...",
   updated: new Date().toLocaleString()
 };
 ---
 
-<BaseLayout title={"Now"}>
+<Base title={"Now"}>
   <main
     class="flex min-h-screen flex-col p-12 justify-start text-center text-white w-full"
   >
@@ -48,4 +48,4 @@ const { content, updated } = data ?? {
     <Comments />
     <Footer />
   </main>
-</BaseLayout>
+</Base>

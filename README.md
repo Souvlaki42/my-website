@@ -1,13 +1,13 @@
 # My Portfolio
 
-This repository contains my personal portfolio built with [Astro](https://astro.build/), TypeScript, and Tailwind CSS. The project features syntax-highlighted code blocks using a customized version of the `Code` component from `{astro:components}`, which utilizes [Shiki](https://shiki.matsu.io/) under the hood. The site is fully static, shipping 0 KB of JavaScript to the client by default. It has achieved a 100% perfect Lighthouse score on both mobile and desktop.
+This repository contains my personal portfolio built with [Astro](https://astro.build/), TypeScript, and Tailwind CSS. The project features a combination of static and server-side rendered pages, with dynamic content powered by Vercel. Syntax-highlighted code blocks are rendered using a customized Code component from {astro:components}, utilizing [Shiki](https://shiki.matsu.io/) for a clean and accurate display. The site maintains a strong focus on performance and design, achieving high Lighthouse scores on both mobile and desktop.
 
 ## Features
 
-- **Static Site Generation**: Built with Astro, ensuring fast load times and SEO optimization.
-- **Syntax Highlighting**: Uses Shiki for accurate and aesthetically pleasing code highlighting.
-- **Zero JavaScript**: Ships 0 KB of JavaScript to the client, enhancing performance.
-- **Responsive Design**: Optimized for both mobile and desktop with a perfect Lighthouse score.
+- **Hybrid Static & Dynamic Rendering**: While the homepage is statically generated, other sections are server-side rendered, fetching live data from APIs.
+- **Syntax Highlighting**: Powered by Shiki, ensuring accurate and aesthetically pleasing code blocks.
+- **Fuzzy Search & Comment Section**: Enhanced functionality with JavaScript, providing a better user experience.
+- **Responsive Design**: Optimized for both mobile and desktop, maintaining high performance metrics.
 
 ## Getting Started
 
@@ -21,7 +21,6 @@ Ensure you have the following installed:
   OR
 - [Node.js](https://nodejs.org/en/) (v20.x or later)
 - [npm](https://www.npmjs.com/) (v10.x or later)
-  (Might work with others as well)
 
 ### Installation
 

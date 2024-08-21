@@ -1,14 +1,14 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Code from "../../components/Code.astro";
-import Comments from "../../components/Comments.astro";
-import api from "../../lib/api";
-import Footer from "../../components/Footer.astro";
+import Base from "@/layouts/Base.astro";
+import Code from "@/components/Code.astro";
+import Comments from "@/components/Comments.astro";
+import { api } from "@/api";
+import Footer from "@/components/Footer.astro";
 
 const { slug = "" } = Astro.params;
 const { data: post, error } = await api.getPost({ slug });
 
-if (error) console.error(error.message);
+if (error) if (error) Astro.redirect("/404");
 if (!post) throw new Error("Post must exist");
 
 const { title, summary, createdDate, modifiedDate, tags } = post.data;
@@ -19,7 +19,7 @@ const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
 ---
 
-<BaseLayout title={title} description={summary}>
+<Base title={title} description={summary}>
   <main
     class="flex min-h-screen flex-col p-12 justify-start text-center text-white w-full"
   >
@@ -71,4 +71,4 @@ const search = Astro.url.searchParams.get("search") ?? undefined;
     <Comments />
     <Footer />
   </main>
-</BaseLayout>
+</Base>

@@ -1,15 +1,10 @@
 ---
-import { AppConfig } from "../lib/utils";
+import { AppConfig, type HeadProps } from "@/utils";
+import Head from "@/components/Head.astro";
 
-type Props = {
-  title?: string;
-  description?: string;
-  children: any;
-};
+type Props = HeadProps & { children: any };
 
-const { title: BASE_TITLE, description: BASE_DESCRIPTION, site } = AppConfig;
-
-const { title, description = BASE_DESCRIPTION } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <html lang="en">
@@ -20,14 +15,12 @@ const { title, description = BASE_DESCRIPTION } = Astro.props;
     <link
       rel="alternate"
       type="application/rss+xml"
-      title={BASE_TITLE}
-      href={`${site}rss.xml`}
+      title={AppConfig.title}
+      href={`${AppConfig.site}rss.xml`}
     />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <meta title={title ? `${title} - ${BASE_TITLE}` : BASE_TITLE} />
-    <title>{title ? `${title} - ${BASE_TITLE}` : BASE_TITLE}</title>
+    <Head title={title} description={description} image={image} />
     <style is:global>
       html {
         scrollbar-gutter: stable;
@@ -39,7 +32,7 @@ const { title, description = BASE_DESCRIPTION } = Astro.props;
         @apply font-bold text-sky-blue underline hover:text-light-blue;
       }
       .swup-progress-bar {
-        @apply h-1 bg-sky-blue;
+        @apply h-1 bg-sky-700;
       }
     </style>
   </head>

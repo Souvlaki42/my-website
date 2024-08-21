@@ -1,5 +1,5 @@
 import { defineAction, z } from "astro:actions";
-import { isFuseKey, makeFuseInstances, removeDuplicates } from "../utils";
+import { isFuseKey, makeFuseInstances, removeDuplicates } from "@/utils";
 import type Fuse from "fuse.js";
 import { GITHUB_TOKEN } from "astro:env/server";
 

@@ -1,10 +1,10 @@
 ---
-import Code from "../components/Code.astro";
-import Footer from "../components/Footer.astro";
-import Pagination from "../components/Pagination.astro";
-import Search from "../components/Search.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import api from "../lib/api";
+import Code from "@/components/Code.astro";
+import Footer from "@/components/Footer.astro";
+import Pagination from "@/components/Pagination.astro";
+import Search from "@/components/Search.astro";
+import Base from "@/layouts/Base.astro";
+import { api } from "@/api";
 
 const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
@@ -16,7 +16,7 @@ const { data, error } = await api.getPosts({
   searchQuery: search
 });
 
-if (error) console.error(error.message);
+if (error) Astro.redirect("/500");
 
 const { posts, hasNext, hasPrevious } = data ?? {
   posts: [],
@@ -25,7 +25,7 @@ const { posts, hasNext, hasPrevious } = data ?? {
 };
 ---
 
-<BaseLayout title={"Blog"}>
+<Base title={"Blog"}>
   <main class="flex min-h-screen flex-col p-12">
     <header class="m-4">
       <nav data-swup-preload-all class="m-0 w-full text-center space-x-2">
@@ -118,4 +118,4 @@ const { posts, hasNext, hasPrevious } = data ?? {
     />
     <Footer />
   </main>
-</BaseLayout>
+</Base>

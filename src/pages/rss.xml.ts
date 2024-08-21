@@ -1,7 +1,7 @@
-import { AppConfig } from "../lib/utils";
+import { AppConfig } from "@/utils";
 import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
-import api from "../lib/api";
+import { api } from "@/api";
 
 export const GET: APIRoute = async () => {
   const resp = await api.getPosts({});

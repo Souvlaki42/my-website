@@ -1,12 +1,12 @@
 ---
-import Code from "../components/Code.astro";
-import Footer from "../components/Footer.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Code from "@/components/Code.astro";
+import Footer from "@/components/Footer.astro";
+import Base from "@/layouts/Base.astro";
 
 export const prerender = true;
 ---
 
-<BaseLayout>
+<Base>
   <main class="flex min-h-screen flex-col p-12">
     <Code
       code={`fmt.Println("👋 Hello, World!");`}
@@ -56,10 +56,10 @@ export const prerender = true;
       href="/blog"
     />
     <Code
-      code={`echo "Don't hesitate to react out to me:"`}
+      code={`echo "Don't hesitate to reach out to me:"`}
       lang={"bash"}
       alignment="right"
     />
     <Footer />
   </main>
-</BaseLayout>
+</Base>

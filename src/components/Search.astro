@@ -13,14 +13,14 @@ const { search } = Astro.props;
       name="search"
       id="search-query"
       placeholder="Enter a search term..."
-      class="w-full rounded-lg p-2 bg-mocha border-2 border-sky-blue focus-within:border-light-blue text-white font-medium outline-none"
+      class="w-full rounded-lg p-2 bg-mocha border-2 border-sky-500 focus-within:border-sky-700 text-white font-medium outline-none"
       value={search ?? ""}
       title="You can prioritize searching for title, summary, or tags by prefixing your search term with these keywords followed by a colon. (e.g., tags:example)"
       data-search-query
     />
     <button
       type="button"
-      class="ml-2 p-2 bg-sky-blue hover:bg-light-blue text-mocha font-medium rounded-lg"
+      class="ml-2 p-2 bg-sky-500 hover:bg-sky-700 text-mocha font-medium rounded-lg"
       aria-label="Clear search"
       data-clear-search
     >

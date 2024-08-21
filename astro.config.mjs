@@ -2,10 +2,9 @@ import { defineConfig, envField } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import AutoImport from "astro-auto-import";
 import mdx from "@astrojs/mdx";
-import { AppConfig } from "./src/lib/utils";
+import { AppConfig } from "./src/utils";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel/serverless";
-
 import swup from "@swup/astro";
 
 // https://astro.build/config
@@ -42,7 +41,8 @@ export default defineConfig({
       preload: {
         hover: true,
         visible: false
-      }
+      },
+      smoothScrolling: true
     })
   ],
   markdown: {

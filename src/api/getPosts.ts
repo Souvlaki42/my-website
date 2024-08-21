@@ -1,6 +1,6 @@
 import { defineAction, z } from "astro:actions";
 import { getCollection, type ContentEntryMap } from "astro:content";
-import { isFuseKey, makeFuseInstances, removeDuplicates } from "../utils";
+import { isFuseKey, makeFuseInstances, removeDuplicates } from "@/utils";
 import type Fuse from "fuse.js";
 
 type RawPost = ContentEntryMap["blog"][keyof ContentEntryMap["blog"]];
