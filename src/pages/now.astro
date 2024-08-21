@@ -29,14 +29,12 @@ const { content, updated } = data ?? {
         lang={"markdown"}
         alignment="center"
       />
-      <small
-        ><Code
-          as="h3"
-          code={`## Updated: ${new Date(updated).toLocaleString()}`}
-          lang={"markdown"}
-          alignment="center"
-        /></small
-      >
+      <Code
+        as="h2"
+        code={`## Updated: ${new Date(updated).toLocaleString()}`}
+        lang={"markdown"}
+        alignment="center"
+      />
     </header>
     <hr class="m-4" />
     <article

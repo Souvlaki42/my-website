@@ -1,5 +1,12 @@
 import Fuse from "fuse.js";
 
+export type SocialShareProps = {
+  url?: string;
+  title?: string;
+  description?: string;
+  via?: string;
+};
+
 export const AppConfig = {
   author: "Souvlaki42",
   title: "Souvlaki42",

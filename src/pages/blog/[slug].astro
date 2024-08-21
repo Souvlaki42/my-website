@@ -4,6 +4,7 @@ import Code from "@/components/Code.astro";
 import Comments from "@/components/Comments.astro";
 import { api } from "@/api";
 import Footer from "@/components/Footer.astro";
+import SocialShare from "@/components/SocialShare.astro";
 
 const { slug = "" } = Astro.params;
 const { data: post, error } = await api.getPost({ slug });
@@ -45,14 +46,15 @@ const search = Astro.url.searchParams.get("search") ?? undefined;
             alignment="center"
           />
         </div>
-        <small
-          ><Code
-            as="h3"
-            code={`#### Created: ${createdDate}${createdDate !== modifiedDate ? `- Modified: ${modifiedDate}` : ""}`}
-            lang={"markdown"}
-            alignment="center"
-          /></small
-        >
+        <Code
+          as="h3"
+          code={`#### Created: ${createdDate}${createdDate !== modifiedDate ? `- Modified: ${modifiedDate}` : ""}`}
+          lang={"markdown"}
+          alignment="center"
+        />
+        <div class="text-white">
+          <SocialShare description={summary} title={title} />
+        </div>
       </div>
     </header>
     <hr class="m-4" />
