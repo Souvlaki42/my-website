@@ -1,26 +1,39 @@
 {
-  "name": "my-website",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
-    "next": "15.0.3"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.3"
-  }
+	"name": "my-website",
+	"description": "My personal website",
+	"maintainers": [
+		"Souvlaki42 <souvlaki42@gmail.com>"
+	],
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbopack",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
+		"pretty:check": "prettier --check \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
+		"format": "pnpm pretty && pnpm lint --fix",
+		"postinstall": "pnpm run format && pnpm run lint"
+	},
+	"dependencies": {
+		"next": "15.0.3",
+		"react": "19.0.0-rc-66855b96-20241106",
+		"react-dom": "19.0.0-rc-66855b96-20241106"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3.2.0",
+		"@eslint/js": "^9.16.0",
+		"@tailwindcss/postcss": "4.0.0-beta.4",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"eslint": "^9.16.0",
+		"eslint-config-next": "15.0.3",
+		"postcss": "^8",
+		"prettier": "^3.4.1",
+		"prettier-plugin-tailwindcss": "^0.6.9",
+		"tailwindcss": "4.0.0-beta.4",
+		"typescript": "^5"
+	}
 }
