@@ -1,10 +1,10 @@
 import { AppConfig } from "@/utils";
 import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
-import { api } from "@/api";
+import { actions } from "astro:actions";
 
-export const GET: APIRoute = async () => {
-  const resp = await api.getPosts({});
+export const GET: APIRoute = async ({ callAction }) => {
+  const resp = await callAction(actions.getPosts, {});
   const posts = resp.data?.posts;
   if (!posts) return new Response(null, { status: 404 });
 

@@ -6,9 +6,9 @@ export default {
       colors: {
         mocha: "#1e1e2e",
         "sky-blue": "#6CB4FF",
-        "light-blue": "#94D0FF",
-      },
-    },
+        "light-blue": "#94D0FF"
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };

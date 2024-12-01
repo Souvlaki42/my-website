@@ -1,11 +1,11 @@
-import { defineConfig, envField } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-import AutoImport from "astro-auto-import";
 import mdx from "@astrojs/mdx";
-import { AppConfig } from "./src/utils";
 import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import swup from "@swup/astro";
+import AutoImport from "astro-auto-import";
+import { defineConfig, envField } from "astro/config";
+import { AppConfig } from "./src/utils";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +16,8 @@ export default defineConfig({
     prefetchAll: true
   },
   experimental: {
-    actions: true,
+    serverIslands: true,
+    clientPrerender: true,
     env: {
       schema: {
         GITHUB_TOKEN: envField.string({

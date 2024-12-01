@@ -3,23 +3,14 @@ import { Code as AstroCode } from "astro:components";
 
 type Props = Omit<Parameters<typeof AstroCode>[number], "wrap"> & {
   href?: string;
-  alignment?: "left" | "center" | "right";
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
 };
 
-const {
-  theme = "catppuccin-mocha",
-  href,
-  as = "span",
-  alignment = "left",
-  ...rest
-} = Astro.props;
-
-const className = `m-2 w-full text-${alignment}`;
+const { theme = "catppuccin-mocha", href, as = "span", ...rest } = Astro.props;
 
 const Element = href ? "a" : as;
 ---
 
-<Element href={href} class={className} data-swup-preload={Element === "a"}
+<Element href={href} class="m-2 w-full" data-swup-preload={Element === "a"}
   ><AstroCode tabindex={-1} wrap theme={theme} {...rest} /></Element
 >

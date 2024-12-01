@@ -1,6 +1,6 @@
-import { defineAction, z } from "astro:actions";
-import { getCollection, type ContentEntryMap } from "astro:content";
 import { isFuseKey, makeFuseInstances, removeDuplicates } from "@/utils";
+import { defineAction } from "astro:actions";
+import { getCollection, z, type ContentEntryMap } from "astro:content";
 import type Fuse from "fuse.js";
 
 type RawPost = ContentEntryMap["blog"][keyof ContentEntryMap["blog"]];
@@ -63,21 +63,13 @@ export const getPosts = defineAction({
       formattedPosts = results?.map((result) => result.item);
     }
 
-    if (page === 0) {
-      return {
-        posts: formattedPosts,
-        hasNext: undefined,
-        hasPrevious: undefined
-      };
-    } else {
-      const start = (page - 1) * perPage;
-      const end = start + perPage;
-      const entries = formattedPosts.slice(start, end);
-      return {
-        posts: entries,
-        hasNext: end < posts.length,
-        hasPrevious: start > 0
-      };
-    }
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+    const entries = formattedPosts.slice(start, end);
+    return {
+      posts: entries,
+      hasNext: end < posts.length,
+      hasPrevious: start > 0
+    };
   }
 });

@@ -1,9 +1,9 @@
-import { defineAction, z } from "astro:actions";
-import { getEntry } from "astro:content";
-import { getPosts } from "@/api/getPosts";
-import { getProjects } from "@/api/getProjects";
-import { getNow } from "@/api/getNow";
 import { removeDuplicates } from "@/utils";
+import { defineAction } from "astro:actions";
+import { getEntry } from "astro:content";
+import { z } from "astro:schema";
+import { getPosts } from "./getPosts";
+import { getProjects } from "./getProjects";
 
 const getPost = defineAction({
   input: z.object({ slug: z.string().min(1, "Slug is required!") }),
@@ -14,11 +14,8 @@ const getPost = defineAction({
   }
 });
 
-const api = {
+export const server = {
+  getProjects,
   getPost,
-  getNow,
-  getPosts,
-  getProjects
+  getPosts
 };
-
-export { getPosts, getProjects, getNow, getPost, api };

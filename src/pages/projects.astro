@@ -4,16 +4,16 @@ import Footer from "@/components/Footer.astro";
 import Pagination from "@/components/Pagination.astro";
 import Search from "@/components/Search.astro";
 import Base from "@/layouts/Base.astro";
-import { api } from "@/api";
+import { actions } from "astro:actions";
 
 const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
 
-const { data, error } = await api.getProjects({
+const { data, error } = await Astro.callAction(actions.getProjects, {
+  searchQuery: search,
   page: Number(page),
-  perPage: Number(perPage),
-  searchQuery: search
+  perPage: Number(perPage)
 });
 
 if (error) Astro.redirect("/500");
@@ -39,23 +39,16 @@ const projects = allProjects.filter((project) => !project.is_private);
         <a href={"/blog"} class="link">Blog</a>
         <a href="/projects" class="link">Projects</a>
       </nav>
-      <Code
-        as="h1"
-        code="# Welcome to my projects!"
-        lang={"markdown"}
-        alignment="center"
-      />
+      <Code as="h1" code="# Welcome to my projects!" lang={"markdown"} />
       <Code
         as="h2"
         code="## This is where I showcase my somewhat interesting and/or valuables public projects with the world."
         lang={"markdown"}
-        alignment="center"
       />
       <Code
         as="h3"
         code="### I encourage you to take a look. Who knows, you might realize that I'll be a great resource for your company."
         lang={"markdown"}
-        alignment="center"
       />
     </header>
     <Search search={search} />

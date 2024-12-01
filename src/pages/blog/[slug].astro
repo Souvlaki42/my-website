@@ -1,13 +1,13 @@
 ---
-import Base from "@/layouts/Base.astro";
 import Code from "@/components/Code.astro";
 import Comments from "@/components/Comments.astro";
-import { api } from "@/api";
 import Footer from "@/components/Footer.astro";
 import SocialShare from "@/components/SocialShare.astro";
+import Base from "@/layouts/Base.astro";
+import { actions } from "astro:actions";
 
 const { slug = "" } = Astro.params;
-const { data: post, error } = await api.getPost({ slug });
+const { data: post, error } = await Astro.callAction(actions.getPost, { slug });
 
 if (error) if (error) Astro.redirect("/404");
 if (!post) throw new Error("Post must exist");
@@ -30,27 +30,15 @@ const search = Astro.url.searchParams.get("search") ?? undefined;
         <a href={"/blog"} class="link">Blog</a>
         <a href="/projects" class="link">Projects</a>
       </nav>
-      <Code as="h1" code={`# ${title}`} lang={"markdown"} alignment="center" />
-      <Code
-        as="h2"
-        code={`## ${summary}`}
-        lang={"markdown"}
-        alignment="center"
-      />
+      <Code as="h2" code={`## ${summary}`} lang={"markdown"} />
       <div class="justify-between">
         <div>
-          <Code
-            as="h3"
-            code={`### ${tags.join(", ")}`}
-            lang={"markdown"}
-            alignment="center"
-          />
+          <Code as="h3" code={`### ${tags.join(", ")}`} lang={"markdown"} />
         </div>
         <Code
           as="h3"
           code={`#### Created: ${createdDate}${createdDate !== modifiedDate ? `- Modified: ${modifiedDate}` : ""}`}
           lang={"markdown"}
-          alignment="center"
         />
         <div class="text-white">
           <SocialShare description={summary} title={title} />

@@ -8,43 +8,30 @@ export const prerender = true;
 
 <Base>
   <main class="flex min-h-screen flex-col p-12">
-    <Code
-      code={`fmt.Println("👋 Hello, World!");`}
-      lang={"go"}
-      alignment="left"
-    />
+    <Code code={`fmt.Println("👋 Hello, World!");`} lang={"go"} />
     <Code
       code={`print("I'm Souvlaki42")`}
       lang={"python"}
       class={"font-extrabold text-xl"}
-      alignment="center"
     />
-    <Code
-      code={`System.out.println("I live in Greece 🇬🇷");`}
-      lang={"java"}
-      alignment="right"
-    />
+    <Code code={`System.out.println("I live in Greece 🇬🇷");`} lang={"java"} />
     <Code
       code={`<h1>I'm full with passion and will to learn...</h1>`}
       lang={"jsx"}
-      alignment="center"
     />
     <Code
       code={`println!("I like coding, playing games, swimming and listening to music");`}
       lang={"rust"}
-      alignment="left"
     />
     <Code
       code={"console.log(`I've worked with:\n1. Typescript,\n2. Next.js/React,\n3. Astro,\n4. SQL,\n5. Golang,\n6. Python,\n7. Rust\n And more...`);"}
       lang={"typescript"}
-      alignment="center"
     />
     <Code
       code={`SELECT * FROM projects WHERE curiosity = "high"; -- Take a look at my projects!`}
       lang={"sql"}
       theme={"dark-plus"}
       class="rounded p-1 cursor-pointer hover:opacity-80 underline"
-      alignment="left"
       href="/projects"
     />
     <Code
@@ -52,14 +39,9 @@ export const prerender = true;
       theme={"dark-plus"}
       lang={"regexp"}
       class="rounded p-1 cursor-pointer hover:opacity-80 underline"
-      alignment="center"
       href="/blog"
     />
-    <Code
-      code={`echo "Don't hesitate to reach out to me:"`}
-      lang={"bash"}
-      alignment="right"
-    />
+    <Code code={`echo "Don't hesitate to reach out to me:"`} lang={"bash"} />
     <Footer />
   </main>
 </Base>

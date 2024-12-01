@@ -1,7 +1,8 @@
-import { defineAction, z } from "astro:actions";
 import { isFuseKey, makeFuseInstances, removeDuplicates } from "@/utils";
-import type Fuse from "fuse.js";
+import { defineAction } from "astro:actions";
 import { GITHUB_TOKEN } from "astro:env/server";
+import { z } from "astro:schema";
+import type Fuse from "fuse.js";
 
 const rawProjectSchema = z.array(
   z.object({

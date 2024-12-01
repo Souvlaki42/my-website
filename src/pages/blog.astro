@@ -4,13 +4,13 @@ import Footer from "@/components/Footer.astro";
 import Pagination from "@/components/Pagination.astro";
 import Search from "@/components/Search.astro";
 import Base from "@/layouts/Base.astro";
-import { api } from "@/api";
+import { actions } from "astro:actions";
 
 const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
 
-const { data, error } = await api.getPosts({
+const { data, error } = await Astro.callAction(actions.getPosts, {
   page: Number(page),
   perPage: Number(perPage),
   searchQuery: search
@@ -33,23 +33,16 @@ const { posts, hasNext, hasPrevious } = data ?? {
         <a href="/blog" class="link">Blog</a>
         <a href="/projects" class="link">Projects</a>
       </nav>
-      <Code
-        as="h1"
-        code="# Welcome to my blog!"
-        lang={"markdown"}
-        alignment="center"
-      />
+      <Code as="h1" code="# Welcome to my blog!" lang={"markdown"} />
       <Code
         as="h2"
         code="## This is where I throw my random pieces of knowledge or experience I get for being a developer."
         lang={"markdown"}
-        alignment="center"
       />
       <Code
         as="h3"
         code="### I encourage you to take a look. One wise man once said that what we have to say, will be useful to somebody."
         lang={"markdown"}
-        alignment="center"
       />
     </header>
     <Search search={search} />

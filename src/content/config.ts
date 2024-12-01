@@ -7,10 +7,10 @@ const blogCollection = defineCollection({
     summary: z.string(),
     tags: z.array(z.string()),
     createdDate: z.string(),
-    modifiedDate: z.string(),
-  }),
+    modifiedDate: z.string()
+  })
 });
 
 export const collections = {
-  blog: blogCollection,
+  blog: blogCollection
 };

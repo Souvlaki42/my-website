@@ -1,6 +1,6 @@
 # My Portfolio
 
-This repository contains my personal portfolio built with [Astro](https://astro.build/), TypeScript, and Tailwind CSS. The project features a combination of static and server-side rendered pages, with dynamic content powered by Vercel. Syntax-highlighted code blocks are rendered using a customized Code component from {astro:components}, utilizing [Shiki](https://shiki.matsu.io/) for a clean and accurate display. The site maintains a strong focus on performance and design, achieving high Lighthouse scores on both mobile and desktop.
+This repository contains my personal portfolio built with Astro, TypeScript, and Tailwind CSS. The project features a combination of static and server-side rendered pages, with dynamic content powered by Vercel. Syntax-highlighted code blocks are rendered using a customized Code component from {astro:components}, utilizing [Shiki](https://shiki.matsu.io/) for a clean and accurate display. The site maintains a strong focus on performance and design, achieving high Lighthouse scores on both mobile and desktop.
 
 ## Features
 
@@ -8,6 +8,12 @@ This repository contains my personal portfolio built with [Astro](https://astro.
 - **Syntax Highlighting**: Powered by Shiki, ensuring accurate and aesthetically pleasing code blocks.
 - **Fuzzy Search & Comment Section**: Enhanced functionality with JavaScript, providing a better user experience.
 - **Responsive Design**: Optimized for both mobile and desktop, maintaining high performance metrics.
+
+## Todo
+
+- [ ] Integrate Obsidian
+- [ ] Publish more blog posts
+- [ ] Deal with the shiki bug
 
 ## Getting Started
 
@@ -18,9 +24,6 @@ Follow these instructions to set up the project locally.
 Ensure you have the following installed:
 
 - [Bun](https://bun.sh) (v1.1.20 or later)
-  OR
-- [Node.js](https://nodejs.org/en/) (v20.x or later)
-- [npm](https://www.npmjs.com/) (v10.x or later)
 
 ### Installation
 
@@ -39,13 +42,13 @@ Ensure you have the following installed:
 3. **Install dependencies**
 
    ```bash
-   npm install
+   bun install
    ```
 
 4. **Start the development server**
 
    ```bash
-   npm run dev
+   bun run dev
    ```
 
 5. **Open the project in your browser**
@@ -57,7 +60,7 @@ Ensure you have the following installed:
 To build the project for production, run:
 
 ```bash
-npm run build
+bun run build
 ```
 
 The built files will be in the `dist` directory. You can deploy these static files to any hosting service that supports static sites.
