@@ -1,9 +1,9 @@
 ---
 import Code from "@/components/Code.astro";
 import Footer from "@/components/Footer.astro";
+import Layout from "@/components/Layout.astro";
 import Pagination from "@/components/Pagination.astro";
 import Search from "@/components/Search.astro";
-import Base from "@/layouts/Base.astro";
 import { actions } from "astro:actions";
 
 const page = Astro.url.searchParams.get("page") ?? "1";
@@ -31,7 +31,7 @@ const {
 const projects = allProjects.filter((project) => !project.is_private);
 ---
 
-<Base title={"Projects"}>
+<Layout title={"Projects"}>
   <main class="flex min-h-screen flex-col p-12">
     <header class="m-4">
       <nav data-swup-preload-all class="m-0 w-full text-center space-x-2">
@@ -121,4 +121,4 @@ const projects = allProjects.filter((project) => !project.is_private);
     />
     <Footer />
   </main>
-</Base>
+</Layout>

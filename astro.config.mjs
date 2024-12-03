@@ -1,7 +1,7 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import swup from "@swup/astro";
 import AutoImport from "astro-auto-import";
 import { defineConfig, envField } from "astro/config";
@@ -15,16 +15,12 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true
   },
-  experimental: {
-    serverIslands: true,
-    clientPrerender: true,
-    env: {
-      schema: {
-        GITHUB_TOKEN: envField.string({
-          context: "server",
-          access: "secret"
-        })
-      }
+  env: {
+    schema: {
+      GITHUB_TOKEN: envField.string({
+        context: "server",
+        access: "secret"
+      })
     }
   },
   integrations: [

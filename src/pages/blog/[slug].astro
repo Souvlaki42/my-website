@@ -2,8 +2,8 @@
 import Code from "@/components/Code.astro";
 import Comments from "@/components/Comments.astro";
 import Footer from "@/components/Footer.astro";
+import Layout from "@/components/Layout.astro";
 import SocialShare from "@/components/SocialShare.astro";
-import Base from "@/layouts/Base.astro";
 import { actions } from "astro:actions";
 
 const { slug = "" } = Astro.params;
@@ -20,7 +20,7 @@ const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
 ---
 
-<Base title={title} description={summary}>
+<Layout title={title} description={summary}>
   <main
     class="flex min-h-screen flex-col p-12 justify-start text-center text-white w-full"
   >
@@ -61,4 +61,4 @@ const search = Astro.url.searchParams.get("search") ?? undefined;
     <Comments />
     <Footer />
   </main>
-</Base>
+</Layout>

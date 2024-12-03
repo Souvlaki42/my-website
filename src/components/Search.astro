@@ -29,7 +29,6 @@ const { search } = Astro.props;
   </form>
 </section>
 <script>
-  import DOMPurify from "dompurify";
   const form = document.querySelector<HTMLFormElement>("[data-form]");
   const clearSearchBtn = document.querySelector<HTMLButtonElement>(
     "[data-clear-search]"
@@ -43,7 +42,7 @@ const { search } = Astro.props;
     e.preventDefault();
     const formData = new FormData(form);
     let searchQuery = formData.get("search")?.toString();
-    searchQuery = DOMPurify.sanitize(searchQuery ?? "");
+    if (!searchQuery) return;
     const searchParams = new URLSearchParams(window.location.search);
     const url = new URL(window.location.pathname, window.location.origin);
     url.searchParams.set("search", searchQuery);

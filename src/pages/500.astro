@@ -1,5 +1,5 @@
 ---
-import Base from "@/layouts/Base.astro";
+import Layout from "@/components/Layout.astro";
 
 type Props = {
   error: unknown;
@@ -13,7 +13,7 @@ const description =
     : "Oops! Something went wrong on our end.";
 ---
 
-<Base title={title} description={description}>
+<Layout title={title} description={description}>
   <section
     class="flex flex-col items-center justify-center h-screen text-center text-white"
   >
@@ -26,4 +26,4 @@ const description =
       Go Back Home
     </a>
   </section>
-</Base>
+</Layout>

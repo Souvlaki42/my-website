@@ -14,6 +14,8 @@ This repository contains my personal portfolio built with Astro, TypeScript, and
 - [ ] Integrate Obsidian
 - [ ] Publish more blog posts
 - [ ] Deal with the shiki bug
+- [ ] Upgrade to Tailwind 4 when it's released
+- [x] Upgrade to Astro 5 when it's released
 
 ## Getting Started
 
@@ -55,23 +57,13 @@ Ensure you have the following installed:
 
    Navigate to `http://localhost:4321` to view the portfolio.
 
-## Deployment
-
-To build the project for production, run:
-
-```bash
-bun run build
-```
-
-The built files will be in the `dist` directory. You can deploy these static files to any hosting service that supports static sites.
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-- **Name**: Souvlaki42
 - **Email**: [souvlaki420@gmail.com](mailto:souvlaki420@gmail.com)
 - **GitHub**: [Souvlaki42](https://github.com/souvlaki42)
 - **Twitter/X**: [Souvlaki42](https://x.com/souvlaki42)
+- **Bluesky**: [Souvlaki42](https://bsky.app/profile/souvlaki.me)
