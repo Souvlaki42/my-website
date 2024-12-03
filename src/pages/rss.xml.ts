@@ -4,8 +4,8 @@ import type { APIRoute } from "astro";
 import { actions } from "astro:actions";
 
 export const GET: APIRoute = async ({ callAction }) => {
-  const resp = await callAction(actions.getPosts, {});
-  const posts = resp.data?.posts;
+  const resp = await callAction(actions.posts.getAll, {});
+  const posts = resp.data;
   if (!posts) return new Response(null, { status: 404 });
 
   return rss({
@@ -18,7 +18,7 @@ export const GET: APIRoute = async ({ callAction }) => {
       pubDate: new Date(post.modifiedDate),
       description: post.summary,
       categories: post.tags,
-      link: `/blog/${post.slug}/`
+      link: `/blog/${post.id}/`
     }))
   });
 };

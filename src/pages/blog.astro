@@ -10,7 +10,7 @@ const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
 
-const { data, error } = await Astro.callAction(actions.getPosts, {
+const { data, error } = await Astro.callAction(actions.posts.getByQuery, {
   page: Number(page),
   perPage: Number(perPage),
   searchQuery: search
@@ -53,10 +53,10 @@ const { posts, hasNext, hasPrevious } = data ?? {
           class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
         >
           {posts.map((post) => {
-            const { title, summary, tags, createdDate, modifiedDate, slug } =
+            const { title, summary, tags, createdDate, modifiedDate, id } =
               post;
 
-            const postLink = `/blog/${slug}?page=${page}&per_page=${perPage}${search ? `&search=${search}` : ""}`;
+            const postLink = `/blog/${id}?page=${page}&per_page=${perPage}${search ? `&search=${search}` : ""}`;
             return (
               <article class="w-full relative flex flex-col justify-center items-center p-6 bg-[#313244] rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
                 <h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">

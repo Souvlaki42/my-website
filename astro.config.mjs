@@ -17,9 +17,11 @@ export default defineConfig({
   },
   env: {
     schema: {
-      GITHUB_TOKEN: envField.string({
+      GITHUB_TOKEN: envField.string({ context: "server", access: "secret" }),
+      SHOW_DRAFTS: envField.boolean({
         context: "server",
-        access: "secret"
+        access: "public",
+        default: process.env.NODE_ENV !== "production"
       })
     }
   },
@@ -43,6 +45,9 @@ export default defineConfig({
     })
   ],
   markdown: {
+    syntaxHighlight: "shiki",
+    gfm: true,
+    smartypants: true,
     shikiConfig: {
       theme: "catppuccin-mocha",
       wrap: true

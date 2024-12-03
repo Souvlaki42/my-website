@@ -64,3 +64,14 @@ export const isFuseKey = (key: string): key is FuseKey => {
 export const removeDuplicates = (array: string[]) => {
   return [...new Set(array.map((item) => item.toLowerCase()))];
 };
+
+export const safeAwait = async <T, E = Error>(
+  promise: Promise<T>
+): Promise<[null, T] | [E, null]> => {
+  try {
+    const result = await promise;
+    return [null, result];
+  } catch (err) {
+    return [err as E, null];
+  }
+};

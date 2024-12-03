@@ -5,15 +5,18 @@ import Footer from "@/components/Footer.astro";
 import Layout from "@/components/Layout.astro";
 import SocialShare from "@/components/SocialShare.astro";
 import { actions } from "astro:actions";
+import { render } from "astro:content";
 
-const { slug = "" } = Astro.params;
-const { data: post, error } = await Astro.callAction(actions.getPost, { slug });
+const { id = "" } = Astro.params;
+const { data: post, error } = await Astro.callAction(actions.posts.getById, {
+  id
+});
 
 if (error) if (error) Astro.redirect("/404");
 if (!post) throw new Error("Post must exist");
 
 const { title, summary, createdDate, modifiedDate, tags } = post.data;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
@@ -22,6 +25,7 @@ const search = Astro.url.searchParams.get("search") ?? undefined;
 
 <Layout title={title} description={summary}>
   <main
+    tabindex={undefined}
     class="flex min-h-screen flex-col p-12 justify-start text-center text-white w-full"
   >
     <header>

@@ -28,15 +28,13 @@ export const prerender = true;
       lang={"typescript"}
     />
     <Code
-      code={`SELECT * FROM projects WHERE curiosity = "high"; -- Take a look at my projects!`}
+      code={`SELECT * FROM projects WHERE curiosity = "high";`}
       lang={"sql"}
-      theme={"dark-plus"}
       class="rounded p-1 cursor-pointer hover:opacity-80 underline"
       href="/projects"
     />
     <Code
-      code={`/^.*My blog articles.*$/g (?# You might find something interesting there)`}
-      theme={"dark-plus"}
+      code={`/^.*My blog articles.*$/g`}
       lang={"regexp"}
       class="rounded p-1 cursor-pointer hover:opacity-80 underline"
       href="/blog"

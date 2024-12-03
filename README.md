@@ -11,11 +11,16 @@ This repository contains my personal portfolio built with Astro, TypeScript, and
 
 ## Todo
 
-- [ ] Integrate Obsidian
-- [ ] Publish more blog posts
-- [ ] Deal with the shiki bug
 - [ ] Upgrade to Tailwind 4 when it's released
 - [x] Upgrade to Astro 5 when it's released
+- [ ] Fix the page layout and content shifts
+- [ ] Add light/dark mode and toggle
+- [ ] Use view transitions api
+- [ ] Deal with the shiki bug (it's not on my end) or change approach
+- [ ] Integrate Obsidian
+- [ ] Publish more blog posts
+- [ ] Maybe make project page more like a file tree
+- [ ] Maybe translate the site to other languages
 
 ## Getting Started
 

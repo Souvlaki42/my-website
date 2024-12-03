@@ -10,7 +10,7 @@ const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
 
-const { data, error } = await Astro.callAction(actions.getProjects, {
+const { data, error } = await Astro.callAction(actions.projects.getByQuery, {
   searchQuery: search,
   page: Number(page),
   perPage: Number(perPage)

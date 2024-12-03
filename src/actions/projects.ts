@@ -1,5 +1,10 @@
-import { isFuseKey, makeFuseInstances, removeDuplicates } from "@/utils";
-import { defineAction } from "astro:actions";
+import {
+  isFuseKey,
+  makeFuseInstances,
+  removeDuplicates,
+  safeAwait
+} from "@/utils";
+import { ActionError, defineAction } from "astro:actions";
 import { GITHUB_TOKEN } from "astro:env/server";
 import { z } from "astro:schema";
 import type Fuse from "fuse.js";
@@ -33,7 +38,7 @@ type Project = {
 
 let FUSE_INSTANCES: Record<string, Fuse<Project>> = {};
 
-export const getProjects = defineAction({
+export const getByQuery = defineAction({
   input: z.object({
     searchQuery: z.string().optional(),
     page: z.number().default(1),
@@ -55,7 +60,12 @@ export const getProjects = defineAction({
 
     if (!response.ok) throw response;
 
-    const anyData = await response.json();
+    const [error, anyData] = await safeAwait(response.json());
+    if (error)
+      throw new ActionError({
+        message: error.message,
+        code: "INTERNAL_SERVER_ERROR"
+      });
 
     const linkHeader = response.headers.get("link");
     const links = linkHeader?.split(",", 4);
@@ -124,3 +134,5 @@ export const getProjects = defineAction({
     };
   }
 });
+
+export const projects = { getByQuery };
