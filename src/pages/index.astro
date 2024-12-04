@@ -1,45 +1,29 @@
 ---
 import Code from "@/components/Code.astro";
-import Footer from "@/components/Footer.astro";
-import Layout from "@/components/Layout.astro";
+import MainLayout from "@/layouts/Main.astro";
 
 export const prerender = true;
 ---
 
-<Layout>
-  <main class="flex min-h-screen flex-col p-12">
-    <Code code={`fmt.Println("👋 Hello, World!");`} lang={"go"} />
-    <Code
-      code={`print("I'm Souvlaki42")`}
-      lang={"python"}
-      class={"font-extrabold text-xl"}
-    />
-    <Code code={`System.out.println("I live in Greece 🇬🇷");`} lang={"java"} />
-    <Code
-      code={`<h1>I'm full with passion and will to learn...</h1>`}
-      lang={"jsx"}
-    />
-    <Code
-      code={`println!("I like coding, playing games, swimming and listening to music");`}
-      lang={"rust"}
-    />
-    <Code
-      code={"console.log(`I've worked with:\n1. Typescript,\n2. Next.js/React,\n3. Astro,\n4. SQL,\n5. Golang,\n6. Python,\n7. Rust\n And more...`);"}
-      lang={"typescript"}
-    />
-    <Code
-      code={`SELECT * FROM projects WHERE curiosity = "high";`}
-      lang={"sql"}
-      class="rounded p-1 cursor-pointer hover:opacity-80 underline"
-      href="/projects"
-    />
-    <Code
-      code={`/^.*My blog articles.*$/g`}
-      lang={"regexp"}
-      class="rounded p-1 cursor-pointer hover:opacity-80 underline"
-      href="/blog"
-    />
-    <Code code={`echo "Don't hesitate to reach out to me:"`} lang={"bash"} />
-    <Footer />
-  </main>
-</Layout>
+<MainLayout mainClass="flex min-h-screen flex-col p-12">
+  <Code code={`fmt.Println("👋 Hello, World!");`} lang={"go"} />
+  <Code
+    code={`print("I'm Souvlaki42")`}
+    lang={"python"}
+    class={"font-extrabold text-xl"}
+  />
+  <Code code={`System.out.println("I live in Greece 🇬🇷");`} lang={"java"} />
+  <Code code={`echo "I'm full with passion and will to learn"`} lang={"bash"} />
+  <Code
+    code={`println!("I like coding, playing games, swimming and listening to music");`}
+    lang={"rust"}
+  />
+  <Code
+    code={"console.log(`I've worked with:\n1. Typescript,\n2. Next.js/React,\n3. Astro,\n4. SQL,\n5. Golang,\n6. Python,\n7. Rust\n and others...`);"}
+    lang={"typescript"}
+  />
+  <Code
+    code={`printf("Don't hesitate to reach out to me through: ");`}
+    lang={"c"}
+  />
+</MainLayout>

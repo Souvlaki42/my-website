@@ -6,7 +6,7 @@ type Props = {
 const { search } = Astro.props;
 ---
 
-<section id="search" class="m-4">
+<section id="search" class="my-4">
   <form class="w-full flex items-center" data-form>
     <input
       type="search"
@@ -18,21 +18,10 @@ const { search } = Astro.props;
       title="You can prioritize searching for title, summary, or tags by prefixing your search term with these keywords followed by a colon. (e.g., tags:example)"
       data-search-query
     />
-    <button
-      type="button"
-      class="ml-2 p-2 bg-sky-500 hover:bg-sky-700 text-mocha font-medium rounded-lg"
-      aria-label="Clear search"
-      data-clear-search
-    >
-      Clear
-    </button>
   </form>
 </section>
 <script>
   const form = document.querySelector<HTMLFormElement>("[data-form]");
-  const clearSearchBtn = document.querySelector<HTMLButtonElement>(
-    "[data-clear-search]"
-  );
   const searchInput = document.querySelector<HTMLInputElement>(
     "[data-search-query]"
   );
@@ -49,9 +38,5 @@ const { search } = Astro.props;
     url.searchParams.set("page", searchParams.get("page") ?? "1");
     url.searchParams.set("per_page", searchParams.get("per_page") ?? "12");
     window.location.assign(url.toString());
-  });
-  clearSearchBtn?.addEventListener("click", () => {
-    searchInput.value = "";
-    form.submit();
   });
 </script>

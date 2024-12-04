@@ -1,4 +1,6 @@
+import clsx, { type ClassValue } from "clsx";
 import Fuse from "fuse.js";
+import { twMerge } from "tw-merge";
 
 export type SocialShareProps = {
   url?: string;
@@ -23,6 +25,14 @@ export type HeadProps = {
   title?: string;
   description?: string;
   image?: string;
+};
+
+export type LayoutProps = {
+  title?: string;
+  description?: string;
+  image?: string;
+  children: any;
+  mainClass?: string;
 };
 
 const fuseKeys = ["title", "summary", "tags"] as const;
@@ -75,3 +85,5 @@ export const safeAwait = async <T, E = Error>(
     return [err as E, null];
   }
 };
+
+export const cn = (...values: ClassValue[]) => twMerge(clsx(values));

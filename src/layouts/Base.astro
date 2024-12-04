@@ -1,10 +1,10 @@
 ---
-import { AppConfig, type HeadProps } from "@/utils";
 import Head from "@/components/Head.astro";
+import { AppConfig, type LayoutProps } from "@/utils";
 
-type Props = HeadProps & { children: any };
+type Props = LayoutProps;
 
-const { title, description, image } = Astro.props;
+const { title, description, image, mainClass = "" } = Astro.props;
 ---
 
 <html lang="en">
@@ -28,9 +28,6 @@ const { title, description, image } = Astro.props;
       * {
         @apply m-0 box-border p-0;
       }
-      .link {
-        @apply font-bold text-sky-blue underline hover:text-light-blue;
-      }
       .swup-progress-bar {
         @apply h-1 bg-sky-700;
       }
@@ -49,6 +46,8 @@ const { title, description, image } = Astro.props;
         </div>
       )
     }
-    <slot>Nothing is here. Maybe this page doesn't exist yet.</slot>
+    <main class={mainClass} tabindex={undefined}>
+      <slot />
+    </main>
   </body>
 </html>

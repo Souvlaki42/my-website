@@ -1,9 +1,8 @@
 ---
 import Code from "@/components/Code.astro";
-import Footer from "@/components/Footer.astro";
-import Layout from "@/components/Layout.astro";
 import Pagination from "@/components/Pagination.astro";
 import Search from "@/components/Search.astro";
+import MainLayout from "@/layouts/Main.astro";
 import { actions } from "astro:actions";
 
 const page = Astro.url.searchParams.get("page") ?? "1";
@@ -11,12 +10,12 @@ const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
 
 const { data, error } = await Astro.callAction(actions.posts.getByQuery, {
+  searchQuery: search,
   page: Number(page),
-  perPage: Number(perPage),
-  searchQuery: search
+  perPage: Number(perPage)
 });
 
-if (error) Astro.redirect("/500");
+if (error) return Astro.redirect("/500");
 
 const { posts, hasNext, hasPrevious } = data ?? {
   posts: [],
@@ -25,90 +24,81 @@ const { posts, hasNext, hasPrevious } = data ?? {
 };
 ---
 
-<Layout title={"Blog"}>
-  <main class="flex min-h-screen flex-col p-12">
-    <header class="m-4">
-      <nav data-swup-preload-all class="m-0 w-full text-center space-x-2">
-        <a href="/" class="link">Homepage</a>
-        <a href="/blog" class="link">Blog</a>
-        <a href="/projects" class="link">Projects</a>
-      </nav>
-      <Code as="h1" code="# Welcome to my blog!" lang={"markdown"} />
-      <Code
-        as="h2"
-        code="## This is where I throw my random pieces of knowledge or experience I get for being a developer."
-        lang={"markdown"}
-      />
-      <Code
-        as="h3"
-        code="### I encourage you to take a look. One wise man once said that what we have to say, will be useful to somebody."
-        lang={"markdown"}
-      />
-    </header>
-    <Search search={search} />
-    {
-      posts && posts.length > 0 ? (
-        <section
-          id="posts"
-          class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-        >
-          {posts.map((post) => {
-            const { title, summary, tags, createdDate, modifiedDate, id } =
-              post;
+<MainLayout title={"Blog"}>
+  <Fragment slot="after-nav">
+    <Code as="h1" code="# Welcome to my blog!" lang={"markdown"} />
+    <Code
+      as="h2"
+      code="## This is where I throw my random pieces of knowledge or experience I get for being a developer."
+      lang={"markdown"}
+    />
+    <Code
+      as="h3"
+      code="### I encourage you to take a look. One wise man once said that what we have to say, will be useful to somebody."
+      lang={"markdown"}
+    />
+  </Fragment>
+  <Search search={search} />
+  {
+    posts && posts.length > 0 ? (
+      <section
+        id="posts"
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+      >
+        {posts.map((post) => {
+          const { title, summary, tags, createdDate, modifiedDate, id } = post;
 
-            const postLink = `/blog/${id}?page=${page}&per_page=${perPage}${search ? `&search=${search}` : ""}`;
-            return (
-              <article class="w-full relative flex flex-col justify-center items-center p-6 bg-[#313244] rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
-                <h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">
-                  <a
-                    href={postLink}
-                    class="text-sky-blue hover:text-light-blue hover:underline"
-                  >
-                    {title}
-                  </a>
-                </h2>
-                <p class="text-[#A6ADC8] mb-4">{summary}</p>
+          const postLink = `/blog/${id}?page=${page}&per_page=${perPage}${search ? `&search=${search}` : ""}`;
+          return (
+            <article class="relative flex flex-col justify-center items-center p-6 bg-[#313244] rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
+              <h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">
                 <a
                   href={postLink}
-                  class="absolute w-full h-full top-0 left-0 no-underline text-transparent z-[-1]"
-                  aria-label={title}
-                />
-                <div class="flex flex-wrap items-center mb-4">
-                  {tags.map((tag) => (
-                    <a
-                      href={`/blog?page=${page}&per_page=${perPage}&search=tags:${tag}`}
-                      class="bg-[#45475A] text-[#F5E0DC] text-xs font-medium m-1 px-2.5 py-0.5 rounded hover:underline"
-                    >
-                      {tag}
-                    </a>
-                  ))}
-                </div>
-                <div class="text-sm text-[#BAC2DE]">
-                  <p>Created: {createdDate}</p>
-                  {createdDate !== modifiedDate && (
-                    <p>Modified: {modifiedDate}</p>
-                  )}
-                </div>
-              </article>
-            );
-          })}
-        </section>
-      ) : (
-        <section id="no-posts" class="w-full flex justify-center items-center">
-          <span class="text-white m-2 text-center">
-            There are no posts at this page. I don't know how you ended up here.
-          </span>
-        </section>
-      )
-    }
-    <Pagination
-      route="/blog"
-      page={page}
-      perPage={perPage}
-      hasNext={hasNext}
-      hasPrevious={hasPrevious}
-      search={search}
-    />
-    <Footer />
-  </main>
-</Layout>
+                  class="text-sky-blue hover:text-light-blue hover:underline"
+                >
+                  {title}
+                </a>
+              </h2>
+              <p class="text-[#A6ADC8] mb-4">{summary}</p>
+              <a
+                href={postLink}
+                class="absolute w-full h-full top-0 left-0 no-underline text-transparent z-[-1]"
+                aria-label={title}
+              />
+              <div class="flex flex-wrap items-center mb-4">
+                {tags.map((tag) => (
+                  <a
+                    href={`/blog?page=${page}&per_page=${perPage}&search=tags:${tag}`}
+                    class="bg-[#45475A] text-[#F5E0DC] text-xs font-medium m-1 px-2.5 py-0.5 rounded hover:underline"
+                  >
+                    {tag}
+                  </a>
+                ))}
+              </div>
+              <div class="text-sm text-[#BAC2DE]">
+                <p>Created: {createdDate}</p>
+                {createdDate !== modifiedDate && (
+                  <p>Modified: {modifiedDate}</p>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </section>
+    ) : (
+      <section id="no-posts" class="w-full flex justify-center items-center">
+        <span class="text-white m-2 text-center">
+          There are no posts at this page. I don't know how you ended up here.
+        </span>
+      </section>
+    )
+  }
+  <Pagination
+    route="/blog"
+    page={page}
+    perPage={perPage}
+    hasNext={hasNext}
+    hasPrevious={hasPrevious}
+    search={search}
+  />
+</MainLayout>

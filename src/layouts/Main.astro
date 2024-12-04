@@ -1,0 +1,74 @@
+---
+import { cn, type LayoutProps } from "@/utils";
+import BaseLayout from "./Base.astro";
+
+type Props = LayoutProps;
+
+const { title, description, image, mainClass = "" } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/" from the pathname
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  mainClass={cn(
+    "flex min-h-screen w-screen flex-col p-12 text-center",
+    mainClass
+  )}
+>
+  <header>
+    <nav data-swup-preload-all class="m-0 space-x-2">
+      <a
+        href="/"
+        title="Did you get it?"
+        class={`font-bold ${currentPath === "" ? "text-blue-500 hover:text-blue-400" : "text-sky-blue hover:text-light-blue"} underline`}
+        >Terminal</a
+      >
+      <a
+        href={"/blog"}
+        class={`font-bold ${currentPath === "blog" ? "text-blue-500 hover:text-blue-400" : "text-sky-blue hover:text-light-blue"} underline`}
+        >Blog</a
+      >
+      <a
+        href="/projects"
+        class={`font-bold ${currentPath === "projects" ? "text-blue-500 hover:text-blue-400" : "text-sky-blue hover:text-light-blue"} underline`}
+        >Projects</a
+      >
+    </nav>
+    <slot name="after-nav" />
+  </header>
+  <slot />
+  <footer class="flex flex-row justify-center mt-4">
+    <div>
+      <a
+        href="https://x.com/souvlaki42"
+        class="m-2 text-right font-bold text-sky-blue underline hover:text-light-blue"
+        >Twitter</a
+      >
+      <a
+        href="https://bsky.app/profile/souvlaki.me"
+        class="m-2 text-right font-bold text-sky-blue underline hover:text-light-blue"
+        >Bluesky</a
+      >
+      <a
+        href="https://github.com/souvlaki42"
+        class="m-2 text-right font-bold text-sky-blue underline hover:text-light-blue"
+        >GitHub</a
+      >
+      <a
+        href="mailto:souvlaki420@gmail.com"
+        class="m-2 text-right font-bold text-sky-blue underline hover:text-light-blue"
+        >Email</a
+      >
+      <a
+        data-swup-preload
+        href="/rss.xml"
+        class="m-2 text-right font-bold text-sky-blue underline hover:text-light-blue"
+        >RSS</a
+      >
+    </div>
+  </footer>
+</BaseLayout>

@@ -1,5 +1,5 @@
 ---
-import Layout from "@/components/Layout.astro";
+import BaseLayout from "@/layouts/Base.astro";
 
 type Props = {
   error: unknown;
@@ -13,17 +13,17 @@ const description =
     : "Oops! Something went wrong on our end.";
 ---
 
-<Layout title={title} description={description}>
-  <section
-    class="flex flex-col items-center justify-center h-screen text-center text-white"
+<BaseLayout
+  title={title}
+  description={description}
+  mainClass="flex flex-col items-center justify-center h-screen text-center text-white"
+>
+  <h1 class="text-6xl font-bold mb-4">500</h1>
+  <p class="text-xl mb-8">{description}</p>
+  <a
+    href="/"
+    class="bg-sky-500 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded"
   >
-    <h1 class="text-6xl font-bold mb-4">500</h1>
-    <p class="text-xl mb-8">{description}</p>
-    <a
-      href="/"
-      class="bg-sky-500 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded"
-    >
-      Go Back Home
-    </a>
-  </section>
-</Layout>
+    Go Back Home
+  </a>
+</BaseLayout>

@@ -1,11 +1,11 @@
 ---
-import Layout from "@/components/Layout.astro";
+import BaseLayout from "@/layouts/Base.astro";
 
 const title = "Page Not Found";
 const description = "Sorry, we couldn't find the page you're looking for.";
 ---
 
-<Layout title={title} description={description}>
+<BaseLayout title={title} description={description}>
   <section
     class="flex flex-col items-center justify-center h-screen text-center text-white"
   >
@@ -18,4 +18,4 @@ const description = "Sorry, we couldn't find the page you're looking for.";
       Go Back Home
     </a>
   </section>
-</Layout>
+</BaseLayout>

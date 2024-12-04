@@ -1,9 +1,8 @@
 ---
 import Code from "@/components/Code.astro";
 import Comments from "@/components/Comments.astro";
-import Footer from "@/components/Footer.astro";
-import Layout from "@/components/Layout.astro";
 import SocialShare from "@/components/SocialShare.astro";
+import MainLayout from "@/layouts/Main.astro";
 import { actions } from "astro:actions";
 import { render } from "astro:content";
 
@@ -12,8 +11,7 @@ const { data: post, error } = await Astro.callAction(actions.posts.getById, {
   id
 });
 
-if (error) if (error) Astro.redirect("/404");
-if (!post) throw new Error("Post must exist");
+if (error || !post) if (error) return Astro.redirect("/404");
 
 const { title, summary, createdDate, modifiedDate, tags } = post.data;
 const { Content } = await render(post);
@@ -23,46 +21,40 @@ const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
 ---
 
-<Layout title={title} description={summary}>
-  <main
-    tabindex={undefined}
-    class="flex min-h-screen flex-col p-12 justify-start text-center text-white w-full"
-  >
-    <header>
-      <nav data-swup-preload-all class="w-full text-center space-x-2">
-        <a href="/" class="link">Homepage</a>
-        <a href={"/blog"} class="link">Blog</a>
-        <a href="/projects" class="link">Projects</a>
-      </nav>
-      <Code as="h2" code={`## ${summary}`} lang={"markdown"} />
-      <div class="justify-between">
-        <div>
-          <Code as="h3" code={`### ${tags.join(", ")}`} lang={"markdown"} />
-        </div>
-        <Code
-          as="h3"
-          code={`#### Created: ${createdDate}${createdDate !== modifiedDate ? `- Modified: ${modifiedDate}` : ""}`}
-          lang={"markdown"}
-        />
-        <div class="text-white">
-          <SocialShare description={summary} title={title} />
-        </div>
+<MainLayout
+  title={title}
+  description={summary}
+  mainClass="text-white justify-start"
+>
+  <Fragment slot={"after-nav"}>
+    <Code as="h1" code={`# ${title}`} lang={"markdown"} />
+    <Code as="h2" code={`## ${summary}`} lang={"markdown"} />
+    <div class="justify-between">
+      <div>
+        <Code as="h3" code={`### ${tags.join(", ")}`} lang={"markdown"} />
       </div>
-    </header>
-    <hr class="m-4" />
-    <article
-      id="article"
-      role="article"
-      class="prose mx-auto mt-8 max-w-3xl prose-pre:border-[1px] prose-pre:border-skin-line prose-pre:border-solid"
-    >
-      <Content />
-    </article>
-    <a
-      data-swup-preload
-      href={`/blog?page=${page}&per_page=${perPage}${search ? `&search=${search}` : ""}`}
-      class="link mt-8">← Go back</a
-    >
-    <Comments />
-    <Footer />
-  </main>
-</Layout>
+      <Code
+        as="h4"
+        code={`#### Created: ${createdDate}${createdDate !== modifiedDate ? ` | Modified: ${modifiedDate}` : ""}`}
+        lang={"markdown"}
+      />
+      <div class="text-white">
+        <SocialShare description={summary} title={title} />
+      </div>
+    </div>
+  </Fragment>
+  <hr class="m-4" />
+  <article
+    id="article"
+    role="article"
+    class="prose mx-auto mt-8 max-w-3xl prose-pre:border-[1px] prose-pre:border-skin-line prose-pre:border-solid"
+  >
+    <Content />
+  </article>
+  <a
+    data-swup-preload
+    href={`/blog?page=${page}&per_page=${perPage}${search ? `&search=${search}` : ""}`}
+    class="link mt-8">← Go back</a
+  >
+  <Comments />
+</MainLayout>
