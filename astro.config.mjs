@@ -5,13 +5,12 @@ import vercel from "@astrojs/vercel";
 import swup from "@swup/astro";
 import AutoImport from "astro-auto-import";
 import { defineConfig, envField } from "astro/config";
-import { AppConfig } from "./src/utils";
 
 // https://astro.build/config
 export default defineConfig({
   output: "server",
   adapter: vercel(),
-  site: AppConfig.site,
+  site: "https://souvlaki.me",
   prefetch: {
     prefetchAll: true
   },
@@ -31,7 +30,9 @@ export default defineConfig({
       imports: ["./src/components/Code.astro"]
     }),
     mdx(),
-    sitemap(),
+    sitemap({
+      xslURL: "/pretty-feed-v3.xsl"
+    }),
     swup({
       progress: true,
       accessibility: true,
