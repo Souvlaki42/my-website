@@ -76,8 +76,12 @@ export const removeDuplicates = (array: string[]) => {
 };
 
 export const safeAwait = async <T, E = Error>(
-  promise: Promise<T>
+  promise?: Promise<T> | null
 ): Promise<[null, T] | [E, null]> => {
+  if (!promise) {
+    const error = new Error("Got an empty promise!");
+    return [error as E, null];
+  }
   try {
     const result = await promise;
     return [null, result];

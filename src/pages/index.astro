@@ -2,24 +2,35 @@
 import Code from "@/components/Code.astro";
 import MainLayout from "@/layouts/Main.astro";
 
+const LANGUAGES = new Set<string>([
+  "React",
+  "Next.js",
+  "Typescript",
+  "Python",
+  "Astro",
+  "Rust",
+  "Golang"
+])
+
+const languageString = `console.log(\`I've worked with:\n${Array.from<string>(LANGUAGES).map((element, index) => `${index + 1}. ${element}`).join(",\n")}\nand others...\`);`
+
 export const prerender = true;
 ---
 
 <MainLayout mainClass="flex min-h-screen flex-col p-12">
   <Code code={`fmt.Println("👋 Hello, World!");`} lang={"go"} />
   <Code
-    code={`print("I'm Souvlaki42")`}
+    code={`print("I'm Ilias")`}
     lang={"python"}
     class={"font-extrabold text-xl"}
   />
   <Code code={`System.out.println("I live in Greece 🇬🇷");`} lang={"java"} />
-  <Code code={`echo "I'm full with passion and will to learn"`} lang={"bash"} />
   <Code
-    code={`println!("I like coding, playing games, swimming and listening to music");`}
+    code={`println!("My hobbies are programming and playing video games");`}
     lang={"rust"}
   />
   <Code
-    code={"console.log(`I've worked with:\n1. Typescript,\n2. Next.js/React,\n3. Astro,\n4. SQL,\n5. Golang,\n6. Python,\n7. Rust\n and others...`);"}
+    code={languageString}
     lang={"typescript"}
   />
   <Code

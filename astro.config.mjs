@@ -30,9 +30,7 @@ export default defineConfig({
       imports: ["./src/components/Code.astro"]
     }),
     mdx(),
-    sitemap({
-      xslURL: "/pretty-feed-v3.xsl"
-    }),
+    sitemap(),
     swup({
       progress: true,
       accessibility: true,
