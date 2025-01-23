@@ -1,10 +1,10 @@
 ---
-import Code from "@/components/Code.astro";
-import Comments from "@/components/Comments.astro";
-import SocialShare from "@/components/SocialShare.astro";
-import MainLayout from "@/layouts/Main.astro";
 import { actions } from "astro:actions";
 import { render } from "astro:content";
+import Code from "~/components/Code.astro";
+import Comments from "~/components/Comments.astro";
+import SocialShare from "~/components/SocialShare.astro";
+import MainLayout from "~/layouts/Main.astro";
 
 const { id = "" } = Astro.params;
 const { data: post, error } = await Astro.callAction(actions.posts.getById, {

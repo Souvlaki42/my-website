@@ -1,13 +1,13 @@
+import { ActionError, defineAction } from "astro:actions";
+import { getCollection, getEntry, z, type DataEntryMap } from "astro:content";
+import { SHOW_DRAFTS } from "astro:env/server";
+import type Fuse from "fuse.js";
 import {
   isFuseKey,
   makeFuseInstances,
   removeDuplicates,
   safeAwait
-} from "@/utils";
-import { ActionError, defineAction } from "astro:actions";
-import { getCollection, getEntry, z, type DataEntryMap } from "astro:content";
-import { SHOW_DRAFTS } from "astro:env/server";
-import type Fuse from "fuse.js";
+} from "~/utils";
 
 type RawPost = DataEntryMap["blog"][keyof DataEntryMap["blog"]];
 type Post = RawPost["data"] & {

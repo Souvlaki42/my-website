@@ -1,7 +1,7 @@
-import { AppConfig } from "@/utils";
 import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
 import { actions } from "astro:actions";
+import { AppConfig } from "~/utils";
 
 export const GET: APIRoute = async ({ callAction }) => {
   const resp = await callAction(actions.posts.getAll, {});

@@ -1,6 +1,6 @@
 ---
-import Code from "@/components/Code.astro";
-import MainLayout from "@/layouts/Main.astro";
+import Code from "~/components/Code.astro";
+import MainLayout from "~/layouts/Main.astro";
 
 const LANGUAGES = new Set<string>([
   "React",
@@ -10,9 +10,13 @@ const LANGUAGES = new Set<string>([
   "Astro",
   "Rust",
   "Golang"
-])
+]);
 
-const languageString = `console.log(\`I've worked with:\n${Array.from<string>(LANGUAGES).map((element, index) => `${index + 1}. ${element}`).join(",\n")}\nand others...\`);`
+const languageString = `console.log(\`I've worked with:\n${Array.from<string>(
+  LANGUAGES
+)
+  .map((element, index) => `${index + 1}. ${element}`)
+  .join(",\n")}\nand others...\`);`;
 
 export const prerender = true;
 ---
@@ -29,10 +33,7 @@ export const prerender = true;
     code={`println!("My hobbies are programming and playing video games");`}
     lang={"rust"}
   />
-  <Code
-    code={languageString}
-    lang={"typescript"}
-  />
+  <Code code={languageString} lang={"typescript"} />
   <Code
     code={`printf("Don't hesitate to reach out to me through: ");`}
     lang={"c"}

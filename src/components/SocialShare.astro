@@ -1,12 +1,12 @@
 ---
-import EmailShareButton from "@/components/social-share/Email.astro";
-import FacebookShareButton from "@/components/social-share/Facebook.astro";
-import HackerNewsShareButton from "@/components/social-share/HackerNews.astro";
-import LinkedInShareButton from "@/components/social-share/LinkedIn.astro";
-import RedditShareButton from "@/components/social-share/Reddit.astro";
-import TwitterShareButton from "@/components/social-share/Twitter.astro";
-import WhatsAppShareButton from "@/components/social-share/WhatsApp.astro";
-import type { SocialShareProps } from "@/utils";
+import EmailShareButton from "~/components/social-share/Email.astro";
+import FacebookShareButton from "~/components/social-share/Facebook.astro";
+import HackerNewsShareButton from "~/components/social-share/HackerNews.astro";
+import LinkedInShareButton from "~/components/social-share/LinkedIn.astro";
+import RedditShareButton from "~/components/social-share/Reddit.astro";
+import TwitterShareButton from "~/components/social-share/Twitter.astro";
+import WhatsAppShareButton from "~/components/social-share/WhatsApp.astro";
+import type { SocialShareProps } from "~/utils";
 
 type Props = SocialShareProps & {
   buttons?: ((_props: SocialShareProps) => any)[];

@@ -11,6 +11,6 @@ const { theme = "catppuccin-mocha", href, as = "span", ...rest } = Astro.props;
 const Element = href ? "a" : as;
 ---
 
-<Element href={href} class="m-2 w-full" data-swup-preload={Element === "a"}
-  ><AstroCode tabindex={undefined} wrap theme={theme} {...rest} /></Element
->
+<Element href={href} class="m-2 w-full" data-swup-preload={Element === "a"}>
+  <AstroCode tabindex={undefined} wrap theme={theme} {...rest} />
+</Element>

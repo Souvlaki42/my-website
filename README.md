@@ -2,6 +2,11 @@
 
 This repository contains my personal portfolio built with Astro, TypeScript, and Tailwind CSS. The project features a combination of static and server-side rendered pages, with dynamic content powered by Vercel. Syntax-highlighted code blocks are rendered using a customized Code component from {astro:components}, utilizing [Shiki](https://shiki.matsu.io/) for a clean and accurate display. The site maintains a strong focus on performance and design, achieving high Lighthouse scores on both mobile and desktop.
 
+## Credits
+
+- [RSS Stylesheet](public/rss.xsl) | [Get it here](https://github.com/genmon/aboutfeeds/blob/main/tools/pretty-feed-v3.xsl)
+- [Sitemap Stylesheet](public/sitemap.xsl) | [Get it here](https://github.com/pedroborges/xml-sitemap-stylesheet/blob/master/sitemap.xsl)
+
 ## Features
 
 - **Hybrid Static & Dynamic Rendering**: While the homepage is statically generated, other sections are server-side rendered, fetching live data from APIs.

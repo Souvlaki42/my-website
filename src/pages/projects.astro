@@ -1,9 +1,9 @@
 ---
-import Code from "@/components/Code.astro";
-import Pagination from "@/components/Pagination.astro";
-import Search from "@/components/Search.astro";
-import MainLayout from "@/layouts/Main.astro";
 import { actions } from "astro:actions";
+import Code from "~/components/Code.astro";
+import Pagination from "~/components/Pagination.astro";
+import Search from "~/components/Search.astro";
+import MainLayout from "~/layouts/Main.astro";
 
 const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
