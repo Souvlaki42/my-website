@@ -1,7 +1,7 @@
 {
   "name": "my-website",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "astro dev",
     "start": "astro check && astro dev",
@@ -20,10 +20,10 @@
     "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "5.1.5",
-    "@astrojs/vercel": "8.0.3",
+    "@astrojs/vercel": "8.0.4",
     "@swup/astro": "^1.4.1",
     "@typescript-eslint/parser": "^8.1.0",
-    "astro": "5.1.8",
+    "astro": "5.1.9",
     "astro-auto-import": "^0.4.2",
     "astro-seo": "^0.8.4",
     "clsx": "^2.1.1",

@@ -13,7 +13,7 @@ importers:
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.3)
       '@astrojs/mdx':
         specifier: 4.0.7
-        version: 4.0.7(astro@5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))
+        version: 4.0.7(astro@5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))
       '@astrojs/rss':
         specifier: 4.0.11
         version: 4.0.11
@@ -22,10 +22,10 @@ importers:
         version: 3.2.1
       '@astrojs/tailwind':
         specifier: 5.1.5
-        version: 5.1.5(astro@5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17)
+        version: 5.1.5(astro@5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17)
       '@astrojs/vercel':
-        specifier: 8.0.3
-        version: 8.0.3(astro@5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))(rollup@2.79.2)
+        specifier: 8.0.4
+        version: 8.0.4(astro@5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))(rollup@2.79.2)
       '@swup/astro':
         specifier: ^1.4.1
         version: 1.5.0
@@ -33,11 +33,11 @@ importers:
         specifier: ^8.1.0
         version: 8.21.0(eslint@9.18.0(jiti@1.21.7))(typescript@5.7.3)
       astro:
-        specifier: 5.1.8
-        version: 5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
+        specifier: 5.1.9
+        version: 5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
       astro-auto-import:
         specifier: ^0.4.2
-        version: 0.4.4(astro@5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))
+        version: 0.4.4(astro@5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))
       astro-seo:
         specifier: ^0.8.4
         version: 0.8.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.3)
@@ -142,8 +142,8 @@ packages:
     resolution: {integrity: sha512-wxhSKRfKugLwLlr4OFfcqovk+LIFtKwLyGPqMsv+9/ibqqnW3Gv7tBhtKEb0gAyUAC4G9BTVQeQahqnQAhd6IQ==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
 
-  '@astrojs/vercel@8.0.3':
-    resolution: {integrity: sha512-nftg5PSg8zCsJOWSBs50V2ALI6tb5Fhhw+hSb8hJELMBXteoYntupEtyVaQeRb5EY+ayoC/xdVVUL5WrCSPnMg==}
+  '@astrojs/vercel@8.0.4':
+    resolution: {integrity: sha512-/x+bsvVgiLtIcYmlDZS23MzXkQLUdbEHh4GMJvytFNqvHPN1c2f7Dw/fY134fu7y6GP8Qi+TlegckIu5IVYg/Q==}
     peerDependencies:
       astro: ^5.0.0
 
@@ -1616,8 +1616,8 @@ packages:
   astro-seo@0.8.4:
     resolution: {integrity: sha512-Ou1vzQSXAxa0K8rtNtXNvSpYqOGEgMhh0immMxJeXmbVZac3UKCNWAoXWyOQDFYsZvBugCRSg0N1phBqPMVgCw==}
 
-  astro@5.1.8:
-    resolution: {integrity: sha512-7fNNceI/dXqGIkkZQjxhH31alAfgf33cDv34cPLCGFVSHHOpYG0NSrofnxdYf0BvWRlddqkq393UqDM5cJlv1w==}
+  astro@5.1.9:
+    resolution: {integrity: sha512-QB3MH7Ul3gEvmHXEfvPkGpTZyyB/TBKQbm0kTHpo0BTEB7BvaY+wrcWiGEJBVDpVdEAKY9fM3zrJ0c7hZSXVlw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -4813,12 +4813,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.0.7(astro@5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))':
+  '@astrojs/mdx@4.0.7(astro@5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))':
     dependencies:
       '@astrojs/markdown-remark': 6.0.2
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
       acorn: 8.14.0
-      astro: 5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
       es-module-lexer: 1.6.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.4
@@ -4847,9 +4847,9 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.24.1
 
-  '@astrojs/tailwind@5.1.5(astro@5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17)':
+  '@astrojs/tailwind@5.1.5(astro@5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17)':
     dependencies:
-      astro: 5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
       autoprefixer: 10.4.20(postcss@8.5.1)
       postcss: 8.5.1
       postcss-load-config: 4.0.2(postcss@8.5.1)
@@ -4869,13 +4869,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@8.0.3(astro@5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))(rollup@2.79.2)':
+  '@astrojs/vercel@8.0.4(astro@5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))(rollup@2.79.2)':
     dependencies:
       '@astrojs/internal-helpers': 0.4.2
       '@vercel/analytics': 1.4.1
       '@vercel/edge': 1.2.1
       '@vercel/nft': 0.29.0(rollup@2.79.2)
-      astro: 5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
       esbuild: 0.24.2
       fast-glob: 3.3.3
     transitivePeerDependencies:
@@ -6494,11 +6494,11 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-auto-import@0.4.4(astro@5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)):
+  astro-auto-import@0.4.4(astro@5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)):
     dependencies:
       '@types/node': 18.19.71
       acorn: 8.14.0
-      astro: 5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
 
   astro-eslint-parser@1.1.0(typescript@5.7.3):
     dependencies:
@@ -6527,7 +6527,7 @@ snapshots:
       - prettier-plugin-astro
       - typescript
 
-  astro@5.1.8(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0):
+  astro@5.1.9(@types/node@22.10.7)(jiti@1.21.7)(rollup@2.79.2)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.2

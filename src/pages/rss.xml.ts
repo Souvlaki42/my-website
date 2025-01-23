@@ -12,7 +12,7 @@ export const GET: APIRoute = async ({ callAction }) => {
     title: AppConfig.title,
     description: AppConfig.description,
     site: AppConfig.site,
-    stylesheet: "/pretty-feed-v3.xsl",
+    stylesheet: "/rss.xsl",
     items: posts.map((post) => ({
       title: post.title,
       pubDate: new Date(post.modifiedDate),

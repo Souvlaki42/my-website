@@ -30,7 +30,9 @@ export default defineConfig({
       imports: ["./src/components/Code.astro"]
     }),
     mdx(),
-    sitemap(),
+    sitemap({
+      xslURL: "/sitemap.xsl"
+    }),
     swup({
       progress: true,
       accessibility: true,

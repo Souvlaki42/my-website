@@ -29,7 +29,8 @@ Follow these instructions to set up the project locally.
 
 Ensure you have the following installed:
 
-- [Bun](https://bun.sh) (v1.1.20 or later)
+- [Node.js](https://nodejs.org/en) (v22.12.0 or later)
+- [Pnpm](https://pnpm.io/) (v9.15.3 or later)
 
 ### Installation
 
@@ -48,13 +49,13 @@ Ensure you have the following installed:
 3. **Install dependencies**
 
    ```bash
-   bun install
+   pnpm install
    ```
 
 4. **Start the development server**
 
    ```bash
-   bun run dev
+   pnpm dev
    ```
 
 5. **Open the project in your browser**
