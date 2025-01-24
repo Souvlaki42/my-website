@@ -4,6 +4,7 @@ import Code from "~/components/Code.astro";
 import Pagination from "~/components/Pagination.astro";
 import Search from "~/components/Search.astro";
 import MainLayout from "~/layouts/Main.astro";
+import { compareAndFormatDates } from "~/utils";
 
 const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
@@ -46,8 +47,8 @@ const { posts, hasNext, hasPrevious } = data ?? {
         class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
       >
         {posts.map((post) => {
-          const { title, summary, tags, createdDate, modifiedDate, id } = post;
-
+          const { title, summary, tags, created, modified, id } = post;
+          const [sameDay, [createdDate, modifiedDate]] = compareAndFormatDates(created, modified);
           const postLink = `/blog/${id}?page=${page}&per_page=${perPage}${search ? `&search=${search}` : ""}`;
           return (
             <article class="relative flex flex-col justify-center items-center p-6 bg-[#313244] rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
@@ -77,7 +78,7 @@ const { posts, hasNext, hasPrevious } = data ?? {
               </div>
               <div class="text-sm text-[#BAC2DE]">
                 <p>Created: {createdDate}</p>
-                {createdDate !== modifiedDate && (
+                {!sameDay && (
                   <p>Modified: {modifiedDate}</p>
                 )}
               </div>

@@ -15,7 +15,7 @@ export const GET: APIRoute = async ({ callAction }) => {
     stylesheet: "/rss.xsl",
     items: posts.map((post) => ({
       title: post.title,
-      pubDate: new Date(post.modifiedDate),
+      pubDate: new Date(post.created),
       description: post.summary,
       categories: post.tags,
       link: `/blog/${post.id}/`

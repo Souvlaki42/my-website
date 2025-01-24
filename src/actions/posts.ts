@@ -54,7 +54,7 @@ const getByQuery = defineAction({
 
     formattedPosts = formattedPosts.sort((a, b) => {
       return (
-        new Date(b.modifiedDate).getTime() - new Date(a.modifiedDate).getTime()
+        new Date(b.modified).getTime() - new Date(a.modified).getTime()
       );
     });
 
@@ -110,7 +110,7 @@ const getAll = defineAction({
 
     formattedPosts = formattedPosts.sort((a, b) => {
       return (
-        new Date(b.modifiedDate).getTime() - new Date(a.modifiedDate).getTime()
+        new Date(b.modified).getTime() - new Date(a.modified).getTime()
       );
     });
 

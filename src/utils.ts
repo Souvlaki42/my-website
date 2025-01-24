@@ -90,4 +90,18 @@ export const safeAwait = async <T, E = Error>(
   }
 };
 
-export const cn = (...values: ClassValue[]) => twMerge(clsx(values));
+export const cn = (...values: ClassValue[]): string => twMerge(clsx(values));
+
+export const formatDate = (input: Date | string | number): string => {
+  return new Date(input).toLocaleDateString(undefined, {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  });
+}
+
+export const compareAndFormatDates = (...inputs: (Date | string | number)[]) => {
+  const formatted = inputs.map(date => formatDate(date));
+  const equal = formatted.length === 0 || formatted.every(date => date === formatted[0]);
+  return [equal, formatted] as const;
+}

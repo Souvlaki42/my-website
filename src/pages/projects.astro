@@ -4,6 +4,7 @@ import Code from "~/components/Code.astro";
 import Pagination from "~/components/Pagination.astro";
 import Search from "~/components/Search.astro";
 import MainLayout from "~/layouts/Main.astro";
+import { formatDate } from "~/utils";
 
 const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
@@ -83,7 +84,7 @@ const projects = rawProjects.filter((project) => !project.is_private);
               </div>
               <div class="text-sm text-[#BAC2DE]">
                 {pushed_at && (
-                  <p>Last pushed: {new Date(pushed_at).toLocaleDateString()}</p>
+                  <p>Last pushed: {formatDate(pushed_at)}</p>
                 )}
               </div>
             </article>

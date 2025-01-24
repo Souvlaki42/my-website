@@ -5,6 +5,7 @@ import Code from "~/components/Code.astro";
 import Comments from "~/components/Comments.astro";
 import SocialShare from "~/components/SocialShare.astro";
 import MainLayout from "~/layouts/Main.astro";
+import { compareAndFormatDates } from "~/utils";
 
 const { id = "" } = Astro.params;
 const { data: post, error } = await Astro.callAction(actions.posts.getById, {
@@ -13,12 +14,13 @@ const { data: post, error } = await Astro.callAction(actions.posts.getById, {
 
 if (error || !post) if (error) return Astro.redirect("/404");
 
-const { title, summary, createdDate, modifiedDate, tags } = post.data;
+const { title, summary, created, modified, tags } = post.data;
 const { Content } = await render(post);
 
 const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
+const [sameDay, [createdDate, modifiedDate]] = compareAndFormatDates(created, modified);
 ---
 
 <MainLayout
@@ -35,7 +37,7 @@ const search = Astro.url.searchParams.get("search") ?? undefined;
       </div>
       <Code
         as="h4"
-        code={`#### Created: ${createdDate}${createdDate !== modifiedDate ? ` | Modified: ${modifiedDate}` : ""}`}
+        code={`#### Created: ${createdDate}${!sameDay ? ` | Modified: ${modifiedDate}` : ""}`}
         lang={"markdown"}
       />
       <div class="text-white">

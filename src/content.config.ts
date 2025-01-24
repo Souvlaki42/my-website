@@ -9,8 +9,8 @@ export const collections = {
       summary: z.string(),
       draft: z.boolean().default(false),
       tags: z.array(z.string()),
-      createdDate: z.string(),
-      modifiedDate: z.string()
+      created: z.date(),
+      modified: z.date()
     })
   })
 };
