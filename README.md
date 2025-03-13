@@ -5,7 +5,7 @@ This repository contains my personal portfolio built with Astro, TypeScript, and
 ## Todo
 
 - [x] Add tailwind 4
-- [ ] Add prettier and eslint
+- [x] Add prettier and eslint
 - [ ] Create a navbar
 - [ ] Create a homepage
 - [ ] Make search bar
@@ -60,4 +60,3 @@ This project is licensed under the [MIT License](LICENSE).
 - **Email**: [souvlaki420@gmail.com](mailto:souvlaki420@gmail.com)
 - **GitHub**: [Souvlaki42](https://github.com/souvlaki42)
 - **Twitter/X**: [Souvlaki42](https://x.com/souvlaki42)
-
