@@ -1,41 +1,11 @@
 ---
-import Code from "~/components/Code.astro";
-import MainLayout from "~/layouts/Main.astro";
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
 
-const LANGUAGES = new Set<string>([
-  "React",
-  "Next.js",
-  "Typescript",
-  "Python",
-  "Astro",
-  "Rust",
-  "Golang"
-]);
-
-const languageString = `console.log(\`I've worked with:\n${Array.from<string>(
-  LANGUAGES
-)
-  .map((element, index) => `${index + 1}. ${element}`)
-  .join(",\n")}\nand others...\`);`;
-
-export const prerender = true;
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<MainLayout mainClass="flex min-h-screen flex-col p-12">
-  <Code code={`fmt.Println("👋 Hello, World!");`} lang={"go"} />
-  <Code
-    code={`print("I'm Ilias")`}
-    lang={"python"}
-    class={"font-extrabold text-xl"}
-  />
-  <Code code={`System.out.println("I live in Greece 🇬🇷");`} lang={"java"} />
-  <Code
-    code={`println!("My hobbies are programming and playing video games");`}
-    lang={"rust"}
-  />
-  <Code code={languageString} lang={"typescript"} />
-  <Code
-    code={`printf("Don't hesitate to reach out to me through: ");`}
-    lang={"c"}
-  />
-</MainLayout>
+<Layout>
+	<Welcome />
+</Layout>
