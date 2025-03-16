@@ -1,1 +1,8 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-mocha: oklch(24.29% 0.03 283.91); /* #1e1e2e */
+  --color-sky-blue: oklch(75.38% 0.131 250.83); /* #6cb4ff */
+  --color-light-blue: oklch(83.37% 0.09 242.71) /* #94d0ff */;
+}

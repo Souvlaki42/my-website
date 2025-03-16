@@ -1,7 +1,11 @@
 ---
 import { SITE_DESCRIPTION, SITE_NAME } from "astro:env/server";
+import { undefined } from "astro:schema";
 import { ClientRouter } from "astro:transitions";
+import NavLink from "~/components/NavLink.astro";
 import "~/styles/global.css";
+
+const pathname = new URL(Astro.request.url).pathname;
 
 export type Props = { title?: string; description?: string };
 const { title = SITE_NAME, description = SITE_DESCRIPTION } = Astro.props;
@@ -19,16 +23,35 @@ const { title = SITE_NAME, description = SITE_DESCRIPTION } = Astro.props;
     <meta name="description" content={description} />
     <ClientRouter />
   </head>
-  <body>
+  <body class="bg-mocha flex min-h-screen flex-col items-center justify-center">
+    <header>
+      <nav class="flex justify-center">
+        <!-- TODO: Fix active page color contrast -->
+        <NavLink href="/" title="Did you get it?">Terminal</NavLink>
+        <NavLink href={"/topics"}>Topics</NavLink>
+        <NavLink href="/code">Code</NavLink>
+      </nav>
+    </header>
+    <main class="flex min-h-screen w-screen flex-col p-12 text-center"></main>
+    {
+      import.meta.env.DEV ? (
+        <div class="fixed bottom-1 left-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">
+          <div class="block sm:hidden">xs</div>
+          <div class="hidden sm:block md:hidden">sm</div>
+          <div class="hidden md:block lg:hidden">md</div>
+          <div class="hidden lg:block xl:hidden">lg</div>
+          <div class="hidden xl:block 2xl:hidden">xl</div>
+          <div class="hidden 2xl:block">2xl</div>
+        </div>
+      ) : undefined
+    }
     <slot />
   </body>
 </html>
-
-<style>
-  html,
-  body {
+<style is:global>
+  * {
     margin: 0;
-    width: 100%;
-    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
   }
 </style>
