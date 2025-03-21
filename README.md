@@ -6,7 +6,7 @@ This repository contains my personal portfolio built with Astro, TypeScript, and
 
 - [x] Add tailwind 4
 - [x] Add prettier and eslint
-- [ ] Create a navbar
+- [x] Create a navbar
 - [ ] Create a homepage
 - [ ] Make search bar
 
@@ -55,8 +55,21 @@ Ensure you have the following installed:
 
 This project is licensed under the [MIT License](LICENSE).
 
+## Credits
+
+### Attributions
+
+- [Bluesky logo](https://commons.wikimedia.org/wiki/File:Bluesky_Logo.svg)
+- [Github logo](https://commons.wikimedia.org/wiki/File:Github_logo_svg.svg)
+- [RSS logo](https://commons.wikimedia.org/wiki/File:Rss-feed.svg)
+
+### Inspirations
+
+- [Trevor Lasn](https://www.trevorlasn.com/)
+- [Sharun Kumar](https://sharunkumar.com/)
+
 ## Contact
 
-- **Email**: [souvlaki420@gmail.com](mailto:souvlaki420@gmail.com)
-- **GitHub**: [Souvlaki42](https://github.com/souvlaki42)
-- **Twitter/X**: [Souvlaki42](https://x.com/souvlaki42)
+- [Bluesky](https://bsky.app/profile/souvlaki.me)
+- [GitHub](https://github.com/souvlaki42)
+- [Twitter/X](https://x.com/souvlaki42)

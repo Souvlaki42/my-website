@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { SITE_DESCRIPTION, SITE_NAME } from "astro:env/server";
 import { undefined } from "astro:schema";
 import { ClientRouter } from "astro:transitions";
@@ -31,14 +32,49 @@ const {
     <ClientRouter />
   </head>
   <body class="bg-mocha flex h-screen flex-col items-center justify-center">
-    <header
-      class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row rounded-lg border-2"
-    >
-      <nav class="flex h-full w-full items-center justify-center">
-        <!-- TODO: Fix active page color contrast -->
+    <header class="flex flex-row justify-center space-x-4">
+      <nav
+        class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row items-center justify-center rounded-lg border-2"
+      >
+        <!-- TODO: Fix active page color contrast and responsiveness issues -->
         <Link href="/" title="Did you get it?">Terminal</Link>
         <Link href={"/topics"}>Topics</Link>
         <Link href="/code">Code</Link>
+      </nav>
+      <nav
+        class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row items-center justify-center rounded-lg border-2"
+      >
+        <Link
+          href="https://github.com/Souvlaki42"
+          class="mx-2 opacity-100 hover:opacity-75"
+          ><Image
+            width={32}
+            height={32}
+            loading={"eager"}
+            alt="Github white logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Github_logo_svg.svg/64px-Github_logo_svg.svg.png?20230420150203"
+          />
+        </Link>
+        <Link
+          href="https://bsky.app/profile/souvlaki.me"
+          class="mx-2 opacity-100 hover:opacity-75"
+          ><Image
+            width={32}
+            height={32}
+            loading={"eager"}
+            alt="Updated Bluesky logo, published February 2024."
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/64px-Bluesky_Logo.svg.png?20240211144739"
+          />
+        </Link>
+        <Link href="/rss.xml" class="mx-2 opacity-100 hover:opacity-75"
+          ><Image
+            width={32}
+            height={32}
+            loading={"eager"}
+            alt="Rss-feed"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Rss-feed.svg/32px-Rss-feed.svg.png?20100128031959"
+          />
+        </Link>
       </nav>
     </header>
     <main
@@ -58,19 +94,5 @@ const {
         </div>
       ) : undefined
     }
-    <footer class="m-4 flex flex-row justify-center">
-      <div>
-        <Link href="https://x.com/souvlaki42" class="m-2 text-right"
-          >Twitter</Link
-        >
-        <Link href="https://github.com/souvlaki42" class="m-2 text-right"
-          >GitHub</Link
-        >
-        <Link href="mailto:souvlaki420@gmail.com" class="m-2 text-right"
-          >Email</Link
-        >
-        <Link href="/rss.xml" class="m-2 text-right">RSS</Link>
-      </div>
-    </footer>
   </body>
 </html>
