@@ -2,13 +2,20 @@
 import { SITE_DESCRIPTION, SITE_NAME } from "astro:env/server";
 import { undefined } from "astro:schema";
 import { ClientRouter } from "astro:transitions";
-import NavLink from "~/components/NavLink.astro";
+import Link from "~/components/Link.astro";
+import { cn } from "~/lib/utils";
 import "~/styles/global.css";
 
-const pathname = new URL(Astro.request.url).pathname;
-
-export type Props = { title?: string; description?: string };
-const { title = SITE_NAME, description = SITE_DESCRIPTION } = Astro.props;
+export type Props = {
+  title?: string;
+  description?: string;
+  className?: string;
+};
+const {
+  title = SITE_NAME,
+  description = SITE_DESCRIPTION,
+  className,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -23,16 +30,22 @@ const { title = SITE_NAME, description = SITE_DESCRIPTION } = Astro.props;
     <meta name="description" content={description} />
     <ClientRouter />
   </head>
-  <body class="bg-mocha flex min-h-screen flex-col items-center justify-center">
-    <header>
-      <nav class="flex justify-center">
+  <body class="bg-mocha flex h-screen flex-col items-center justify-center">
+    <header
+      class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row rounded-lg border-2"
+    >
+      <nav class="flex h-full w-full items-center justify-center">
         <!-- TODO: Fix active page color contrast -->
-        <NavLink href="/" title="Did you get it?">Terminal</NavLink>
-        <NavLink href={"/topics"}>Topics</NavLink>
-        <NavLink href="/code">Code</NavLink>
+        <Link href="/" title="Did you get it?">Terminal</Link>
+        <Link href={"/topics"}>Topics</Link>
+        <Link href="/code">Code</Link>
       </nav>
     </header>
-    <main class="flex min-h-screen w-screen flex-col p-12 text-center"></main>
+    <main
+      class={cn("flex h-[75%] w-screen flex-col p-12 text-center", className)}
+    >
+      <slot />
+    </main>
     {
       import.meta.env.DEV ? (
         <div class="fixed bottom-1 left-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">
@@ -45,13 +58,19 @@ const { title = SITE_NAME, description = SITE_DESCRIPTION } = Astro.props;
         </div>
       ) : undefined
     }
-    <slot />
+    <footer class="m-4 flex flex-row justify-center">
+      <div>
+        <Link href="https://x.com/souvlaki42" class="m-2 text-right"
+          >Twitter</Link
+        >
+        <Link href="https://github.com/souvlaki42" class="m-2 text-right"
+          >GitHub</Link
+        >
+        <Link href="mailto:souvlaki420@gmail.com" class="m-2 text-right"
+          >Email</Link
+        >
+        <Link href="/rss.xml" class="m-2 text-right">RSS</Link>
+      </div>
+    </footer>
   </body>
 </html>
-<style is:global>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-</style>

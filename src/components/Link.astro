@@ -4,15 +4,14 @@ import { cn } from "~/lib/utils";
 
 type Props = Exclude<JSX.AnchorHTMLAttributes, "children">;
 const { href, class: className, ...props } = Astro.props;
-const pathname = new URL(Astro.request.url).pathname;
+const pathName = new URL(Astro.request.url).pathname;
 ---
 
 <a
-  {...props}
   href={href}
+  {...props}
   class={cn(
-    "text-sky-blue hover:text-light-blue font-bold underline mx-2",
-    pathname === href ? "text-blue-500 hover:text-blue-400" : undefined,
+    `font-bold mx-4 ${pathName === href ? "text-blue-500" : "text-sky-blue hover:text-light-blue"}`,
     className,
   )}><slot /></a
 >
