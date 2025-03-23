@@ -4,11 +4,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
-    "pretty": "prettier . --write"
+    "format": "prettier . --write"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.14",

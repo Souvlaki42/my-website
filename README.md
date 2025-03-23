@@ -4,11 +4,15 @@ This repository contains my personal portfolio built with Astro, TypeScript, and
 
 ## Todo
 
+### Short-term list:
+
 - [x] Add tailwind 4
 - [x] Add prettier and eslint
 - [x] Create a navbar
 - [ ] Create a homepage
 - [ ] Make search bar
+
+### Fix todos and ensure mobile responsiveness, performance, accessibility and SEO friendlyness
 
 ## Getting Started
 
@@ -62,6 +66,7 @@ This project is licensed under the [MIT License](LICENSE).
 - [Bluesky logo](https://commons.wikimedia.org/wiki/File:Bluesky_Logo.svg)
 - [Github logo](https://commons.wikimedia.org/wiki/File:Github_logo_svg.svg)
 - [RSS logo](https://commons.wikimedia.org/wiki/File:Rss-feed.svg)
+- [Color palette](https://coolors.co/1e1e2e-151535-6cb4ff-94d0ff-f4f3ee)
 
 ### Inspirations
 
