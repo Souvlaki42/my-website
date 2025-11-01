@@ -3,7 +3,6 @@ import { defineConfig, envField } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 
-// https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
@@ -16,5 +15,10 @@ export default defineConfig({
         access: "public",
       }),
     },
+  },
+  redirects: {
+    "/github": "https://github.com/Souvlaki42",
+    "/twitter": "https://x.com/souvlaki42",
+    "/bluesky": "https://bsky.app/profile/moulas.dev",
   },
 });

@@ -75,6 +75,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-- [Bluesky](https://bsky.app/profile/souvlaki.me)
-- [GitHub](https://github.com/souvlaki42)
-- [Twitter/X](https://x.com/souvlaki42)
+- [Bluesky](https://moulas.dev/bluesky)
+- [GitHub](https://moulas.dev/github)
+- [Twitter/X](https://moulas.dev/twitter)
