@@ -1,5 +1,38 @@
 ---
-import BaseLayout from "~/layouts/Base.astro";
+import Code from "~/components/Code.astro";
+import Base from "~/layouts/Base.astro";
+
+const LANGUAGES = [
+  "React",
+  "Next.js",
+  "Typescript",
+  "Python",
+  "Astro",
+  "Rust",
+  "Go",
+  "C",
+  "C++",
+];
+
+const languageString = `console.log("I've worked with:\n${LANGUAGES.map((e, i) => `${i + 1}. ${e}`).join(",\n")}\nand others...`;
+export const prerender = true;
 ---
 
-<BaseLayout>Hello</BaseLayout>
+<Base class={"flex flex-col p-12"}>
+  <Code code={`fmt.Println("👋 Hello, World!");`} lang={"go"} />
+  <Code
+    code={`print("I'm Ilias")`}
+    lang={"python"}
+    class={"font-extrabold text-xl"}
+  />
+  <Code code={`System.out.println("I live in Greece 🇬🇷");`} lang={"java"} />
+  <Code
+    code={`println!("My hobbies are programming and playing video games");`}
+    lang={"rust"}
+  />
+  <Code code={languageString} lang={"typescript"} />
+  <Code
+    code={`printf("Don't hesitate to reach out to me through: \n");`}
+    lang={"c"}
+  />
+</Base>

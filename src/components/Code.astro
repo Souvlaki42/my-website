@@ -1,0 +1,16 @@
+---
+import { Code as AstroCode } from "astro:components";
+
+type Props = Omit<Parameters<typeof AstroCode>[number], "wrap"> & {
+  href?: string;
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
+};
+
+const { theme = "catppuccin-mocha", href, as = "span", ...rest } = Astro.props;
+
+const Element = href ? "a" : as;
+---
+
+<Element href={href} class="m-2 w-full" data-swup-preload={Element === "a"}>
+  <AstroCode tabindex={undefined} wrap theme={theme} {...rest} />
+</Element>
