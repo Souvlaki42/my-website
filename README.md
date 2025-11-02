@@ -1,18 +1,18 @@
 # My Website
 
-This repository contains my personal portfolio built with Astro, TypeScript, and Tailwind CSS. The project features a combination of static and server-side rendered pages, with dynamic content powered by Vercel. Syntax-highlighted code blocks are rendered using a customized Code component from {astro:components}, utilizing [Shiki](https://shiki.matsu.io/) for a clean and accurate display. The site maintains a strong focus on performance and design, achieving high Lighthouse scores on both mobile and desktop.
+This is where I store my personal portfolio, my own space on the internet.
+Here I share my opinions and experience, showcase my work and highlight my abilities.
+Hope I'll land a job or at least give you something useful if you visit it 😃.
 
 ## Todo
-
-### Short-term list:
 
 - [x] Add tailwind 4
 - [x] Add prettier and eslint
 - [x] Create a navbar
-- [ ] Create a homepage
+- [x] Create a homepage
 - [ ] Make search bar
-
-### Fix todos and ensure mobile responsiveness, performance, accessibility and SEO friendlyness
+- [ ] Showcase my projects
+- [ ] Maybe start a blog...
 
 ## Getting Started
 
@@ -57,7 +57,7 @@ Ensure you have the following installed:
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [Unlicense](UNLICENSE)
 
 ## Credits
 
@@ -66,6 +66,7 @@ This project is licensed under the [MIT License](LICENSE).
 - [Bluesky logo](https://commons.wikimedia.org/wiki/File:Bluesky_Logo.svg)
 - [Github logo](https://commons.wikimedia.org/wiki/File:Github_logo_svg.svg)
 - [RSS logo](https://commons.wikimedia.org/wiki/File:Rss-feed.svg)
+- [Twitter logo](https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg)
 - [Color palette](https://coolors.co/1e1e2e-151535-6cb4ff-94d0ff-f4f3ee)
 
 ### Inspirations
