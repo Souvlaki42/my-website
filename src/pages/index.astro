@@ -1,5 +1,5 @@
 ---
-import Code from "~/components/Code.astro";
+import { Code } from "astro:components";
 import Base from "~/layouts/Base.astro";
 
 const LANGUAGES = [
@@ -14,25 +14,50 @@ const LANGUAGES = [
   "C++",
 ];
 
-const languageString = `console.log("I've worked with:\n${LANGUAGES.map((e, i) => `${i + 1}. ${e}`).join(",\n")}\nand others...`;
+const languageString =
+  "console.log(`" +
+  `I've worked with:\n${LANGUAGES.map((e, i) => `${i + 1}. ${e}`).join(",\n")}\nand others...` +
+  "`);";
 export const prerender = true;
 ---
 
-<Base class={"flex flex-col p-12"}>
-  <Code code={`fmt.Println("👋 Hello, World!");`} lang={"go"} />
+<Base class={"flex flex-col gap-2"}>
+  <Code
+    code={`fmt.Println("👋 Hello, World!");`}
+    lang={"go"}
+    class={"text-2xl font-extrabold"}
+    theme={"catppuccin-mocha"}
+    wrap
+  />
   <Code
     code={`print("I'm Ilias")`}
     lang={"python"}
-    class={"font-extrabold text-xl"}
+    class={"text-xl"}
+    theme={"catppuccin-mocha"}
+    wrap
   />
-  <Code code={`System.out.println("I live in Greece 🇬🇷");`} lang={"java"} />
+  <Code
+    code={`System.out.println("I live in Greece 🇬🇷");`}
+    lang={"java"}
+    theme={"catppuccin-mocha"}
+    wrap
+  />
   <Code
     code={`println!("My hobbies are programming and playing video games");`}
     lang={"rust"}
+    theme={"catppuccin-mocha"}
+    wrap
   />
-  <Code code={languageString} lang={"typescript"} />
   <Code
-    code={`printf("Don't hesitate to reach out to me through: \n");`}
+    code={languageString}
+    lang={"typescript"}
+    wrap
+    theme={"catppuccin-mocha"}
+  />
+  <Code
+    code={`printf("Don't hesitate to reach out to me through: \\n");`}
     lang={"c"}
+    wrap
+    theme={"catppuccin-mocha"}
   />
 </Base>
