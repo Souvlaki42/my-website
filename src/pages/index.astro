@@ -1,5 +1,5 @@
 ---
-import { Code } from "astro:components";
+import Code from "~/components/Code.astro";
 import Base from "~/layouts/Base.astro";
 
 const LANGUAGES = [
@@ -26,38 +26,20 @@ export const prerender = true;
     code={`fmt.Println("👋 Hello, World!");`}
     lang={"go"}
     class={"text-2xl font-extrabold"}
-    theme={"catppuccin-mocha"}
-    wrap
   />
+  <Code code={`print("I'm Ilias.")`} lang={"python"} class={"text-xl"} />
+  <Code code={`System.out.println("I am 🇬🇷 Greek.");`} lang={"java"} />
   <Code
-    code={`print("I'm Ilias")`}
-    lang={"python"}
-    class={"text-xl"}
-    theme={"catppuccin-mocha"}
-    wrap
-  />
-  <Code
-    code={`System.out.println("I live in Greece 🇬🇷");`}
-    lang={"java"}
-    theme={"catppuccin-mocha"}
-    wrap
-  />
-  <Code
-    code={`println!("My hobbies are programming and playing video games");`}
+    code={`println!("I like swimming, hacking and playing video games.");`}
     lang={"rust"}
-    theme={"catppuccin-mocha"}
-    wrap
   />
   <Code
-    code={languageString}
-    lang={"typescript"}
-    wrap
-    theme={"catppuccin-mocha"}
+    code={`std::cout << "I'm currently studying Computer Engineering at University of West Attica, 🏛️ Athens." << std::endl;`}
+    lang={"c++"}
   />
+  <Code code={languageString} lang={"typescript"} />
   <Code
-    code={`printf("Don't hesitate to reach out to me through: \\n");`}
+    code={`printf("Don't hesitate to reach out, through my socials or [ilias@moulas.dev](mailto:ilias@moulas.dev)\\n");`}
     lang={"c"}
-    wrap
-    theme={"catppuccin-mocha"}
   />
 </Base>

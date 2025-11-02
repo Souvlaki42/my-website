@@ -1,0 +1,33 @@
+---
+import { Code as AstroCode } from "astro:components";
+
+type Props = Parameters<typeof AstroCode>[number];
+
+const {
+  code,
+  lang = "plaintext",
+  wrap = true,
+  theme = "catppuccin-mocha",
+} = Astro.props;
+---
+
+<AstroCode
+  code={code}
+  lang={lang}
+  wrap={wrap}
+  theme={theme}
+  transformers={[
+    {
+      name: "inject-links",
+      postprocess(html) {
+        const output = html.replace(
+          /\[([^\]]+)\]\(([^)]+)\)/g,
+          (_, text, href) => {
+            return `<a href="${href}" class="underline">${text}</a>`;
+          },
+        );
+        return output;
+      },
+    },
+  ]}
+/>
