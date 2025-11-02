@@ -73,9 +73,3 @@ This project is licensed under the [Unlicense](UNLICENSE)
 
 - [Trevor Lasn](https://www.trevorlasn.com/)
 - [Sharun Kumar](https://sharunkumar.com/)
-
-## Contact
-
-- [Bluesky](https://moulas.dev/bluesky)
-- [GitHub](https://moulas.dev/github)
-- [Twitter/X](https://moulas.dev/twitter)

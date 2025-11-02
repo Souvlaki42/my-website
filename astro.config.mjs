@@ -1,5 +1,6 @@
 // @ts-check
 
+import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
 
@@ -16,9 +17,11 @@ export default defineConfig({
       }),
     },
   },
+  site: "https://moulas.dev",
   redirects: {
     "/github": "https://github.com/Souvlaki42",
     "/twitter": "https://x.com/souvlaki42",
     "/bluesky": "https://bsky.app/profile/moulas.dev",
   },
+  adapter: vercel(),
 });
