@@ -4,6 +4,7 @@ import { ClientRouter } from "astro:transitions";
 import Header from "~/components/Header.astro";
 import { cn, type HTMLAtrributesWithSlot } from "~/lib/utils";
 import "~/styles/global.css";
+import Analytics from "@vercel/analytics/astro";
 
 export type Props = HTMLAtrributesWithSlot<"main"> & {
   title?: string;
@@ -39,6 +40,7 @@ const {
       )}
     >
       <slot />
+      <Analytics />
     </main>
     {
       import.meta.env.DEV ? (
