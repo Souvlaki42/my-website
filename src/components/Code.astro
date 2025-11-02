@@ -1,16 +1,33 @@
 ---
 import { Code as AstroCode } from "astro:components";
 
-type Props = Omit<Parameters<typeof AstroCode>[number], "wrap"> & {
-  href?: string;
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
-};
+type Props = Parameters<typeof AstroCode>[number];
 
-const { theme = "catppuccin-mocha", href, as = "span", ...rest } = Astro.props;
-
-const Element = href ? "a" : as;
+const {
+  code,
+  lang = "plaintext",
+  wrap = true,
+  theme = "catppuccin-mocha",
+} = Astro.props;
 ---
 
-<Element href={href} class="m-2 w-full" data-swup-preload={Element === "a"}>
-  <AstroCode tabindex={undefined} wrap theme={theme} {...rest} />
-</Element>
+<AstroCode
+  code={code}
+  lang={lang}
+  wrap={wrap}
+  theme={theme}
+  transformers={[
+    {
+      name: "inject-links",
+      postprocess(html) {
+        const output = html.replace(
+          /\[([^\]]+)\]\(([^)]+)\)/g,
+          (_, text, href) => {
+            return `<a href="${href}" class="underline">${text}</a>`;
+          },
+        );
+        return output;
+      },
+    },
+  ]}
+/>

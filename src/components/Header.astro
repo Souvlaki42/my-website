@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import Link from "./Link.astro";
+---
+
+<header class="flex flex-row justify-center space-x-4">
+  <nav
+    class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row items-center justify-center rounded-lg border-2"
+  >
+    <Link href="/" title="Did you get it?">Terminal</Link>
+    <Link href={"/topics"}>Topics</Link>
+    <Link href="/code">Code</Link>
+    <button
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-search text-sky-blue hover:text-light-blue mx-4 font-bold hover:cursor-pointer"
+        ><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"
+        ></path></svg
+      ></button
+    >
+  </nav>
+  <nav
+    class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row items-center justify-center rounded-lg border-2"
+  >
+    <Link href="/github" class="mx-2 opacity-100 hover:opacity-75"
+      ><Image
+        width={32}
+        height={32}
+        loading={"eager"}
+        alt="Github white logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Github_logo_svg.svg/64px-Github_logo_svg.svg.png?20230420150203"
+      />
+    </Link>
+    <Link href="/twitter" class="mx-2 opacity-100 hover:opacity-75"
+      ><Image
+        width={32}
+        height={32}
+        loading={"eager"}
+        alt="Twitter white logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg"
+      />
+    </Link>
+    <Link href="/bluesky" class="mx-2 opacity-100 hover:opacity-75"
+      ><Image
+        width={32}
+        height={32}
+        loading={"eager"}
+        alt="Updated Bluesky logo, published February 2024."
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/64px-Bluesky_Logo.svg.png?20240211144739"
+      />
+    </Link>
+    <Link href="/rss.xml" class="mx-2 opacity-100 hover:opacity-75"
+      ><Image
+        width={32}
+        height={32}
+        loading={"eager"}
+        alt="Rss-feed"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Rss-feed.svg/32px-Rss-feed.svg.png?20100128031959"
+      />
+    </Link>
+  </nav>
+</header>

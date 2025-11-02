@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-mocha: #1e1e2e;
+  --color-mocha-dark: #151535;
+  --color-sky-blue: #6cb4ff;
+  --color-light-blue: #94d0ff;
+  --color-isabelline: #f4f3ee;
+}

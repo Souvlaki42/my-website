@@ -1,57 +1,27 @@
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
+// @ts-check
+
 import vercel from "@astrojs/vercel";
-import swup from "@swup/astro";
-import AutoImport from "astro-auto-import";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
 
-// https://astro.build/config
 export default defineConfig({
-  output: "server",
-  adapter: vercel(),
-  site: "https://souvlaki.me",
-  prefetch: {
-    prefetchAll: true
+  vite: {
+    plugins: [tailwindcss()],
   },
   env: {
     schema: {
-      GITHUB_TOKEN: envField.string({ context: "server", access: "secret" }),
-      SHOW_DRAFTS: envField.boolean({
+      SITE_NAME: envField.string({ context: "server", access: "public" }),
+      SITE_DESCRIPTION: envField.string({
         context: "server",
         access: "public",
-        default: process.env.NODE_ENV !== "production"
-      })
-    }
+      }),
+    },
   },
-  integrations: [
-    tailwind(),
-    AutoImport({
-      imports: ["./src/components/Code.astro"]
-    }),
-    mdx(),
-    sitemap({
-      xslURL: "/sitemap.xsl"
-    }),
-    swup({
-      progress: true,
-      accessibility: true,
-      forms: true,
-      cache: false,
-      preload: {
-        hover: true,
-        visible: false
-      },
-      smoothScrolling: true
-    })
-  ],
-  markdown: {
-    syntaxHighlight: "shiki",
-    gfm: true,
-    smartypants: true,
-    shikiConfig: {
-      theme: "catppuccin-mocha",
-      wrap: true
-    }
-  }
+  site: "https://moulas.dev",
+  redirects: {
+    "/github": "https://github.com/Souvlaki42",
+    "/twitter": "https://x.com/souvlaki42",
+    "/bluesky": "https://bsky.app/profile/moulas.dev",
+  },
+  adapter: vercel(),
 });

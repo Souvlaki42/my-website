@@ -1,30 +1,18 @@
-# My Portfolio
+# My Website
 
-This repository contains my personal portfolio built with Astro, TypeScript, and Tailwind CSS. The project features a combination of static and server-side rendered pages, with dynamic content powered by Vercel. Syntax-highlighted code blocks are rendered using a customized Code component from {astro:components}, utilizing [Shiki](https://shiki.matsu.io/) for a clean and accurate display. The site maintains a strong focus on performance and design, achieving high Lighthouse scores on both mobile and desktop.
-
-## Credits
-
-- [RSS Stylesheet](public/rss.xsl) | [Get it here](https://github.com/genmon/aboutfeeds/blob/main/tools/pretty-feed-v3.xsl)
-- [Sitemap Stylesheet](public/sitemap.xsl) | [Get it here](https://github.com/pedroborges/xml-sitemap-stylesheet/blob/master/sitemap.xsl)
-
-## Features
-
-- **Hybrid Static & Dynamic Rendering**: While the homepage is statically generated, other sections are server-side rendered, fetching live data from APIs.
-- **Syntax Highlighting**: Powered by Shiki, ensuring accurate and aesthetically pleasing code blocks.
-- **Fuzzy Search & Comment Section**: Enhanced functionality with JavaScript, providing a better user experience.
-- **Responsive Design**: Optimized for both mobile and desktop, maintaining high performance metrics.
+This is where I store my personal portfolio, my own space on the internet.
+Here I share my opinions and experience, showcase my work and highlight my abilities.
+Hope I'll land a job or at least give you something useful if you visit it 😃.
 
 ## Todo
 
-- [ ] Upgrade to Tailwind 4 when it's released
-- [x] Upgrade to Astro 5 when it's released
-- [x] Fix the page layout and content shifts
-- [ ] Add light/dark mode and toggle
-- [ ] Deal with the shiki bug (it's not on my end) or change approach
-- [ ] Integrate Obsidian
-- [ ] Publish more blog posts
-- [ ] Maybe make project page more like a file tree
-- [ ] Maybe translate the site to other languages
+- [x] Add tailwind 4
+- [x] Add prettier and eslint
+- [x] Create a navbar
+- [x] Create a homepage
+- [ ] Make search bar
+- [ ] Showcase my projects
+- [ ] Maybe start a blog...
 
 ## Getting Started
 
@@ -34,15 +22,15 @@ Follow these instructions to set up the project locally.
 
 Ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/en) (v22.12.0 or later)
-- [Pnpm](https://pnpm.io/) (v9.15.3 or later)
+- [Node.js](https://nodejs.org/en) (v22.14.0 or later)
+- [Pnpm](https://pnpm.io/) (v10.6.2 or later)
 
 ### Installation
 
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/Souvlaki42/my-website.git
+   git clone git@github.com:Souvlaki42/my-website.git
    ```
 
 2. **Navigate to the project directory**
@@ -69,11 +57,19 @@ Ensure you have the following installed:
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [Unlicense](UNLICENSE)
 
-## Contact
+## Credits
 
-- **Email**: [souvlaki420@gmail.com](mailto:souvlaki420@gmail.com)
-- **GitHub**: [Souvlaki42](https://github.com/souvlaki42)
-- **Twitter/X**: [Souvlaki42](https://x.com/souvlaki42)
-- **Bluesky**: [Souvlaki42](https://bsky.app/profile/souvlaki.me)
+### Attributions
+
+- [Bluesky logo](https://commons.wikimedia.org/wiki/File:Bluesky_Logo.svg)
+- [Github logo](https://commons.wikimedia.org/wiki/File:Github_logo_svg.svg)
+- [RSS logo](https://commons.wikimedia.org/wiki/File:Rss-feed.svg)
+- [Twitter logo](https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg)
+- [Color palette](https://coolors.co/1e1e2e-151535-6cb4ff-94d0ff-f4f3ee)
+
+### Inspirations
+
+- [Trevor Lasn](https://www.trevorlasn.com/)
+- [Sharun Kumar](https://sharunkumar.com/)

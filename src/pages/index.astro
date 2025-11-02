@@ -1,41 +1,45 @@
 ---
 import Code from "~/components/Code.astro";
-import MainLayout from "~/layouts/Main.astro";
+import Base from "~/layouts/Base.astro";
 
-const LANGUAGES = new Set<string>([
+const LANGUAGES = [
   "React",
   "Next.js",
   "Typescript",
   "Python",
   "Astro",
   "Rust",
-  "Golang"
-]);
+  "Go",
+  "C",
+  "C++",
+];
 
-const languageString = `console.log(\`I've worked with:\n${Array.from<string>(
-  LANGUAGES
-)
-  .map((element, index) => `${index + 1}. ${element}`)
-  .join(",\n")}\nand others...\`);`;
-
+const languageString =
+  "console.log(`" +
+  `I've worked with:\n${LANGUAGES.map((e, i) => `${i + 1}. ${e}`).join(",\n")}\nand others...` +
+  "`);";
 export const prerender = true;
 ---
 
-<MainLayout mainClass="flex min-h-screen flex-col p-12">
-  <Code code={`fmt.Println("👋 Hello, World!");`} lang={"go"} />
+<Base class={"flex flex-col gap-2"}>
   <Code
-    code={`print("I'm Ilias")`}
-    lang={"python"}
-    class={"font-extrabold text-xl"}
+    code={`fmt.Println("👋 Hello, World!");`}
+    lang={"go"}
+    class={"text-2xl font-extrabold"}
   />
-  <Code code={`System.out.println("I live in Greece 🇬🇷");`} lang={"java"} />
+  <Code code={`print("I'm Ilias.")`} lang={"python"} class={"text-xl"} />
+  <Code code={`System.out.println("I am 🇬🇷 Greek.");`} lang={"java"} />
   <Code
-    code={`println!("My hobbies are programming and playing video games");`}
+    code={`println!("I like swimming, hacking and playing video games.");`}
     lang={"rust"}
+  />
+  <Code
+    code={`std::cout << "I'm currently studying Computer Engineering at University of West Attica, 🏛️ Athens." << std::endl;`}
+    lang={"c++"}
   />
   <Code code={languageString} lang={"typescript"} />
   <Code
-    code={`printf("Don't hesitate to reach out to me through: ");`}
+    code={`printf("Don't hesitate to reach out, through my socials or [ilias@moulas.dev](mailto:ilias@moulas.dev)\\n");`}
     lang={"c"}
   />
-</MainLayout>
+</Base>

@@ -1,41 +1,51 @@
 ---
-import Head from "~/components/Head.astro";
-import { AppConfig, type LayoutProps } from "~/utils";
+import { SITE_DESCRIPTION, SITE_NAME } from "astro:env/server";
+import { ClientRouter } from "astro:transitions";
+import Header from "~/components/Header.astro";
+import { cn, type HTMLAtrributesWithSlot } from "~/lib/utils";
+import "~/styles/global.css";
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
-type Props = LayoutProps;
-
-const { title, description, image, mainClass = "" } = Astro.props;
+export type Props = HTMLAtrributesWithSlot<"main"> & {
+  title?: string;
+  description?: string;
+};
+const {
+  title = SITE_NAME,
+  description = SITE_DESCRIPTION,
+  class: className,
+  ...props
+} = Astro.props;
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title={AppConfig.title}
-      href={`${AppConfig.site}rss.xml`}
-    />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <Head title={title} description={description} image={image} />
-    <style is:global>
-      html {
-        scrollbar-gutter: stable;
-      }
-      * {
-        @apply m-0 box-border p-0;
-      }
-      .swup-progress-bar {
-        @apply h-1 bg-sky-700;
-      }
-    </style>
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <ClientRouter />
   </head>
-  <body class="flex min-h-screen flex-col items-center justify-center bg-mocha">
+  <body class="bg-mocha flex h-screen flex-col items-center justify-center">
+    <Header />
+    <main
+      {...props}
+      class={cn(
+        "flex h-[75%] w-screen flex-col p-12 text-center text-isabelline",
+        className,
+      )}
+    >
+      <slot />
+      <Analytics />
+      <SpeedInsights />
+    </main>
     {
-      process.env.NODE_ENV === "development" && (
+      import.meta.env.DEV ? (
         <div class="fixed bottom-1 left-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">
           <div class="block sm:hidden">xs</div>
           <div class="hidden sm:block md:hidden">sm</div>
@@ -44,10 +54,7 @@ const { title, description, image, mainClass = "" } = Astro.props;
           <div class="hidden xl:block 2xl:hidden">xl</div>
           <div class="hidden 2xl:block">2xl</div>
         </div>
-      )
+      ) : undefined
     }
-    <main class={mainClass} tabindex={undefined}>
-      <slot />
-    </main>
   </body>
 </html>
