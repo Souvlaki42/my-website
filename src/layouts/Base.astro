@@ -31,12 +31,12 @@ const {
     <meta name="description" content={description} />
     <ClientRouter />
   </head>
-  <body class="bg-mocha flex h-screen flex-col items-center justify-center">
+  <body class="bg-mocha flex p-8 h-screen flex-col items-center justify-center">
     <Header />
     <main
       {...props}
       class={cn(
-        "flex w-screen flex-col p-12 text-center text-isabelline h-screen",
+        "flex w-full flex-col p-8 flex-1 h-full align-middle items-center text-center text-isabelline",
         className,
       )}
     >
@@ -44,6 +44,9 @@ const {
       <Analytics />
       <SpeedInsights />
     </main>
+    <footer class="text-isabelline font-semibold text-center">
+      © Ilias Moulas {new Date().getFullYear()}
+    </footer>
     {
       import.meta.env.DEV ? (
         <div class="fixed bottom-1 left-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">

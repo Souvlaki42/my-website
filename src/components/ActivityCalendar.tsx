@@ -10,6 +10,7 @@ export default function ActivityCalendar() {
       <GithubCalendar
         username="Souvlaki42"
         weekStart={1}
+        errorMessage="Something went wrong when fetching GitHub activity. Please try again later."
         theme={{
           dark: [
             "var(--color-surface-dark)",

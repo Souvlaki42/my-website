@@ -27,3 +27,8 @@ export const formatDate = (dateStr: string) => {
   const day = date.getDate();
   return `${month} ${getOrdinal(day)}`;
 };
+
+export const normalizeURLPath = (path?: string) => {
+  if (!path) return "";
+  return path === "/" ? "/" : path.replace(/\/$/, "");
+};
