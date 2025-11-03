@@ -1,4 +1,5 @@
 ---
+import ActivityCalendar from "~/components/ActivityCalendar";
 import Code from "~/components/Code.astro";
 import Base from "~/layouts/Base.astro";
 
@@ -21,7 +22,7 @@ const languageString =
 export const prerender = true;
 ---
 
-<Base class={"flex flex-col gap-2"}>
+<Base class={"flex flex-col gap-4 align-middle text-center items-center"}>
   <Code
     code={`fmt.Println("👋 Hello, World!");`}
     lang={"go"}
@@ -42,4 +43,5 @@ export const prerender = true;
     code={`printf("Don't hesitate to reach out, through my socials or [ilias@moulas.dev](mailto:ilias@moulas.dev)\\n");`}
     lang={"c"}
   />
+  <ActivityCalendar client:only="react" />
 </Base>

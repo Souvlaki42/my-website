@@ -1,5 +1,6 @@
 // @ts-check
 
+import react from "@astrojs/react";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
@@ -24,4 +25,5 @@ export default defineConfig({
     "/bluesky": "https://bsky.app/profile/moulas.dev",
   },
   adapter: vercel(),
+  integrations: [react()],
 });

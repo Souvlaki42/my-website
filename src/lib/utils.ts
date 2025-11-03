@@ -12,3 +12,18 @@ export type HTMLAtrributesWithSlot<Tag extends HTMLTag> = Omit<
   HTMLAttributes<Tag>,
   "children"
 >;
+
+const getOrdinal = (n: number) => {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+};
+
+export const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  const month = new Intl.DateTimeFormat(undefined, { month: "long" }).format(
+    date,
+  );
+  const day = date.getDate();
+  return `${month} ${getOrdinal(day)}`;
+};
