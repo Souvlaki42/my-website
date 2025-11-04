@@ -1,11 +1,12 @@
 ---
-import { SITE_DESCRIPTION, SITE_NAME } from "astro:env/server";
+import { SITE_DESCRIPTION, SITE_NAME, TOP_BANNER } from "astro:env/server";
 import { ClientRouter } from "astro:transitions";
 import Header from "~/components/Header.astro";
 import { cn, type HTMLAtrributesWithSlot } from "~/lib/utils";
 import "~/styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import TopBanner from "~/components/TopBanner.astro";
 
 export type Props = HTMLAtrributesWithSlot<"main"> & {
   title?: string;
@@ -29,14 +30,18 @@ const {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <ClientRouter />
   </head>
-  <body class="bg-mocha flex h-screen flex-col items-center justify-center">
+  <body
+    class="bg-mocha flex p-8 pt-16 h-screen flex-col items-center justify-center"
+  >
+    {TOP_BANNER !== "DISABLED" && <TopBanner />}
     <Header />
     <main
       {...props}
       class={cn(
-        "flex h-[75%] w-screen flex-col p-12 text-center text-isabelline",
+        "flex w-full flex-col p-8 flex-1 h-full align-middle items-center text-center text-isabelline",
         className,
       )}
     >
@@ -44,6 +49,9 @@ const {
       <Analytics />
       <SpeedInsights />
     </main>
+    <footer class="text-isabelline font-semibold text-center">
+      © Ilias Moulas {new Date().getFullYear()}
+    </footer>
     {
       import.meta.env.DEV ? (
         <div class="fixed bottom-1 left-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">

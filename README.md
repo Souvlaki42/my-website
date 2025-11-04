@@ -67,7 +67,7 @@ This project is licensed under the [Unlicense](UNLICENSE)
 - [Github logo](https://commons.wikimedia.org/wiki/File:Github_logo_svg.svg)
 - [RSS logo](https://commons.wikimedia.org/wiki/File:Rss-feed.svg)
 - [Twitter logo](https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg)
-- [Color palette](https://coolors.co/1e1e2e-151535-6cb4ff-94d0ff-f4f3ee)
+- [Color palette](https://coolors.co/1e1e2e-151535-6cb4ff-94d0ff-f4f3ee-313244-585b70-2b7fff)
 
 ### Inspirations
 

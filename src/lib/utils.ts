@@ -12,3 +12,40 @@ export type HTMLAtrributesWithSlot<Tag extends HTMLTag> = Omit<
   HTMLAttributes<Tag>,
   "children"
 >;
+
+export const TOP_BANNER_OPTIONS = {
+  DISABLED: undefined,
+  MAINTENANCE:
+    "This site is currently under maintenance. Please wait for a while.",
+  CONSTRUCTION:
+    "This site is currently under construction. Big things may come.",
+};
+
+const getOrdinal = (n: number) => {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+};
+
+export const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  const month = new Intl.DateTimeFormat(undefined, { month: "long" }).format(
+    date,
+  );
+  const day = date.getDate();
+  return `${month} ${getOrdinal(day)}`;
+};
+
+export const normalizeURLPath = (path?: string) => {
+  if (!path) return "";
+  return path === "/" ? "/" : path.replace(/\/$/, "");
+};
+
+export const isURLExternal = (url?: string) =>
+  url?.startsWith("http://") || url?.startsWith("https://");
+
+export const objectKeys = <Obj extends Record<any, any>>(
+  obj: Obj,
+): (keyof Obj)[] => {
+  return Object.keys(obj) as (keyof Obj)[];
+};
