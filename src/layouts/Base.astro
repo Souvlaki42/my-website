@@ -1,11 +1,12 @@
 ---
-import { SITE_DESCRIPTION, SITE_NAME } from "astro:env/server";
+import { SITE_DESCRIPTION, SITE_NAME, TOP_BANNER } from "astro:env/server";
 import { ClientRouter } from "astro:transitions";
 import Header from "~/components/Header.astro";
 import { cn, type HTMLAtrributesWithSlot } from "~/lib/utils";
 import "~/styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import TopBanner from "~/components/TopBanner.astro";
 
 export type Props = HTMLAtrributesWithSlot<"main"> & {
   title?: string;
@@ -32,7 +33,10 @@ const {
     <link rel="sitemap" href="/sitemap-index.xml" />
     <ClientRouter />
   </head>
-  <body class="bg-mocha flex p-8 h-screen flex-col items-center justify-center">
+  <body
+    class="bg-mocha flex p-8 pt-16 h-screen flex-col items-center justify-center"
+  >
+    {TOP_BANNER !== "DISABLED" && <TopBanner />}
     <Header />
     <main
       {...props}

@@ -13,6 +13,14 @@ export type HTMLAtrributesWithSlot<Tag extends HTMLTag> = Omit<
   "children"
 >;
 
+export const TOP_BANNER_OPTIONS = {
+  DISABLED: undefined,
+  MAINTENANCE:
+    "This site is currently under maintenance. Please wait for a while.",
+  CONSTRUCTION:
+    "This site is currently under construction. Big things may come.",
+};
+
 const getOrdinal = (n: number) => {
   const s = ["th", "st", "nd", "rd"];
   const v = n % 100;
@@ -35,3 +43,9 @@ export const normalizeURLPath = (path?: string) => {
 
 export const isURLExternal = (url?: string) =>
   url?.startsWith("http://") || url?.startsWith("https://");
+
+export const objectKeys = <Obj extends Record<any, any>>(
+  obj: Obj,
+): (keyof Obj)[] => {
+  return Object.keys(obj) as (keyof Obj)[];
+};
