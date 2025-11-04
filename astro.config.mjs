@@ -4,6 +4,9 @@ import react from "@astrojs/react";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
+import rehypeExternalLinks from "rehype-external-links";
+
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   vite: {
@@ -26,4 +29,15 @@ export default defineConfig({
   },
   adapter: vercel(),
   integrations: [react()],
+});
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: "_blank",
+          rel: ["noopener", "noreferrer"],
+        },
+      ],
+    ],
+  },
 });

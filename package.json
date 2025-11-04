@@ -22,6 +22,7 @@
     "react-dom": "^19.2.0",
     "react-github-calendar": "^4.5.11",
     "react-tooltip": "^5.30.0",
+    "rehype-external-links": "^3.0.0",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.14"
   },
