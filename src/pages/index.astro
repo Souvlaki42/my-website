@@ -3,21 +3,32 @@ import ActivityCalendar from "~/components/ActivityCalendar";
 import Code from "~/components/Code.astro";
 import Base from "~/layouts/Base.astro";
 
-const LANGUAGES = [
-  "React",
-  "Next.js",
-  "Typescript",
-  "Python",
-  "Astro",
-  "Rust",
-  "Go",
-  "C",
-  "C++",
-];
+const TECHNOLOGIES = {
+  Node: "https://nodejs.org/en",
+  React: "https://react.dev",
+  "Next.js": "https://nextjs.org",
+  Typescript: "https://www.typescriptlang.org",
+  "Relational databases": undefined,
+  Python: "https://www.python.org",
+  Astro: "https://astro.build",
+  Rust: "https://rust-lang.org",
+  Go: "https://go.dev",
+  C: undefined,
+  "C++": undefined,
+  Docker: "https://www.docker.com",
+  "Zsh shell": undefined,
+  "Arch Linux": "https://archlinux.org",
+  KDE: "https://kde.org",
+};
 
-const languageString =
+const technologiesStr =
   "console.log(`" +
-  `I've worked with:\n${LANGUAGES.join(", ")}\nand others...` +
+  `Technologies I like and use:\n${Object.entries(TECHNOLOGIES)
+    .map(([tech, site]) => {
+      if (!site) return tech;
+      else return `[${tech}](${site})`;
+    })
+    .join(", ")}` +
   "`);";
 export const prerender = true;
 ---
@@ -31,14 +42,14 @@ export const prerender = true;
   <Code code={`print("I'm Ilias.")`} lang={"python"} class={"text-xl"} />
   <Code code={`System.out.println("I am from 🇬🇷 Greece.");`} lang={"java"} />
   <Code
-    code={`println!("I also ike swimming, hacking and playing video games.");`}
+    code={`println!("I also like swimming, hacking and playing video games.");`}
     lang={"rust"}
   />
   <Code
     code={`std::cout << "I'm currently studying Computer Engineering at University of West Attica, 🏛️ Athens." << std::endl;`}
     lang={"c++"}
   />
-  <Code code={languageString} lang={"typescript"} />
+  <Code code={technologiesStr} lang={"typescript"} />
   <Code
     code={`printf("Don't hesitate to reach out, through my socials or [ilias@moulas.dev](mailto:ilias@moulas.dev)\\n");`}
     lang={"c"}

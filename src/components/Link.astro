@@ -1,5 +1,10 @@
 ---
-import { cn, type HTMLAtrributesWithSlot, normalizeURLPath } from "~/lib/utils";
+import {
+  cn,
+  type HTMLAtrributesWithSlot,
+  isURLExternal,
+  normalizeURLPath,
+} from "~/lib/utils";
 
 type Props = HTMLAtrributesWithSlot<"a">;
 const { href, class: className, ...props } = Astro.props;
@@ -8,8 +13,7 @@ const pathName = new URL(Astro.request.url).pathname;
 const hrefStr = href?.toString();
 
 const isActive = normalizeURLPath(pathName) === normalizeURLPath(hrefStr);
-const isExternal =
-  hrefStr?.startsWith("http://") || hrefStr?.startsWith("https://");
+const isExternal = isURLExternal(hrefStr);
 ---
 
 <a
@@ -18,7 +22,7 @@ const isExternal =
   target={isExternal ? "_blank" : undefined}
   rel={isExternal ? "noopener noreferrer" : undefined}
   class={cn(
-    "font-bold mx-2 sm:mx-4",
+    "font-bold mx-2 sm:mx-4 hover:underline",
     isActive ? "text-sea-blue" : "text-sky-blue hover:text-light-blue",
     className,
   )}

@@ -32,3 +32,6 @@ export const normalizeURLPath = (path?: string) => {
   if (!path) return "";
   return path === "/" ? "/" : path.replace(/\/$/, "");
 };
+
+export const isURLExternal = (url?: string) =>
+  url?.startsWith("http://") || url?.startsWith("https://");

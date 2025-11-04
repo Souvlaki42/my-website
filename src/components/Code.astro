@@ -1,7 +1,22 @@
 ---
 import { Code as AstroCode } from "astro:components";
+import { isURLExternal } from "~/lib/utils";
 
 type Props = Parameters<typeof AstroCode>[number];
+
+const injectLinksTransformer = (html: string) => {
+  const output = html.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    (_, text?: string, href?: string) => {
+      const isExternal = isURLExternal(href);
+      const accessibility = isExternal
+        ? `target="_blank" rel="noopener noreferrer"><span class="sr-only">Opens in a new tab</span>`
+        : "";
+      return `<a href="${href ?? "#"}" class="hover:underline text-sky-blue hover:text-light-blue" ${accessibility}${text ?? "No content"}</a>`;
+    },
+  );
+  return output;
+};
 
 const {
   code,
@@ -19,15 +34,7 @@ const {
   transformers={[
     {
       name: "inject-links",
-      postprocess(html) {
-        const output = html.replace(
-          /\[([^\]]+)\]\(([^)]+)\)/g,
-          (_, text, href) => {
-            return `<a href="${href}" class="underline">${text}</a>`;
-          },
-        );
-        return output;
-      },
+      postprocess: injectLinksTransformer,
     },
   ]}
 />
