@@ -28,8 +28,15 @@ export default defineConfig({
     "/bluesky": "https://bsky.app/profile/moulas.dev",
   },
   adapter: vercel(),
-  integrations: [react()],
-});
+  integrations: [react(), sitemap()],
+  markdown: {
+    syntaxHighlight: "shiki",
+    gfm: true,
+    smartypants: true,
+    shikiConfig: {
+      theme: "catppuccin-mocha",
+      wrap: true,
+    },
     rehypePlugins: [
       [
         rehypeExternalLinks,

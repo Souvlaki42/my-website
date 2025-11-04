@@ -17,7 +17,7 @@ const LANGUAGES = [
 
 const languageString =
   "console.log(`" +
-  `I've worked with:\n${LANGUAGES.map((e, i) => `${i + 1}. ${e}`).join(",\n")}\nand others...` +
+  `I've worked with:\n${LANGUAGES.join(", ")}\nand others...` +
   "`);";
 export const prerender = true;
 ---
@@ -29,9 +29,9 @@ export const prerender = true;
     class={"text-2xl font-extrabold"}
   />
   <Code code={`print("I'm Ilias.")`} lang={"python"} class={"text-xl"} />
-  <Code code={`System.out.println("I am 🇬🇷 Greek.");`} lang={"java"} />
+  <Code code={`System.out.println("I am from 🇬🇷 Greece.");`} lang={"java"} />
   <Code
-    code={`println!("I like swimming, hacking and playing video games.");`}
+    code={`println!("I also ike swimming, hacking and playing video games.");`}
     lang={"rust"}
   />
   <Code
