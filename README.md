@@ -55,10 +55,6 @@ Ensure you have the following installed:
 
    Navigate to `http://localhost:4321` to view the portfolio.
 
-## License
-
-This project is licensed under the [Unlicense](UNLICENSE)
-
 ## Credits
 
 ### Attributions
@@ -67,9 +63,15 @@ This project is licensed under the [Unlicense](UNLICENSE)
 - [Github logo](https://commons.wikimedia.org/wiki/File:Github_logo_svg.svg)
 - [RSS logo](https://commons.wikimedia.org/wiki/File:Rss-feed.svg)
 - [Twitter logo](https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg)
-- [Color palette](https://coolors.co/1e1e2e-151535-6cb4ff-94d0ff-f4f3ee-313244-585b70-2b7fff)
+- [Discord logo](https://di8m9w6rqrh5d.cloudfront.net/1zObrQ89Q4wHhgFCfYIUhMUvmNf4XjxO/preview_d6fabf40-52a0-4b4c-ad08-cdbd7497dd4f.svg)
+- [Color palette](https://color.adobe.com/My-website-color-theme-65fa4997-5215-4b55-bead-c36f8ccc804f)
 
 ### Inspirations
 
-- [Trevor Lasn](https://www.trevorlasn.com/)
-- [Sharun Kumar](https://sharunkumar.com/)
+- [Trevor Lasn](https://www.trevorlasn.com)
+- [Sharun Kumar](https://sharunkumar.com)
+- [Jonathan Gruber](https://jogruber.de)
+
+## License
+
+This project is licensed under the [Unlicense](UNLICENSE)

@@ -1,0 +1,23 @@
+---
+import Link from "~/components/Link.astro";
+import Base from "~/layouts/Base.astro";
+
+const title = "Page Not Found";
+const description = "Sorry, we couldn't find the page you're looking for.";
+---
+
+<Base
+  title={title}
+  description={description}
+  class="flex flex-col items-center justify-center text-center text-isabelline"
+>
+  <h1 class="text-6xl font-bold mb-4">404</h1>
+  <p class="text-xl mb-8">{description}</p>
+  <Link
+    href="/"
+    class="bg-sea-blue opacity-80 hover:opacity-100 font-semibold py-2 px-4 rounded text-isabelline"
+    underline={false}
+  >
+    Go Back Home
+  </Link>
+</Base>

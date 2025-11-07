@@ -31,6 +31,11 @@ export default defineConfig({
         optional: true,
         default: "DISABLED",
       }),
+      GITHUB_TOKEN: envField.string({
+        context: "server",
+        access: "secret",
+        optional: false,
+      }),
     },
   },
   site: "https://moulas.dev",
@@ -38,8 +43,12 @@ export default defineConfig({
     "/github": "https://github.com/Souvlaki42",
     "/twitter": "https://x.com/souvlaki42",
     "/bluesky": "https://bsky.app/profile/moulas.dev",
+    "/discord": "https://discord.gg/PDmHV6NeCF",
   },
-  adapter: vercel(),
+  output: "server",
+  adapter: vercel({
+    devImageService: "sharp",
+  }),
   integrations: [react(), sitemap()],
   devToolbar: { enabled: false },
   markdown: {

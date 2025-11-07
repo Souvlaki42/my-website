@@ -1,0 +1,106 @@
+---
+import { actions } from "astro:actions";
+import Code from "~/components/Code.astro";
+import Pagination from "~/components/Pagination.astro";
+import Search from "~/components/Search.astro";
+import Base from "~/layouts/Base.astro";
+import { formatDate } from "~/lib/utils";
+
+const page = Astro.url.searchParams.get("page") ?? "1";
+const perPage = Astro.url.searchParams.get("per_page") ?? "12";
+const search = Astro.url.searchParams.get("search") ?? undefined;
+
+const { data, error } = await Astro.callAction(actions.projects.getByQuery, {
+  searchQuery: search,
+  page: Number(page),
+  perPage: Number(perPage),
+});
+
+if (error) return Astro.redirect("/500");
+
+const {
+  projects: rawProjects,
+  hasNext,
+  hasPrevious,
+} = data ?? {
+  projects: [],
+  hasNext: false,
+  hasPrevious: false,
+};
+
+const projects = rawProjects.filter((project) => !project.is_private);
+---
+
+<Base title={"Projects"}>
+  <Code as="h1" code="# Welcome to my projects!" lang={"markdown"} />
+  <Code
+    as="h2"
+    code="## This is where I showcase my somewhat interesting and/or valuables public projects with the world."
+    lang={"markdown"}
+  />
+  <Code
+    as="h3"
+    code="### I encourage you to take a look. Who knows, you might realize that I'll be a great resource for your company."
+    lang={"markdown"}
+  />
+  <Search search={search} />
+  {
+    projects && projects.length > 0 ? (
+      <section
+        id="projects"
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+      >
+        {projects.map((project) => {
+          const { repo_url, title, summary, tags, pushed_at, homepage } =
+            project;
+          const project_url = homepage?.trim() ? homepage.trim() : repo_url;
+          return (
+            <article class="w-full relative flex flex-col justify-center items-center p-6 bg-[#313244] rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
+              <h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">
+                <a
+                  href={project_url}
+                  class="text-sky-blue hover:text-light-blue hover:underline"
+                >
+                  {title}
+                </a>
+              </h2>
+              <p class="text-[#A6ADC8] mb-4">{summary}</p>
+              <a
+                href={project_url}
+                class="absolute w-full h-full top-0 left-0 no-underline text-transparent z-[-1]"
+                aria-label={title}
+              />
+              <div class="flex flex-wrap items-center mb-4">
+                {tags.map((tag) => (
+                  <a
+                    href={`/projects?page=${page}&per_page=${perPage}&search=tags:${tag}`}
+                    class="bg-[#45475A] text-[#F5E0DC] text-xs font-medium m-1 px-2.5 py-0.5 rounded hover:underline"
+                  >
+                    {tag}
+                  </a>
+                ))}
+              </div>
+              <div class="text-sm text-[#BAC2DE]">
+                {pushed_at && <p>Last pushed: {formatDate(pushed_at)}</p>}
+              </div>
+            </article>
+          );
+        })}
+      </section>
+    ) : (
+      <section id="no-projects" class="w-full flex justify-center items-center">
+        <span class="text-white m-2 text-center">
+          There are no projects at this page.
+        </span>
+      </section>
+    )
+  }
+  <Pagination
+    route="/projects"
+    page={page}
+    perPage={perPage}
+    hasNext={hasNext}
+    hasPrevious={hasPrevious}
+    search={search}
+  />
+</Base>

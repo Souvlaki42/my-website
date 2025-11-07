@@ -34,7 +34,7 @@ const {
     <ClientRouter />
   </head>
   <body
-    class="bg-mocha flex p-8 pt-16 h-screen flex-col items-center justify-center"
+    class="bg-mocha flex p-8 pt-24 h-screen flex-col items-center justify-center"
   >
     {TOP_BANNER !== "DISABLED" && <TopBanner />}
     <Header />
@@ -48,10 +48,10 @@ const {
       <slot />
       <Analytics />
       <SpeedInsights />
+      <footer class="text-isabelline font-semibold text-center relative">
+        © Ilias Moulas {new Date().getFullYear()}
+      </footer>
     </main>
-    <footer class="text-isabelline font-semibold text-center">
-      © Ilias Moulas {new Date().getFullYear()}
-    </footer>
     {
       import.meta.env.DEV ? (
         <div class="fixed bottom-1 left-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">

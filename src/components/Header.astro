@@ -7,25 +7,9 @@ import Link from "./Link.astro";
   <nav
     class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row items-center justify-center rounded-lg border-2"
   >
-    <Link href="/" title="Did you get it?">Terminal</Link>
-    <Link href={"/posts"}>Posts</Link>
-    <Link href="/code">Code</Link>
-    <button role="button" aria-label="Search Icon"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-search text-sky-blue hover:text-light-blue mx-4 font-bold hover:cursor-pointer"
-        ><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"
-        ></path></svg
-      ></button
-    >
+    <Link underline={false} href="/" title="Did you get it?">Terminal</Link>
+    <Link underline={false} href={"/posts"}>Posts</Link>
+    <Link underline={false} href="/projects">Projects</Link>
   </nav>
   <nav
     class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row items-center justify-center rounded-lg border-2"
@@ -55,6 +39,15 @@ import Link from "./Link.astro";
         loading={"eager"}
         alt="Updated Bluesky logo, published February 2024."
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/64px-Bluesky_Logo.svg.png?20240211144739"
+      />
+    </Link>
+    <Link href="/discord" class="mx-2 opacity-100 hover:opacity-75"
+      ><Image
+        width={32}
+        height={32}
+        loading={"eager"}
+        alt="Discord logo"
+        src="https://di8m9w6rqrh5d.cloudfront.net/1zObrQ89Q4wHhgFCfYIUhMUvmNf4XjxO/preview_d6fabf40-52a0-4b4c-ad08-cdbd7497dd4f.svg"
       />
     </Link>
     <Link href="/rss.xml" class="mx-2 opacity-100 hover:opacity-75"

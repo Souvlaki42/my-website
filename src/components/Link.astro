@@ -6,8 +6,8 @@ import {
   normalizeURLPath,
 } from "~/lib/utils";
 
-type Props = HTMLAtrributesWithSlot<"a">;
-const { href, class: className, ...props } = Astro.props;
+type Props = HTMLAtrributesWithSlot<"a"> & { underline?: boolean };
+const { href, class: className, underline = true, ...props } = Astro.props;
 
 const pathName = new URL(Astro.request.url).pathname;
 const hrefStr = href?.toString();
@@ -22,7 +22,8 @@ const isExternal = isURLExternal(hrefStr);
   target={isExternal ? "_blank" : undefined}
   rel={isExternal ? "noopener noreferrer" : undefined}
   class={cn(
-    "font-bold mx-2 sm:mx-4 hover:underline",
+    "font-bold mx-2 sm:mx-4",
+    underline ? "hover:underline" : undefined,
     isActive ? "text-sea-blue" : "text-sky-blue hover:text-light-blue",
     className,
   )}
