@@ -2,7 +2,9 @@
 import { Code as AstroCode } from "astro:components";
 import { isURLExternal } from "~/lib/utils";
 
-type Props = Parameters<typeof AstroCode>[number];
+type Props = Parameters<typeof AstroCode>[number] & {
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "fragment";
+};
 
 const injectLinksTransformer = (html: string) => {
   const output = html.replace(
@@ -23,18 +25,42 @@ const {
   lang = "plaintext",
   wrap = true,
   theme = "catppuccin-mocha",
+  as = "fragment",
 } = Astro.props;
+
+const Element = as ?? "Fragment";
 ---
 
-<AstroCode
-  code={code}
-  lang={lang}
-  wrap={wrap}
-  theme={theme}
-  transformers={[
-    {
-      name: "inject-links",
-      postprocess: injectLinksTransformer,
-    },
-  ]}
-/>
+{
+  Element === "fragment" ? (
+    <>
+      <AstroCode
+        code={code}
+        lang={lang}
+        wrap={wrap}
+        theme={theme}
+        transformers={[
+          {
+            name: "inject-links",
+            postprocess: injectLinksTransformer,
+          },
+        ]}
+      />
+    </>
+  ) : (
+    <Element>
+      <AstroCode
+        code={code}
+        lang={lang}
+        wrap={wrap}
+        theme={theme}
+        transformers={[
+          {
+            name: "inject-links",
+            postprocess: injectLinksTransformer,
+          },
+        ]}
+      />
+    </Element>
+  )
+}

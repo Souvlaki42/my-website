@@ -1,0 +1,41 @@
+---
+type Props = {
+  search?: string;
+};
+
+const { search } = Astro.props;
+---
+
+<section id="search" class="my-4 w-full">
+  <form class="w-full flex items-center" data-form>
+    <input
+      type="search"
+      name="search"
+      id="search-query"
+      placeholder="Enter a search term..."
+      class="w-full rounded-lg p-2 bg-mocha border-2 border-sky-500 focus-within:border-sky-700 text-white font-medium outline-none"
+      value={search ?? ""}
+      title="You can prioritize searching for title, summary, or tags by prefixing your search term with these keywords followed by a colon. (e.g., tags:example)"
+      data-search-query
+    />
+  </form>
+</section>
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-form]");
+  const searchInput = document.querySelector<HTMLInputElement>(
+    "[data-search-query]",
+  );
+  if (!form) throw new Error("Search form was not found!");
+  if (!searchInput) throw new Error("Search input was not found!");
+  form.addEventListener("submit", (e: SubmitEvent) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    let searchQuery = formData.get("search")?.toString();
+    const searchParams = new URLSearchParams(window.location.search);
+    const url = new URL(window.location.pathname, window.location.origin);
+    url.searchParams.set("search", searchQuery ?? "");
+    url.searchParams.set("page", searchParams.get("page") ?? "1");
+    url.searchParams.set("per_page", searchParams.get("per_page") ?? "12");
+    window.location.assign(url.toString());
+  });
+</script>

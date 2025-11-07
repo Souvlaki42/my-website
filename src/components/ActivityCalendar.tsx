@@ -1,7 +1,7 @@
 import { cloneElement } from "react";
 import GithubCalendar from "react-github-calendar";
 import { Tooltip } from "react-tooltip";
-import { formatDate } from "~/lib/utils";
+import { formatOrdinalDate } from "~/lib/utils";
 import "react-tooltip/dist/react-tooltip.css";
 
 export default function ActivityCalendar() {
@@ -23,7 +23,7 @@ export default function ActivityCalendar() {
         renderBlock={(block, activity) =>
           cloneElement(block, {
             "data-tooltip-id": "react-tooltip",
-            "data-tooltip-html": `${activity.count} contributions on ${formatDate(activity.date)}.`,
+            "data-tooltip-html": `${activity.count} contributions on ${formatOrdinalDate(activity.date)}.`,
           })
         }
       />

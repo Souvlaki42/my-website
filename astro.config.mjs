@@ -31,6 +31,11 @@ export default defineConfig({
         optional: true,
         default: "DISABLED",
       }),
+      GITHUB_TOKEN: envField.string({
+        context: "server",
+        access: "secret",
+        optional: false,
+      }),
     },
   },
   site: "https://moulas.dev",
