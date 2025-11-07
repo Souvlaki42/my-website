@@ -40,7 +40,10 @@ export default defineConfig({
     "/bluesky": "https://bsky.app/profile/moulas.dev",
     "/discord": "https://discord.gg/PDmHV6NeCF",
   },
-  adapter: vercel(),
+  output: "server",
+  adapter: vercel({
+    devImageService: "sharp",
+  }),
   integrations: [react(), sitemap()],
   devToolbar: { enabled: false },
   markdown: {
