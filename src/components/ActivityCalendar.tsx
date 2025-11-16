@@ -1,5 +1,5 @@
 import { cloneElement } from "react";
-import GithubCalendar from "react-github-calendar";
+import { GitHubCalendar } from "react-github-calendar";
 import { Tooltip } from "react-tooltip";
 import { formatOrdinalDate } from "~/lib/utils";
 import "react-tooltip/dist/react-tooltip.css";
@@ -7,7 +7,7 @@ import "react-tooltip/dist/react-tooltip.css";
 export default function ActivityCalendar() {
   return (
     <div className="font-semibold border-sky-blue border-3 rounded-xl p-4">
-      <GithubCalendar
+      <GitHubCalendar
         username="Souvlaki42"
         weekStart={1}
         errorMessage="Something went wrong when fetching GitHub activity. Please try again later."
