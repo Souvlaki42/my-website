@@ -8,7 +8,6 @@ import Link from "./Link.astro";
     class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row items-center justify-center rounded-lg border-2"
   >
     <Link underline={false} href="/" title="Did you get it?">Terminal</Link>
-    <Link underline={false} href={"/posts"}>Posts</Link>
     <Link underline={false} href="/projects">Projects</Link>
   </nav>
   <nav
@@ -48,15 +47,6 @@ import Link from "./Link.astro";
         loading={"eager"}
         alt="Discord logo"
         src="https://di8m9w6rqrh5d.cloudfront.net/1zObrQ89Q4wHhgFCfYIUhMUvmNf4XjxO/preview_d6fabf40-52a0-4b4c-ad08-cdbd7497dd4f.svg"
-      />
-    </Link>
-    <Link href="/rss.xml" class="mx-2 opacity-100 hover:opacity-75"
-      ><Image
-        width={32}
-        height={32}
-        loading={"eager"}
-        alt="Rss-feed"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Rss-feed.svg/32px-Rss-feed.svg.png?20100128031959"
       />
     </Link>
   </nav>
