@@ -43,7 +43,7 @@ export default defineConfig({
     "/github": "https://github.com/Souvlaki42",
     "/twitter": "https://x.com/souvlaki42",
     "/bluesky": "https://bsky.app/profile/moulas.dev",
-    "/discord": "https://discord.gg/PDmHV6NeCF",
+    "/discord": "https://discord.gg/gjkj3gMBB7",
   },
   output: "server",
   adapter: vercel({
