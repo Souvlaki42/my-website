@@ -10,8 +10,8 @@ Hope I'll land a job or at least give you something useful if you visit it 😃.
 - [x] Add prettier and eslint
 - [x] Create a navbar
 - [x] Create a homepage
-- [ ] Make search bar
-- [ ] Showcase my projects
+- [x] Make search bar
+- [x] Showcase my projects
 - [ ] Maybe start a blog...
 
 ## Getting Started
