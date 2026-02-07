@@ -63,6 +63,7 @@ Ensure you have the following installed:
 - [Github logo](https://commons.wikimedia.org/wiki/File:Github_logo_svg.svg)
 - [Twitter logo](https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg)
 - [Discord logo](https://di8m9w6rqrh5d.cloudfront.net/1zObrQ89Q4wHhgFCfYIUhMUvmNf4XjxO/preview_d6fabf40-52a0-4b4c-ad08-cdbd7497dd4f.svg)
+- [Linkedin logo](https://upload.wikimedia.org/wikipedia/commons/c/c9/Linkedin.svg)
 - [Color palette](https://color.adobe.com/My-website-color-theme-65fa4997-5215-4b55-bead-c36f8ccc804f)
 
 ### Inspirations

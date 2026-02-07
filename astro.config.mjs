@@ -44,6 +44,7 @@ export default defineConfig({
     "/twitter": "https://x.com/souvlaki42",
     "/bluesky": "https://bsky.app/profile/moulas.dev",
     "/discord": "https://discord.gg/gjkj3gMBB7",
+    "/linkedin": "https://www.linkedin.com/in/ilias-moulas-736902220/",
   },
   output: "server",
   adapter: vercel({
