@@ -7,7 +7,7 @@ import {
 } from "~/lib/utils";
 
 type Props = HTMLAtrributesWithSlot<"a"> & { underline?: boolean };
-const { href, class: className, underline = true, ...props } = Astro.props;
+const { href, class: className, underline = false, ...props } = Astro.props;
 
 const pathName = new URL(Astro.request.url).pathname;
 const hrefStr = href?.toString();
