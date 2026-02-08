@@ -57,7 +57,7 @@ const projects = rawProjects.filter((project) => !project.is_private);
             project;
           const project_url = homepage?.trim() ? homepage.trim() : repo_url;
           return (
-            <article class="w-full relative flex flex-col justify-center items-center p-6 bg-[#313244] rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
+            <article class="w-full relative flex flex-col justify-center items-center p-6 bg-surface-dark rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
               <h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">
                 <a
                   href={project_url}
