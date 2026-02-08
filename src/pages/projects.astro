@@ -6,6 +6,8 @@ import Search from "~/components/Search.astro";
 import Base from "~/layouts/Base.astro";
 import { formatDate } from "~/lib/utils";
 
+export const prerender = false;
+
 const page = Astro.url.searchParams.get("page") ?? "1";
 const perPage = Astro.url.searchParams.get("per_page") ?? "12";
 const search = Astro.url.searchParams.get("search") ?? undefined;
