@@ -18,6 +18,8 @@ const {
   class: className,
   ...props
 } = Astro.props;
+
+const currentUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -31,6 +33,7 @@ const {
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={currentUrl} />
     <ClientRouter />
   </head>
   <body class="bg-mocha flex p-8 pt-24 flex-col items-center justify-center">
