@@ -1,6 +1,6 @@
 import { ActionError, defineAction } from "astro:actions";
 import { GITHUB_TOKEN } from "astro:env/server";
-import { z } from "astro:schema";
+import { z } from "astro/zod";
 import type Fuse from "fuse.js";
 import {
   isFuseKey,
