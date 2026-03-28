@@ -38,6 +38,7 @@ export default defineConfig({
     },
   },
   site: "https://moulas.dev",
+  // TODO: make sure external link redirects are target _blank
   redirects: {
     "/github": "https://github.com/Souvlaki42",
     "/twitter": "https://x.com/souvlaki42",
