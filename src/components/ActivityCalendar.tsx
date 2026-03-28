@@ -6,7 +6,7 @@ import "react-tooltip/dist/react-tooltip.css";
 
 export default function ActivityCalendar() {
   return (
-    <div className="font-semibold border-sky-blue border-3 rounded-xl p-4">
+    <div className="font-semibold border-sky-blue hover:border-light-blue border-3 rounded-xl p-4">
       <GitHubCalendar
         username="Souvlaki42"
         weekStart={1}
