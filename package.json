@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
-    "format": "biome check --write"
+    "check": "biome check --write",
+    "postinstall": "biome migrate --write"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.2",
