@@ -6,7 +6,6 @@ import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
 import rehypeExternalLinks from "rehype-external-links";
-import { objectKeys, TOP_BANNER_OPTIONS } from "./src/lib/utils";
 
 export default defineConfig({
   vite: {
@@ -27,7 +26,7 @@ export default defineConfig({
       TOP_BANNER: envField.enum({
         context: "server",
         access: "public",
-        values: objectKeys(TOP_BANNER_OPTIONS),
+        values: ["DISABLED", "MAINTENANCE", "CONSTRUCTION"],
         optional: true,
         default: "DISABLED",
       }),

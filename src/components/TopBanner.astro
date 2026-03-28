@@ -1,6 +1,13 @@
 ---
 import { TOP_BANNER } from "astro:env/server";
-import { TOP_BANNER_OPTIONS } from "~/lib/utils";
+
+const TOP_BANNER_OPTIONS = {
+  DISABLED: undefined,
+  MAINTENANCE:
+    "This site is currently under maintenance. Please wait for a while.",
+  CONSTRUCTION:
+    "This site is currently under construction. Big things may come.",
+} as const;
 ---
 
 <div
