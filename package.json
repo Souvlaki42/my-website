@@ -12,6 +12,7 @@
     "postinstall": "biome migrate --write"
   },
   "dependencies": {
+    "@astrojs/markdown-satteri": "^0.3.3",
     "@astrojs/react": "^6.0.1",
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/vercel": "^11.0.2",
@@ -25,7 +26,7 @@
     "react-dom": "^19.2.4",
     "react-github-calendar": "^5.0.5",
     "react-tooltip": "^5.30.0",
-    "rehype-external-links": "^3.0.0",
+    "satteri-external-links": "^0.1.0",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.2"
   },

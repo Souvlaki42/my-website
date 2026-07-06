@@ -1,11 +1,12 @@
 // @ts-check
 
+import { satteri } from "@astrojs/markdown-satteri";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
-import rehypeExternalLinks from "rehype-external-links";
+import satteriExternalLinks from "satteri-external-links";
 
 export default defineConfig({
   vite: {
@@ -55,20 +56,18 @@ export default defineConfig({
   devToolbar: { enabled: false },
   markdown: {
     syntaxHighlight: "shiki",
-    gfm: true,
-    smartypants: true,
+    processor: satteri({
+      features: { gfm: true, smartPunctuation: true },
+      hastPlugins: [
+        satteriExternalLinks({
+          target: "_blank",
+          rel: ["noopener", "noreferrer"],
+        }),
+      ],
+    }),
     shikiConfig: {
       theme: "catppuccin-mocha",
       wrap: true,
     },
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        {
-          target: "_blank",
-          rel: ["noopener", "noreferrer"],
-        },
-      ],
-    ],
   },
 });
