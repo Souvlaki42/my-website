@@ -9,12 +9,14 @@ import {
 type Props = HTMLAtrributesWithSlot<"a"> & {
   underline?: boolean;
   external?: boolean;
+  margin?: boolean;
 };
 const {
   href,
   class: className,
   underline = false,
   external = false,
+  margin = true,
   ...props
 } = Astro.props;
 
@@ -31,7 +33,8 @@ const isExternal = external || isURLExternal(hrefStr);
   target={isExternal ? "_blank" : undefined}
   rel={isExternal ? "noopener noreferrer" : undefined}
   class={cn(
-    "font-bold mx-2 sm:mx-4",
+    "font-bold",
+    margin ? "mx-2 sm:mx-4" : undefined,
     underline ? "hover:underline" : undefined,
     isActive ? "text-sea-blue" : "text-sky-blue hover:text-light-blue",
     className,

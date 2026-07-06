@@ -1,6 +1,7 @@
 ---
 import { actions } from "astro:actions";
 import Code from "~/components/Code.astro";
+import Link from "~/components/Link.astro";
 import Pagination from "~/components/Pagination.astro";
 import Search from "~/components/Search.astro";
 import Base from "~/layouts/Base.astro";
@@ -59,27 +60,28 @@ const projects = rawProjects.filter((project) => !project.is_private);
           return (
             <article class="w-full relative flex flex-col justify-center items-center p-6 bg-surface-dark rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
               <h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">
-                <a
+                <Link
                   href={project_url}
                   class="text-sky-blue hover:text-light-blue hover:underline"
                 >
                   {title}
-                </a>
+                </Link>
               </h2>
               <p class="text-[#A6ADC8] mb-4">{summary}</p>
-              <a
+              <Link
                 href={project_url}
                 class="absolute w-full h-full top-0 left-0 no-underline text-transparent z-[-1]"
                 aria-label={title}
               />
               <div class="flex flex-wrap items-center mb-4">
                 {tags.map((tag) => (
-                  <a
+                  <Link
+                    margin={false}
                     href={`/projects?page=${page}&per_page=${perPage}&search=tags:${tag}`}
                     class="bg-[#45475A] text-[#F5E0DC] text-xs font-medium m-1 px-2.5 py-0.5 rounded hover:underline"
                   >
                     {tag}
-                  </a>
+                  </Link>
                 ))}
               </div>
               <div class="text-sm text-[#BAC2DE]">

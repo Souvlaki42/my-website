@@ -42,7 +42,9 @@ export const normalizeURLPath = (path?: string) => {
 };
 
 export const isURLExternal = (url?: string) =>
-  url?.startsWith("http://") || url?.startsWith("https://");
+  url?.startsWith("http://") ||
+  url?.startsWith("https://") ||
+  url?.startsWith("mailto:");
 
 const fuseKeys = ["title", "summary", "tags"] as const;
 
