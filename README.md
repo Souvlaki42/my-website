@@ -22,8 +22,8 @@ Follow these instructions to set up the project locally.
 
 Ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/en) (v22.14.0 or later)
-- [Pnpm](https://pnpm.io/) (v10.6.2 or later)
+- [Node.js](https://nodejs.org/en) (v24 or later)
+- [Pnpm](https://pnpm.io/) (v11.1.3 or later)
 
 ### Installation
 
@@ -74,4 +74,4 @@ Ensure you have the following installed:
 
 ## License
 
-This project is licensed under the [Unlicense](UNLICENSE)
+This project is licensed under the public domain. See [LICENSE](./LICENSE) to learn more.
