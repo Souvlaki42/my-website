@@ -50,9 +50,6 @@ importers:
       react-tooltip:
         specifier: ^5.30.0
         version: 5.30.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      satteri-external-links:
-        specifier: ^0.1.0
-        version: 0.1.0(satteri@0.9.4)
       tailwind-merge:
         specifier: ^3.5.0
         version: 3.5.0
@@ -1988,11 +1985,6 @@ packages:
     resolution: {integrity: sha512-IjZYiLxZwpnhwhdBH2ugdTGVSdhCQUmLxLoqyjiL0JxYjyRst+5a0P3xfrTxJ5F638j4Mvvw5FAX5XE6eHpXbA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
-
-  satteri-external-links@0.1.0:
-    resolution: {integrity: sha512-Gxr1Lyxq13cCyayCwsxnqvtRJqfKydOGufMGsVgL4VpuSxq132FGX13t0KNmMiOA0T+jEZg7WD1cZUApd38Z3Q==}
-    peerDependencies:
-      satteri: '>=0.7.0'
 
   satteri@0.9.4:
     resolution: {integrity: sha512-BKob126Tay84diOZsnVNH/Q/c+3njPJTCad3w5zLKa6j8bVjxskPNHDtxrMwYK4bN/RlqUSdMnPwKY4k65EMOQ==}
@@ -4220,10 +4212,6 @@ snapshots:
       '@rolldown/binding-wasm32-wasi': 1.1.4
       '@rolldown/binding-win32-arm64-msvc': 1.1.4
       '@rolldown/binding-win32-x64-msvc': 1.1.4
-
-  satteri-external-links@0.1.0(satteri@0.9.4):
-    dependencies:
-      satteri: 0.9.4
 
   satteri@0.9.4:
     dependencies:

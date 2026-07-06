@@ -6,7 +6,6 @@ import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
-import satteriExternalLinks from "satteri-external-links";
 
 export default defineConfig({
   vite: {
@@ -58,12 +57,6 @@ export default defineConfig({
     syntaxHighlight: "shiki",
     processor: satteri({
       features: { gfm: true, smartPunctuation: true },
-      hastPlugins: [
-        satteriExternalLinks({
-          target: "_blank",
-          rel: ["noopener", "noreferrer"],
-        }),
-      ],
     }),
     shikiConfig: {
       theme: "catppuccin-mocha",

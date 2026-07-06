@@ -8,8 +8,7 @@
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
-    "check": "biome check --write",
-    "postinstall": "biome migrate --write"
+    "check": "biome check --write"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.3.3",
@@ -26,7 +25,6 @@
     "react-dom": "^19.2.4",
     "react-github-calendar": "^5.0.5",
     "react-tooltip": "^5.30.0",
-    "satteri-external-links": "^0.1.0",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.2"
   },
