@@ -4,16 +4,6 @@ This is where I store my personal portfolio, my own space on the internet.
 Here I share my opinions and experience, showcase my work and highlight my abilities.
 Hope I'll land a job or at least give you something useful if you visit it 😃.
 
-## Todo
-
-- [x] Add tailwind 4
-- [x] Add prettier and eslint
-- [x] Create a navbar
-- [x] Create a homepage
-- [x] Make search bar
-- [x] Showcase my projects
-- [ ] Maybe start a blog...
-
 ## Getting Started
 
 Follow these instructions to set up the project locally.
