@@ -13,6 +13,7 @@ export type HTMLAtrributesWithSlot<Tag extends HTMLTag> = Omit<
   "children"
 >;
 
+// TASK(20261011-202153): adopt temporal api
 const getOrdinal = (n: number) => {
   const s = ["th", "st", "nd", "rd"];
   const v = n % 100;
@@ -50,6 +51,7 @@ const fuseKeys = ["title", "summary", "tags"] as const;
 
 export type FuseKey = (typeof fuseKeys)[number];
 
+// TASK(20261011-201928): fix search system
 export const makeFuseInstances = <T>(data: T[]): Record<FuseKey, Fuse<T>> => {
   const instances: Record<string, Fuse<T>> = {};
   const keys: Record<FuseKey, { name: FuseKey; weight: number }[]> = {

@@ -1,7 +1,7 @@
 # fix layout shift
 
 - STATUS: OPEN
-- PRIORITY: 80
+- PRIORITY: 50
 - TAGS: bugs
 
 No description.
