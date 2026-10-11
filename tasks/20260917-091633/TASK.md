@@ -1,6 +1,6 @@
 # start a blog
 
-- STATUS: OPEN
+- STATUS: CLOSED
 - PRIORITY: 90
 - TAGS: features
 
