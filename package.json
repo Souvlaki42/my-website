@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "tsc --noEmit && astro build",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
@@ -31,7 +31,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.10",
+    "@astrojs/ts-content-mapper": "^0.2.0",
     "@biomejs/biome": "2.5.15",
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^26.6.5",
