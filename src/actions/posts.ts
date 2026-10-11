@@ -1,5 +1,6 @@
 import { ActionError, defineAction } from "astro:actions";
-import { type DataEntryMap, getCollection, getEntry, z } from "astro:content";
+import { type DataEntryMap, getCollection, getEntry } from "astro:content";
+import { z } from "astro/zod";
 import type Fuse from "fuse.js";
 import {
   isFuseKey,
