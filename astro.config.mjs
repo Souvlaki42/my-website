@@ -1,6 +1,7 @@
 // @ts-check
 
 import { satteri } from "@astrojs/markdown-satteri";
+import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
@@ -51,7 +52,7 @@ export default defineConfig({
     imageService: true,
     devImageService: "sharp",
   }),
-  integrations: [react(), sitemap()],
+  integrations: [react(), sitemap(), mdx()],
   devToolbar: { enabled: false },
   markdown: {
     syntaxHighlight: "shiki",

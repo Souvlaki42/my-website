@@ -1,0 +1,53 @@
+---
+import { actions } from "astro:actions";
+import { render } from "astro:content";
+import Code from "~/components/Code.astro";
+import Comments from "~/components/Comments.astro";
+import Base from "~/layouts/Base.astro";
+import { compareAndFormatDates } from "~/lib/utils";
+
+export const prerender = false;
+
+const { id = "" } = Astro.params;
+const { data: post, error } = await Astro.callAction(actions.posts.getById, {
+  id,
+});
+
+if (error || !post) if (error) return Astro.redirect("/404");
+
+const { title, summary, created, modified, tags } = post.data;
+const { Content } = await render(post);
+
+const [sameDay, [createdDate, modifiedDate]] = compareAndFormatDates(
+  created,
+  modified,
+);
+---
+
+<Base
+  title={title}
+  description={summary}
+  class="justify-start"
+>
+  <Code as="h1" code={`# ${title}`} lang={"markdown"} />
+  <Code as="h2" code={`## ${summary}`} lang={"markdown"} />
+  <div class="justify-between">
+    <div>
+      <Code as="h3" code={`### ${tags.join(", ")}`} lang={"markdown"} />
+    </div>
+    <Code
+      as="h4"
+      code={`#### Created: ${createdDate}${!sameDay ? ` | Modified: ${modifiedDate}` : ""}`}
+      lang={"markdown"}
+    />
+  </div>
+  <hr class="m-4" />
+  <article
+    id="article"
+    role="article"
+    class="prose mx-auto mt-8 max-w-3xl prose-pre:border prose-pre:border-skin-line prose-pre:border-solid prose-invert"
+  >
+    <Content />
+  </article>
+  <Comments />
+</Base>
