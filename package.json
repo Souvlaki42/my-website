@@ -11,8 +11,10 @@
     "check": "biome check --write"
   },
   "dependencies": {
-    "@astrojs/markdown-satteri": "0.4.3",
+    "@astrojs/markdown-satteri": "^0.4.3",
+    "@astrojs/mdx": "^8.0.3",
     "@astrojs/react": "7.0.1",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "3.7.4",
     "@astrojs/vercel": "11.0.13",
     "@tailwindcss/vite": "^4.3.3",
