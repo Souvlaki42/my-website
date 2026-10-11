@@ -1,6 +1,6 @@
 # migrate to ts 7
 
-- STATUS: OPEN
+- STATUS: CLOSED
 - PRIORITY: 100
 - TAGS: migrations
 
