@@ -1,12 +1,12 @@
 ---
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import { SITE_DESCRIPTION, SITE_NAME, TOP_BANNER } from "astro:env/server";
 import { ClientRouter } from "astro:transitions";
 import Header from "~/components/Header.astro";
+import TopBanner from "~/components/TopBanner.astro";
 import { cn, type HTMLAtrributesWithSlot } from "~/lib/utils";
 import "~/styles/global.css";
-import Analytics from "@vercel/analytics/astro";
-import SpeedInsights from "@vercel/speed-insights/astro";
-import TopBanner from "~/components/TopBanner.astro";
 
 export type Props = HTMLAtrributesWithSlot<"main"> & {
   title?: string;
@@ -49,7 +49,7 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site);
       <slot />
       <Analytics />
       <SpeedInsights />
-      <footer class="text-isabelline font-semibold text-center relative">
+      <footer class="text-isabelline font-semibold text-center relative m-4">
         © Ilias Moulas {new Date().getFullYear()}
       </footer>
     </main>
