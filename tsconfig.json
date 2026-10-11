@@ -8,11 +8,5 @@
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
-  },
-  "contentMappers": [
-    {
-      "package": "@astrojs/ts-content-mapper",
-      "extensions": [".astro"]
-    }
-  ]
+  }
 }
