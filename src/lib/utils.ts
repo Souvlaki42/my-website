@@ -14,27 +14,12 @@ export type HTMLAtrributesWithSlot<Tag extends HTMLTag> = Omit<
 >;
 
 // TASK(20261011-202153): adopt temporal api
-const getOrdinal = (n: number) => {
-  const s = ["th", "st", "nd", "rd"];
-  const v = n % 100;
-  return n + (s[(v - 20) % 10] || s[v] || s[0]);
-};
-
-export const formatOrdinalDate = (dateStr: string) => {
-  const date = new Date(dateStr);
-  const month = new Intl.DateTimeFormat(undefined, { month: "long" }).format(
-    date,
-  );
-  const day = date.getDate();
-  return `${month} ${getOrdinal(day)}`;
-};
-
-export const formatDate = (input: Date | string | number): string => {
-  return new Date(input).toLocaleDateString(undefined, {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
+export const compareAndFormatDates = (
+  ...inputs: Date[]
+) => {
+  const formatted = inputs.map((date) => date.toLocaleDateString());
+  const equal = formatted.every((date) => date === formatted[0]);
+  return [equal, formatted] as const;
 };
 
 export const normalizeURLPath = (path?: string) => {
@@ -101,12 +86,4 @@ export const safeAwait = async <T, E = Error>(
   } catch (err) {
     return [err as E, null];
   }
-};
-
-export const compareAndFormatDates = (
-  ...inputs: (Date | string | number)[]
-) => {
-  const formatted = inputs.map((date) => formatDate(date));
-  const equal = formatted.every((date) => date === formatted[0]);
-  return [equal, formatted] as const;
 };
