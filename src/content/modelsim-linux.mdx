@@ -1,0 +1,123 @@
+---
+title: Linux Modelsim Guide
+summary: A guide on how to install Modelsim 13.1 on modern Linux systems
+draft: false
+tags: [modelsim, linux, guide]
+created: 2026-09-14
+modified: 2026-10-13
+---
+
+[Modelsim](https://en.wikipedia.org/wiki/ModelSim) is a very useful software product Siemens made back in the day. Intel/Altera used to bundle it's FPGA Quartus 2 software.
+
+I was unlucky enough to need version 13.1 of it from 2013, specifically for university.
+
+While it has a Linux version available, it's too old for any modern distribution to provide the archaic dependencies it needs, not even Debian.
+
+I sincerely tried to make it work on both Arch and Fedora 44, but ended up resorting to Distrobox instead. There, I managed to get it working on Ubuntu 18.04 LTS within a few hours.
+
+This is a detailed guide on how to get it up and running too in case, you end up in a similar position as I am right now.
+
+## Prerequisites
+
+To follow this guide, you'll obviously need [Distrobox](https://distrobox.it/) installed, as well as xhost (even on Wayland) and lastly, [Podman](https://podman.io/) or [Docker](https://www.docker.com/products/docker-desktop/) as Distrobox's backend.
+
+I apologize, that I didn't provide installation instructions for these. Try googling it first, but please don't hesitate to ask for help in the comments, if needed.
+
+## Installation
+
+First, create the file *$HOME/.distroboxrc* and write to it:
+```
+xhost +si:localuser:$USER >/dev/null
+```
+This forwards your display server to distrobox
+
+Dedide which directory will store the container's HOME.
+I chose **/home/$USER/opt/Modelsim**. You can use any path you want but just remember to change anything below that uses it.
+
+Download [modelsim (individual files)](https://www.altera.com/downloads/fpga-development-tools/quartus-ii-web-edition-design-software-version-13-1-linux) and [freetype 2.4.12](http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.bz2)
+
+Create the box itself with Ubuntu 18.04 on it:
+```bash
+distrobox create --name Modelsim --image docker.io/library/ubuntu:18.04 --init --hostname Modelsim --additional-packages "systemd" --home "/home/$USER/opt/Modelsim/" --yes
+```
+
+Now enter the box and wait for its initialization:
+```bash
+distrobox enter Modelsim
+cd $HOME
+```
+
+Then, add the 32 bit repo and update everything:
+```bash
+sudo dpkg --add-architecture i386
+sudo apt update && sudo apt upgrade
+```
+
+Now, install all dependencies:
+```bash
+sudo apt install nano libpam-systemd build-essential expat:i386 fontconfig:i386 g++-multilib gcc-multilib lib32gcc1 lib32stdc++6 lib32z1 libc6:i386 libcanberra0:i386 libexpat1:i386 libfreetype6:i386 libgtk-3-0:i386 libice6:i386 libncurses5 libncurses5:i386 libsm6:i386 libx11-6:i386 libxau6:i386 libxdmcp6:i386 libxext6:i386 libxft2 libxft2:i386 libxrender1:i386 libxt6:i386 libxtst6 libxtst6:i386 zlib1g:i386
+```
+
+Move the two files inside the container's home directory.
+
+Run the modelsim installer, answer the questions and let it do its job.
+```bash
+sudo chmod +x ./ModelSimSetup-13.1.0.162.run
+sudo ./ModelSimSetup-13.1.0.162.run
+cd $HOME/altera/13.1/modelsim_ase/bin
+```
+
+Modify the *vsim* file using `sudo TERM=xterm nano vsim` or any text editor:
+  Change the line `vco="linux_rh60"` to `vco="linux"`
+  Change the line `mode=${MTI_VCO_MODE:-''}` to `mode=${MTI_VCO_MODE:-"32"}`
+  Look for this line: `` dir=`dirname $arg0` `` and insert the following new line under it: `export LD_LIBRARY_PATH="${dir}/lib32"`
+
+Next, let's compile freetype:
+```bash
+cd $HOME
+tar -xf freetype-2.4.12.tar.bz2
+cd freetype-2.4.12
+./configure --build=i686-pc-linux-gnu "CFLAGS=-m32" "CXXFLAGS=- m32" "LDFLAGS=-m32"
+make -j
+```
+
+After that, put the freetype object files into that lib32 directory:
+```bash
+cd $HOME
+sudo mkdir altera/13.1/modelsim_ase/lib32
+sudo cp freetype-2.4.12/objs/.libs/libfreetype.so* altera/13.1/modelsim_ase/lib32
+```
+
+Export the script to another location outside the container's home:
+```bash
+distrobox-export -b $HOME/altera/13.1/modelsim_ase/bin/vsim -ep "/home/$USER/.local/bin" -ef "-gui"
+exit
+```
+
+## Optional
+
+Lastly, you can create a desktop file for it so it shows up in your application launcher. Just write the following to *$HOME/.local/share/applications/modelsim_exe.desktop*:
+```ini
+[Desktop Entry]
+Type=Application
+Name=ModelSim
+Comment=ModelSim running in Ubuntu 18.04 Distrobox
+Exec=/home/$USER/.local/bin/vsim
+Icon=modelsim
+Terminal=false
+Categories=Development;Electronics;
+StartupWMClass=vsim
+```
+
+If the app doesn't show up immediately, restart your system or run:
+```bash
+update-desktop-database $HOME/.local/share/applications/
+```
+
+That's it! It should be working now. If not, hit me up.
+
+## Credits
+https://distrobox.it/usage/distrobox-export/
+https://mil.ufl.edu/3701/docs/quartus/linux/ModelSim_linux.pdf
+https://gist.github.com/robodhruv/e2c0945cc78006b00d4206846bdb7657
+https://github.com/robodhruv/Randoms/blob/master/VHDL/Getting%20Started.pdf
