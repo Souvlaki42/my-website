@@ -3,10 +3,16 @@ import { actions } from "astro:actions";
 import { render } from "astro:content";
 import Code from "~/components/Code.astro";
 import Comments from "~/components/Comments.astro";
+import Link from "~/components/Link.astro";
 import Base from "~/layouts/Base.astro";
 import { compareAndFormatDates } from "~/lib/utils";
 
 export const prerender = false;
+
+export const components = {
+  a: Link,
+  code: Code
+};
 
 const { id = "" } = Astro.params;
 const { data: post, error } = await Astro.callAction(actions.posts.getById, {
@@ -47,7 +53,7 @@ const [sameDay, [createdDate, modifiedDate]] = compareAndFormatDates(
     role="article"
     class="prose mx-auto mt-8 max-w-3xl prose-pre:border prose-pre:border-skin-line prose-pre:border-solid prose-invert"
   >
-    <Content />
+    <Content components={components} />
   </article>
   <Comments />
 </Base>
