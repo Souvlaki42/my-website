@@ -40,12 +40,15 @@ export default defineConfig({
   },
   site: "https://moulas.dev",
   redirects: {
+    // social media
     "/github": "https://github.com/Souvlaki42",
     "/twitter": "https://x.com/souvlaki42",
     "/bluesky": "https://bsky.app/profile/moulas.dev",
     "/discord": "https://discord.gg/gjkj3gMBB7",
     "/linkedin": "https://linkedin.com/in/ilias-moulas-736902220/",
+    // referrals
     "/sponsor": "https://github.com/sponsors/Souvlaki42",
+    "/codecrafters": "https://app.codecrafters.io/r/curious-reindeer-704519"
   },
   output: "static",
   adapter: vercel({
