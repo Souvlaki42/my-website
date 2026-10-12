@@ -48,7 +48,7 @@ export default defineConfig({
     "/linkedin": "https://linkedin.com/in/ilias-moulas-736902220/",
     // referrals
     "/sponsor": "https://github.com/sponsors/Souvlaki42",
-    "/codecrafters": "https://app.codecrafters.io/r/curious-reindeer-704519"
+    "/codecrafters": "https://app.codecrafters.io/r/curious-reindeer-704519",
   },
   output: "static",
   adapter: vercel({

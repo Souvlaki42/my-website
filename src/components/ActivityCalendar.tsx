@@ -3,7 +3,6 @@ import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
 export default function ActivityCalendar() {
-
   return (
     <div className="font-semibold border-sky-blue hover:border-light-blue border-3 rounded-xl p-2">
       <GitHubCalendar
