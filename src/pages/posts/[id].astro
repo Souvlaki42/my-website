@@ -5,7 +5,7 @@ import Code from "~/components/Code.astro";
 import Comments from "~/components/Comments.astro";
 import Link from "~/components/Link.astro";
 import Base from "~/layouts/Base.astro";
-import { compareAndFormatDates } from "~/lib/utils";
+import { compareAndFormatDates, getParsedAcceptLangs } from "~/lib/utils";
 
 export const prerender = false;
 
@@ -24,7 +24,12 @@ if (error || !post) if (error) return Astro.redirect("/404");
 const { title, summary, created, modified, tags } = post.data;
 const { Content } = await render(post);
 
-const [sameDay, [createdDate, modifiedDate]] = compareAndFormatDates(
+const [locale, _] = getParsedAcceptLangs(
+  Astro.request.headers.get("accept-language"),
+)[0] ?? [undefined];
+
+const [sameDay, createdDate, modifiedDate] = compareAndFormatDates(
+  locale,
   created,
   modified,
 );

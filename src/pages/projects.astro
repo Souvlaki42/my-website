@@ -5,7 +5,7 @@ import Link from "~/components/Link.astro";
 import Pagination from "~/components/Pagination.astro";
 import Search from "~/components/Search.astro";
 import Base from "~/layouts/Base.astro";
-import { compareAndFormatDates } from "~/lib/utils";
+import { compareAndFormatDates, getParsedAcceptLangs } from "~/lib/utils";
 
 export const prerender = false;
 
@@ -32,6 +32,10 @@ const {
 };
 
 const projects = rawProjects.filter((project) => !project.is_private);
+
+const [locale, _] = getParsedAcceptLangs(
+  Astro.request.headers.get("accept-language"),
+)[0] ?? [undefined];
 ---
 
 <Base title={"Projects"}>
@@ -84,7 +88,7 @@ const projects = rawProjects.filter((project) => !project.is_private);
                 ))}
               </div>
               <div class="text-sm text-[#BAC2DE]">
-                {pushed_at && <p>Last pushed: {compareAndFormatDates(new Date(pushed_at))}</p>}
+                {pushed_at && <p>Last pushed: {compareAndFormatDates(locale, new Date(pushed_at))[1]}</p>}
               </div>
             </article>
           );

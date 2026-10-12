@@ -13,13 +13,27 @@ export type HTMLAtrributesWithSlot<Tag extends HTMLTag> = Omit<
   "children"
 >;
 
+export const getParsedAcceptLangs = (header?: string | null) => {
+  const pairs = header?.split(",") ?? [];
+  const result: [string, string][] = [] as const;
+  for (let i = 0; i < pairs.length; i++) {
+    const pair = pairs[i].split(";");
+    if (pair.length == 1) result.push([pair[0], "1"]);
+    else result.push([pair[0], pair[1].split("=")[1]]);
+  }
+  return result;
+};
+
 // TASK(20261011-202153): adopt temporal api
 export const compareAndFormatDates = (
+  locale?: Intl.LocalesArgument | null,
   ...inputs: Date[]
 ) => {
-  const formatted = inputs.map((date) => date.toLocaleDateString());
+  const formatted = inputs.map((date) =>
+    date.toLocaleDateString(locale ?? undefined),
+  );
   const equal = formatted.every((date) => date === formatted[0]);
-  return [equal, formatted] as const;
+  return [equal, ...formatted] as const;
 };
 
 export const normalizeURLPath = (path?: string) => {

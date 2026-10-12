@@ -5,7 +5,7 @@ import Link from "~/components/Link.astro";
 import Pagination from "~/components/Pagination.astro";
 import Search from "~/components/Search.astro";
 import Base from "~/layouts/Base.astro";
-import { compareAndFormatDates } from "~/lib/utils";
+import { compareAndFormatDates, getParsedAcceptLangs } from "~/lib/utils";
 
 export const prerender = false;
 
@@ -26,6 +26,10 @@ const { posts, hasNext, hasPrevious } = data ?? {
   hasNext: false,
   hasPrevious: false,
 };
+
+const [locale, _] = getParsedAcceptLangs(
+  Astro.request.headers.get("accept-language"),
+)[0] ?? [undefined];
 ---
 
 <Base title={"Posts"}>
@@ -49,7 +53,7 @@ const { posts, hasNext, hasPrevious } = data ?? {
       >
         {posts.map((post) => {
           const { title, summary, tags, created, modified, id } = post;
-          const [sameDay, [createdDate, modifiedDate]] = compareAndFormatDates(created, modified);
+          const [sameDay, createdDate, modifiedDate] = compareAndFormatDates(locale, created, modified);
           const postLink = `/posts/${id}`;
           return (
             <article class="relative flex flex-col justify-center items-center p-6 bg-surface-dark rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
