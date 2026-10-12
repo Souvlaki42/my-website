@@ -27,8 +27,6 @@ const {
   {
     hasPrevious && (
       <Link
-        margin={false}
-        data-swup-preload
         href={`${route}?page=${Number(page) - 1}&per_page=${Number(perPage)}&search=${search}`}
         class="font-semibold"
       >
@@ -40,8 +38,6 @@ const {
   {
     hasNext && (
       <Link
-        margin={false}
-        data-swup-preload
         href={`${route}?page=${Number(page) + 1}&per_page=${Number(perPage)}&search=${search}`}
         class="font-semibold"
       >

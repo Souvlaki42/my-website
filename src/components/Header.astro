@@ -5,7 +5,7 @@ import Link from "./Link.astro";
 
 <header class="flex flex-row justify-center space-x-4">
   <nav
-    class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row items-center justify-center rounded-lg border-2"
+    class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row items-center justify-center rounded-lg border-2 space-x-2 sm:space-x-4 p-4"
   >
     <Link href="/" title="Did you get it?">Terminal</Link>
     <Link href="/posts">Posts</Link>
@@ -14,7 +14,7 @@ import Link from "./Link.astro";
     <Link href="/sponsor" external>Sponsor</Link>
   </nav>
   <nav
-    class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row items-center justify-center rounded-lg border-2"
+    class="bg-mocha-dark border-sky-blue hover:border-light-blue flex h-12 w-fit flex-row items-center justify-center rounded-lg border-2 space-4 p-2"
   >
     <Link href="/github" class="mx-2 opacity-100 hover:opacity-75" external
       ><Image

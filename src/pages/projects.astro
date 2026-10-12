@@ -76,7 +76,6 @@ const projects = rawProjects.filter((project) => !project.is_private);
               <div class="flex flex-wrap items-center mb-4">
                 {tags.map((tag) => (
                   <Link
-                    margin={false}
                     href={`/projects?page=${page}&per_page=${perPage}&search=tags:${tag}`}
                     class="bg-[#45475A] text-[#F5E0DC] text-xs font-medium m-1 px-2.5 py-0.5 rounded hover:underline"
                   >
