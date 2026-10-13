@@ -26,7 +26,7 @@ I apologize, that I didn't provide installation instructions for these. Try goog
 ## Installation
 
 First, create the file *$HOME/.distroboxrc* and write to it:
-```
+```sh
 xhost +si:localuser:$USER >/dev/null
 ```
 This forwards your display server to distrobox
@@ -37,31 +37,31 @@ I chose **/home/$USER/opt/Modelsim**. You can use any path you want but just rem
 Download [modelsim (individual files)](https://www.altera.com/downloads/fpga-development-tools/quartus-ii-web-edition-design-software-version-13-1-linux) and [freetype 2.4.12](http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.bz2)
 
 Create the box itself with Ubuntu 18.04 on it:
-```bash
+```sh
 distrobox create --name Modelsim --image docker.io/library/ubuntu:18.04 --init --hostname Modelsim --additional-packages "systemd" --home "/home/$USER/opt/Modelsim/" --yes
 ```
 
 Now enter the box and wait for its initialization:
-```bash
+```sh
 distrobox enter Modelsim
 cd $HOME
 ```
 
 Then, add the 32 bit repo and update everything:
-```bash
+```sh
 sudo dpkg --add-architecture i386
 sudo apt update && sudo apt upgrade
 ```
 
 Now, install all dependencies:
-```bash
+```sh
 sudo apt install nano libpam-systemd build-essential expat:i386 fontconfig:i386 g++-multilib gcc-multilib lib32gcc1 lib32stdc++6 lib32z1 libc6:i386 libcanberra0:i386 libexpat1:i386 libfreetype6:i386 libgtk-3-0:i386 libice6:i386 libncurses5 libncurses5:i386 libsm6:i386 libx11-6:i386 libxau6:i386 libxdmcp6:i386 libxext6:i386 libxft2 libxft2:i386 libxrender1:i386 libxt6:i386 libxtst6 libxtst6:i386 zlib1g:i386
 ```
 
 Move the two files inside the container's home directory.
 
 Run the modelsim installer, answer the questions and let it do its job.
-```bash
+```sh
 sudo chmod +x ./ModelSimSetup-13.1.0.162.run
 sudo ./ModelSimSetup-13.1.0.162.run
 cd $HOME/altera/13.1/modelsim_ase/bin
@@ -73,7 +73,7 @@ Modify the *vsim* file using `sudo TERM=xterm nano vsim` or any text editor:
   Look for this line: `` dir=`dirname $arg0` `` and insert the following new line under it: `export LD_LIBRARY_PATH="${dir}/lib32"`
 
 Next, let's compile freetype:
-```bash
+```sh
 cd $HOME
 tar -xf freetype-2.4.12.tar.bz2
 cd freetype-2.4.12
@@ -82,14 +82,14 @@ make -j
 ```
 
 After that, put the freetype object files into that lib32 directory:
-```bash
+```sh
 cd $HOME
 sudo mkdir altera/13.1/modelsim_ase/lib32
 sudo cp freetype-2.4.12/objs/.libs/libfreetype.so* altera/13.1/modelsim_ase/lib32
 ```
 
 Export the script to another location outside the container's home:
-```bash
+```sh
 distrobox-export -b $HOME/altera/13.1/modelsim_ase/bin/vsim -ep "/home/$USER/.local/bin" -ef "-gui"
 exit
 ```
@@ -110,7 +110,7 @@ StartupWMClass=vsim
 ```
 
 If the app doesn't show up immediately, restart your system or run:
-```bash
+```sh
 update-desktop-database $HOME/.local/share/applications/
 ```
 

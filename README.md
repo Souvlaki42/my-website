@@ -19,25 +19,25 @@ Ensure you have the following installed:
 
 1. **Clone the repository**
 
-   ```bash
+   ```sh
    git clone git@github.com:Souvlaki42/my-website.git
    ```
 
 2. **Navigate to the project directory**
 
-   ```bash
+   ```sh
    cd my-website
    ```
 
 3. **Install dependencies**
 
-   ```bash
+   ```sh
    pnpm install
    ```
 
 4. **Start the development server**
 
-   ```bash
+   ```sh
    pnpm dev
    ```
 
