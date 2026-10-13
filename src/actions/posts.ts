@@ -1,12 +1,9 @@
-import { z } from "astro/zod";
 import { ActionError, defineAction } from "astro:actions";
 import { type DataEntryMap, getCollection, getEntry } from "astro:content";
+import { z } from "astro/zod";
 import type Fuse from "fuse.js";
 import { isFuseKey, makeFuseInstances } from "~/lib/search";
-import {
-  removeDuplicates,
-  safeAwait,
-} from "~/lib/utils";
+import { removeDuplicates, safeAwait } from "~/lib/utils";
 
 type RawPost = DataEntryMap["posts"][keyof DataEntryMap["posts"]];
 type Post = RawPost["data"] & {

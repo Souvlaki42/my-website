@@ -67,11 +67,11 @@ export default defineConfig({
       theme: "catppuccin-mocha",
       wrap: true,
       transformers: [
-          {
-            name: "inject-links",
-            postprocess: injectLinksTransformer,
-          },
-        ]
+        {
+          name: "inject-links",
+          postprocess: injectLinksTransformer,
+        },
+      ],
     },
   },
 });

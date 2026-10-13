@@ -1,12 +1,9 @@
-import { z } from "astro/zod";
 import { ActionError, defineAction } from "astro:actions";
 import { GITHUB_TOKEN } from "astro:env/server";
+import { z } from "astro/zod";
 import type Fuse from "fuse.js";
 import { isFuseKey, makeFuseInstances } from "~/lib/search";
-import {
-  removeDuplicates,
-  safeAwait,
-} from "~/lib/utils";
+import { removeDuplicates, safeAwait } from "~/lib/utils";
 
 const rawProjectSchema = z.array(
   z.object({

@@ -28,9 +28,16 @@ export const formatDate = (
   locale?: Intl.LocalesArgument | null,
 ) => {
   if (typeof Temporal == "undefined") {
-    return new Date(input).toLocaleDateString(locale ?? undefined, { day: "2-digit", month: "2-digit", year: "numeric" });
+    return new Date(input).toLocaleDateString(locale ?? undefined, {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
   } else {
-    return Temporal.ZonedDateTime.from(input).toLocaleString(locale ?? undefined, { day: "2-digit", month: "2-digit", year: "numeric", timeStyle: "short" });
+    return Temporal.ZonedDateTime.from(input).toLocaleString(
+      locale ?? undefined,
+      { day: "2-digit", month: "2-digit", year: "numeric", timeStyle: "short" },
+    );
   }
 };
 
