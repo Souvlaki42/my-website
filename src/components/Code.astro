@@ -1,30 +1,9 @@
 ---
 import { Code as AstroCode } from "astro:components";
-import { isURLExternal } from "~/lib/utils";
+import { injectLinksTransformer } from "~/lib/utils";
 
 type Props = Parameters<typeof AstroCode>[number] & {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
-};
-
-const injectLinksTransformer = (html: string) => {
-  let hasLinks = false;
-  const output = html.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    (_, text?: string, href?: string) => {
-      hasLinks = true;
-      const isExternal = isURLExternal(href);
-      const accessibility = isExternal
-        ? `target="_blank" rel="noopener noreferrer"><span class="sr-only">Opens in a new tab</span>`
-        : ">";
-      return `<a href="${href ?? "#"}" class="hover:underline text-sky-blue hover:text-light-blue" ${accessibility}${text ?? "No content"}</a>`;
-    },
-  );
-
-  if (hasLinks) {
-    return output.replace(/tabindex="0"/g, 'tabindex="-1"');
-  }
-
-  return output;
 };
 
 const {

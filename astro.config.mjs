@@ -7,6 +7,7 @@ import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
+import { injectLinksTransformer } from "~/lib/utils";
 
 export default defineConfig({
   vite: {
@@ -65,6 +66,12 @@ export default defineConfig({
     shikiConfig: {
       theme: "catppuccin-mocha",
       wrap: true,
+      transformers: [
+          {
+            name: "inject-links",
+            postprocess: injectLinksTransformer,
+          },
+        ]
     },
   },
 });

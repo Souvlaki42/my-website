@@ -62,3 +62,24 @@ export const safeAwait = async <T, E = Error>(
     return [err as E, null];
   }
 };
+
+export const injectLinksTransformer = (html: string) => {
+  let hasLinks = false;
+  const output = html.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    (_, text?: string, href?: string) => {
+      hasLinks = true;
+      const isExternal = isURLExternal(href);
+      const accessibility = isExternal
+        ? `target="_blank" rel="noopener noreferrer"><span class="sr-only">Opens in a new tab</span>`
+        : ">";
+      return `<a href="${href ?? "#"}" class="hover:underline text-sky-blue hover:text-light-blue" ${accessibility}${text ?? "No content"}</a>`;
+    },
+  );
+
+  if (hasLinks) {
+    return output.replace(/tabindex="0"/g, 'tabindex="-1"');
+  }
+
+  return output;
+};

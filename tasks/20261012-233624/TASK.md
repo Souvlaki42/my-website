@@ -1,6 +1,6 @@
 # fix code component mdx auto map for blog
 
-- STATUS: OPEN
+- STATUS: CLOSED
 - PRIORITY: 150
 - TAGS: bugs
 
