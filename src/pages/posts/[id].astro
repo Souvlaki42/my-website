@@ -4,6 +4,7 @@ import { render } from "astro:content";
 import Code from "~/components/Code.astro";
 import Comments from "~/components/Comments.astro";
 import Link from "~/components/Link.astro";
+import Pre from "~/components/Pre.astro";
 import Base from "~/layouts/Base.astro";
 import { formatDate, getParsedAcceptLangs } from "~/lib/utils";
 
@@ -11,6 +12,7 @@ export const prerender = false;
 
 export const components = {
   a: Link,
+  pre: Pre,
 };
 
 const { id = "" } = Astro.params;

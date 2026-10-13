@@ -1,6 +1,6 @@
 # add clipboard copy button on code blocks on hover
 
-- STATUS: OPEN
+- STATUS: CLOSED
 - PRIORITY: 80
 - TAGS: features
 
