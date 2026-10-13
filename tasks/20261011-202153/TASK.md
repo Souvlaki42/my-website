@@ -1,6 +1,6 @@
 # adopt temporal api
 
-- STATUS: OPEN
+- STATUS: CLOSED
 - PRIORITY: 10
 - TAGS: features
 

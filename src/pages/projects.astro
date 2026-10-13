@@ -5,7 +5,7 @@ import Link from "~/components/Link.astro";
 import Pagination from "~/components/Pagination.astro";
 import Search from "~/components/Search.astro";
 import Base from "~/layouts/Base.astro";
-import { compareAndFormatDates, getParsedAcceptLangs } from "~/lib/utils";
+import { formatDate, getParsedAcceptLangs } from "~/lib/utils";
 
 export const prerender = false;
 
@@ -88,7 +88,7 @@ const [locale, _] = getParsedAcceptLangs(
                 ))}
               </div>
               <div class="text-sm text-[#BAC2DE]">
-                {pushed_at && <p>Last pushed: {compareAndFormatDates(locale, new Date(pushed_at))[1]}</p>}
+                {pushed_at && <p>Last pushed: {formatDate(pushed_at, locale)}</p>}
               </div>
             </article>
           );

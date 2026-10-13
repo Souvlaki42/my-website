@@ -5,7 +5,7 @@ import Code from "~/components/Code.astro";
 import Comments from "~/components/Comments.astro";
 import Link from "~/components/Link.astro";
 import Base from "~/layouts/Base.astro";
-import { compareAndFormatDates, getParsedAcceptLangs } from "~/lib/utils";
+import { formatDate, getParsedAcceptLangs } from "~/lib/utils";
 
 export const prerender = false;
 
@@ -29,11 +29,8 @@ const [locale, _] = getParsedAcceptLangs(
   Astro.request.headers.get("accept-language"),
 )[0] ?? [undefined];
 
-const [sameDay, createdDate, modifiedDate] = compareAndFormatDates(
-  locale,
-  created,
-  modified,
-);
+const createdDate = formatDate(created, locale);
+const modifiedDate = formatDate(modified, locale);
 ---
 
 <Base
@@ -49,7 +46,7 @@ const [sameDay, createdDate, modifiedDate] = compareAndFormatDates(
     </div>
     <Code
       as="h4"
-      code={`#### Created: ${createdDate}${!sameDay ? ` | Modified: ${modifiedDate}` : ""}`}
+      code={`#### Created: ${createdDate}${createdDate != modifiedDate ? ` | Modified: ${modifiedDate}` : ""}`}
       lang={"markdown"}
     />
   </div>

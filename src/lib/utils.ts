@@ -23,16 +23,15 @@ export const getParsedAcceptLangs = (header?: string | null) => {
   return result;
 };
 
-// TASK(20261011-202153): adopt temporal api
-export const compareAndFormatDates = (
+export const formatDate = (
+  input: string,
   locale?: Intl.LocalesArgument | null,
-  ...inputs: Date[]
 ) => {
-  const formatted = inputs.map((date) =>
-    date.toLocaleDateString(locale ?? undefined),
-  );
-  const equal = formatted.every((date) => date === formatted[0]);
-  return [equal, ...formatted] as const;
+  if (typeof Temporal == "undefined") {
+    return new Date(input).toLocaleDateString(locale ?? undefined, { day: "2-digit", month: "2-digit", year: "numeric" });
+  } else {
+    return Temporal.ZonedDateTime.from(input).toLocaleString(locale ?? undefined, { day: "2-digit", month: "2-digit", year: "numeric", timeStyle: "short" });
+  }
 };
 
 export const normalizeURLPath = (path?: string) => {

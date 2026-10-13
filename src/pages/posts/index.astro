@@ -5,7 +5,7 @@ import Link from "~/components/Link.astro";
 import Pagination from "~/components/Pagination.astro";
 import Search from "~/components/Search.astro";
 import Base from "~/layouts/Base.astro";
-import { compareAndFormatDates, getParsedAcceptLangs } from "~/lib/utils";
+import { formatDate, getParsedAcceptLangs } from "~/lib/utils";
 
 export const prerender = false;
 
@@ -53,7 +53,8 @@ const [locale, _] = getParsedAcceptLangs(
       >
         {posts.map((post) => {
           const { title, summary, tags, created, modified, id } = post;
-          const [sameDay, createdDate, modifiedDate] = compareAndFormatDates(locale, created, modified);
+          const createdDate = formatDate(created, locale);
+          const modifiedDate = formatDate(modified, locale);
           const postLink = `/posts/${id}`;
           return (
             <article class="relative flex flex-col justify-center items-center p-6 bg-surface-dark rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
@@ -82,7 +83,7 @@ const [locale, _] = getParsedAcceptLangs(
               </div>
               <div class="text-sm text-[#BAC2DE]">
                 <p>Created: {createdDate}</p>
-                {!sameDay && (
+                {createdDate != modifiedDate && (
                   <p>Modified: {modifiedDate}</p>
                 )}
               </div>
