@@ -20,7 +20,8 @@ const { data: post, error } = await Astro.callAction(actions.posts.getById, {
   id,
 });
 
-if (error || !post) if (error) return Astro.redirect("/404");
+if (error) return Astro.redirect("/500");
+if (!post) return Astro.redirect("/404");
 
 const { title, summary, created, modified, tags } = post.data;
 const { Content } = await render(post);

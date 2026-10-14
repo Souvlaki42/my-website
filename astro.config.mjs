@@ -57,7 +57,7 @@ export default defineConfig({
     devImageService: "sharp",
   }),
   integrations: [react({ compiler: true }), sitemap(), mdx()],
-  devToolbar: { enabled: false },
+  devToolbar: { enabled: true },
   markdown: {
     syntaxHighlight: "shiki",
     processor: satteri({
