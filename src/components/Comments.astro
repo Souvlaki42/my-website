@@ -1,17 +1,39 @@
-<section class="giscus mx-auto mt-10 w-full"></section>
-<script
-  src="https://giscus.app/client.js"
-  data-repo="souvlaki42/my-website"
-  data-repo-id="R_kgDOHTVW_w"
-  data-category="Blog Post Comments"
-  data-category-id="DIC_kwDOHTVW_84ChlM4"
-  data-mapping="url"
-  data-strict="0"
-  data-reactions-enabled="1"
-  data-emit-metadata="0"
-  data-input-position="top"
-  data-theme="https://giscus.catppuccin.com/themes/mocha-no-loader.css"
-  data-lang="en"
-  crossorigin="anonymous"
-  is:inline
-  async></script>
+<section data-giscus class="giscus mx-auto mt-10 w-full"></section>
+<script is:inline>
+	const scheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+	function currentGiscusTheme() {
+		return scheme.matches ? "catppuccin_mocha" : "catppuccin_latte";
+	}
+
+	function updateGiscusTheme() {
+		document
+			.querySelector("iframe.giscus-frame")
+			?.contentWindow?.postMessage(
+				{ giscus: { setConfig: { theme: currentGiscusTheme() } } },
+				"https://giscus.app",
+			);
+	}
+
+  const script = document.createElement("script")
+
+  script.setAttribute("src", "https://giscus.app/client.js");
+	script.setAttribute("data-repo", "souvlaki42/my-website");
+	script.setAttribute("data-repo-id", "R_kgDOHTVW_w");
+	script.setAttribute("data-category", "Blog Post Comments");
+	script.setAttribute("data-category-id", "DIC_kwDOHTVW_84ChlM4");
+	script.setAttribute("data-mapping", "url");
+	script.setAttribute("data-strict", "0");
+	script.setAttribute("data-reactions-enabled", "1");
+	script.setAttribute("data-emit-metadata", "0");
+	script.setAttribute("data-input-position", "top");
+	script.setAttribute("data-theme", currentGiscusTheme());
+	script.setAttribute("data-lang", "en");
+	script.setAttribute("crossorigin", "anonymous");
+	script.setAttribute("is:inline", true);
+	script.setAttribute("async", true);
+
+  document.querySelector("[data-giscus]").parentElement.appendChild(script)
+
+	scheme.addEventListener("change", updateGiscusTheme);
+</script>
