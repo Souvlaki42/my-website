@@ -31,7 +31,7 @@ export const EnhancedPreElement = ({
         {children}
       </pre>
       <button
-        className="text-sm text-isabelline bg-surface-dark rounded absolute top-4 right-4 px-2 invisible group-hover:visible hover:cursor-pointer"
+        className="text-sm text-parchment dark:text-parchment-dark bg-surface dark:bg-surface-dark rounded absolute top-4 right-4 px-2 invisible group-hover:visible hover:cursor-pointer"
         onClick={() => {
           if (timeoutRef.current) {
             return false;
