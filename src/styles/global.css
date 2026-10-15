@@ -2,14 +2,24 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-mocha: #1e1e2e;
-  --color-mocha-dark: #151535;
+  /* Base  */
+  --color-base: #eff1f5;
+  --color-base-dark: #1e1e2e;
+  --color-mantle: #e6e9ef;
+  --color-mantle-dark: #181825;
+  --color-parchment: #4c4f69;
+  --color-parchment-dark: #f4f3ee;
+  --color-surface: #ccd0da;
+  --color-surface-dark: #313244;
+  --color-indigo: #acb0be;
+  --color-indigo-dark: #585b70;
+
+  /* Elements */
   --color-sky-blue: #6cb4ff;
   --color-light-blue: #94d0ff;
-  --color-isabelline: #f4f3ee;
-  --color-surface: #585b70;
-  --color-surface-dark: #313244;
   --color-sea-blue: #2b7fff;
+
+  /* Banner */
   --color-mustard: #fcc800;
   --color-orange: #d08700;
   --color-baked: #a65f00;
