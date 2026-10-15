@@ -6,13 +6,7 @@ type Props = Parameters<typeof AstroCode>[number] & {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
 };
 
-const {
-  code,
-  lang = "plaintext",
-  wrap = true,
-  theme = "catppuccin-mocha",
-  as,
-} = Astro.props;
+const { code, lang = "plaintext", wrap = true, theme, as } = Astro.props;
 
 const Element = as ?? Fragment;
 ---

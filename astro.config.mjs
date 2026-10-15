@@ -64,7 +64,11 @@ export default defineConfig({
       features: { gfm: true, smartPunctuation: true },
     }),
     shikiConfig: {
-      theme: "catppuccin-mocha",
+      themes: {
+        dark: "catppuccin-mocha",
+        light: "catppuccin-latte",
+      },
+      defaultColor: "light-dark()",
       wrap: true,
       transformers: [
         {
