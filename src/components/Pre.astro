@@ -3,4 +3,4 @@ import { EnhancedPreElement } from "~/components/Pre";
 
 type Props = Record<string, any>;
 ---
-<EnhancedPreElement {...Astro.props} client:load><slot/></EnhancedPreElement>
+<EnhancedPreElement {...Astro.props} client:only="react"><slot/></EnhancedPreElement>
