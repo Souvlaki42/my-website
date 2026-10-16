@@ -1,6 +1,6 @@
 # add light theme
 
-- STATUS: OPEN
+- STATUS: CLOSED
 - PRIORITY: 150
 - TAGS: accessibility, features
 
