@@ -1,7 +1,9 @@
 import { type HTMLAttributes, useRef, useState } from "react";
+import { cn } from "~/lib/utils";
 
 export const EnhancedPreElement = ({
   children,
+  className,
   ...props
 }: HTMLAttributes<HTMLPreElement>) => {
   const snippetRef = useRef<HTMLPreElement>(null);
@@ -27,11 +29,18 @@ export const EnhancedPreElement = ({
 
   return (
     <div className="relative group text-start">
-      <pre {...props} ref={snippetRef} className="pointer-events-none">
+      <pre
+        {...props}
+        ref={snippetRef}
+        className={cn(
+          "pointer-events-none border-indigo dark:border-indigo-dark border-8",
+          className,
+        )}
+      >
         {children}
       </pre>
       <button
-        className="text-sm text-isabelline bg-surface-dark rounded absolute top-4 right-4 px-2 invisible group-hover:visible hover:cursor-pointer"
+        className="text-sm text-parchment dark:text-parchment-dark bg-surface dark:bg-surface-dark rounded absolute top-4 right-4 px-2 invisible group-hover:visible hover:cursor-pointer"
         onClick={() => {
           if (timeoutRef.current) {
             return false;

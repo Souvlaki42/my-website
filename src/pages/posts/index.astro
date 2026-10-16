@@ -57,7 +57,7 @@ const [locale, _] = getParsedAcceptLangs(
           const modifiedDate = formatDate(modified, locale);
           const postLink = `/posts/${id}`;
           return (
-            <article class="relative flex flex-col justify-center items-center p-6 bg-surface-dark rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
+            <article class="relative flex flex-col justify-center items-center p-6 bg-surface dark:bg-surface-dark rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
               <h2 class="text-2xl font-bold text-[#CDD6F4] mb-2">
                 <Link
                   href={postLink}
@@ -65,7 +65,7 @@ const [locale, _] = getParsedAcceptLangs(
                   {title}
                 </Link>
               </h2>
-              <p class="text-[#A6ADC8] mb-4">{summary}</p>
+              <p class="text-parchment dark:text-parchment-dark mb-4">{summary}</p>
               <Link
                 href={postLink}
                 class="absolute w-full h-full top-0 left-0 no-underline text-transparent z-[-1]"
@@ -75,13 +75,13 @@ const [locale, _] = getParsedAcceptLangs(
                 {tags.map((tag) => (
                   <Link
                     href={`/posts?page=${page}&per_page=${perPage}&search=tags:${tag}`}
-                    class="bg-[#45475A] text-[#F5E0DC] text-xs font-medium m-1 px-2.5 py-0.5 rounded hover:underline"
+                    class="bg-indigo dark:bg-indigo-dark text-[#F5E0DC] text-xs font-medium m-1 px-2.5 py-0.5 rounded hover:underline"
                   >
                     {tag}
                   </Link>
                 ))}
               </div>
-              <div class="text-sm text-[#BAC2DE]">
+              <div class="text-sm text-parchment dark:text-parchment-dark">
                 <p>Created: {createdDate}</p>
                 {createdDate != modifiedDate && (
                   <p>Modified: {modifiedDate}</p>

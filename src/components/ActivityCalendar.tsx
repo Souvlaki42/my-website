@@ -8,12 +8,19 @@ export default function ActivityCalendar() {
         weekStart={1}
         errorMessage="Something went wrong when fetching GitHub activity. Please try again later."
         theme={{
+          light: [
+            "var(--color-surface)",
+            "var(--color-indigo)",
+            "var(--color-light-blue)",
+            "var(--color-sea-blue)",
+            "var(--color-parchment)",
+          ],
           dark: [
             "var(--color-surface-dark)",
-            "var(--color-surface)",
+            "var(--color-indigo-dark)",
             "var(--color-sky-blue)",
-            "var(--color-light-blue)",
-            "var(--color-isabelline)",
+            "var(--color-sea-blue)",
+            "var(--color-parchment-dark)",
           ],
         }}
       />

@@ -36,26 +36,26 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site);
     <link rel="canonical" href={currentUrl} />
     <ClientRouter />
   </head>
-  <body class="bg-mocha flex p-8 pt-24 flex-col items-center justify-center">
+  <body class="bg-base dark:bg-base-dark flex p-8 pt-24 flex-col items-center justify-center">
     {TOP_BANNER !== "DISABLED" && <TopBanner />}
     <Header />
     <main
       {...props}
       class={cn(
-        "flex w-full flex-col p-8 flex-1 h-full align-middle items-center text-center text-isabelline",
+        "flex w-full flex-col p-8 flex-1 h-full align-middle items-center text-center text-parchment dark:text-parchment-dark",
         className,
       )}
     >
       <slot />
       <Analytics />
       <SpeedInsights />
-      <footer class="text-isabelline font-semibold text-center relative m-4">
+      <footer class="text-parchment dark:text-parchment-dark font-semibold text-center relative m-4">
         © Ilias Moulas {new Date().getFullYear()}
       </footer>
     </main>
     {
       import.meta.env.DEV ? (
-        <div class="fixed bottom-1 left-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">
+        <div class="fixed bottom-1 left-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-surface dark:bg-surface-dark p-3 font-mono text-xs text-parchment dark:text-parchment-dark">
           <div class="block sm:hidden">xs</div>
           <div class="hidden sm:block md:hidden">sm</div>
           <div class="hidden md:block lg:hidden">md</div>

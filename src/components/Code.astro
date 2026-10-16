@@ -8,9 +8,9 @@ type Props = Parameters<typeof AstroCode>[number] & {
 
 const {
   code,
-  lang = "plaintext",
+  lang,
   wrap = true,
-  theme = "catppuccin-mocha",
+  themes = { light: "catppuccin-latte", dark: "catppuccin-mocha" },
   as,
 } = Astro.props;
 
@@ -23,7 +23,7 @@ const Element = as ?? Fragment;
         code={code}
         lang={lang}
         wrap={wrap}
-        theme={theme}
+        themes={themes}
         transformers={[
           {
             name: "inject-links",

@@ -1,7 +1,7 @@
 <section class="giscus mx-auto mt-10 w-full"></section>
 <script
   src="https://giscus.app/client.js"
-  data-repo="souvlaki42/my-website"
+  data-repo="Souvlaki42/my-website"
   data-repo-id="R_kgDOHTVW_w"
   data-category="Blog Post Comments"
   data-category-id="DIC_kwDOHTVW_84ChlM4"
@@ -10,8 +10,29 @@
   data-reactions-enabled="1"
   data-emit-metadata="0"
   data-input-position="top"
-  data-theme="https://giscus.catppuccin.com/themes/mocha-no-loader.css"
   data-lang="en"
   crossorigin="anonymous"
+	data-loading="lazy"
   is:inline
   async></script>
+
+<script is:inline>
+	const scheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+	function currentGiscusTheme() {
+		return scheme.matches ? "catppuccin_mocha" : "catppuccin_latte";
+	}
+
+	function updateGiscusTheme() {
+		document
+			.querySelector("iframe.giscus-frame")
+			?.contentWindow?.postMessage(
+				{ giscus: { setConfig: { theme: currentGiscusTheme() } } },
+				"https://giscus.app",
+			);
+	}
+
+  document.querySelector("[data-repo]")?.setAttribute("data-theme", currentGiscusTheme())
+
+	scheme.addEventListener("change", updateGiscusTheme);
+</script>
