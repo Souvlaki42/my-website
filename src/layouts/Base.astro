@@ -1,8 +1,8 @@
 ---
-import { SITE_DESCRIPTION, SITE_NAME, TOP_BANNER } from "astro:env/server";
-import { ClientRouter } from "astro:transitions";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import { SITE_DESCRIPTION, SITE_NAME, TOP_BANNER } from "astro:env/server";
+import { ClientRouter } from "astro:transitions";
 import Header from "~/components/Header.astro";
 import TopBanner from "~/components/TopBanner.astro";
 import { cn, type HTMLAtrributesWithSlot } from "~/lib/utils";
@@ -55,7 +55,7 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site);
     </main>
     {
       import.meta.env.DEV ? (
-        <div class="fixed bottom-1 left-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">
+        <div class="fixed bottom-1 left-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-surface dark:bg-surface-dark p-3 font-mono text-xs text-parchment dark:text-parchment-dark">
           <div class="block sm:hidden">xs</div>
           <div class="hidden sm:block md:hidden">sm</div>
           <div class="hidden md:block lg:hidden">md</div>
