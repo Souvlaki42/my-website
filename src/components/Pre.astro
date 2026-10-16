@@ -2,5 +2,7 @@
 import { EnhancedPreElement } from "~/components/Pre";
 
 type Props = Record<string, any>;
+
+const { class: className, ...props } = Astro.props;
 ---
-<EnhancedPreElement {...Astro.props} client:only="react"><slot/></EnhancedPreElement>
+<EnhancedPreElement className={className} {...props} client:only="react"><slot/></EnhancedPreElement>

@@ -1,7 +1,9 @@
 import { type HTMLAttributes, useRef, useState } from "react";
+import { cn } from "~/lib/utils";
 
 export const EnhancedPreElement = ({
   children,
+  className,
   ...props
 }: HTMLAttributes<HTMLPreElement>) => {
   const snippetRef = useRef<HTMLPreElement>(null);
@@ -27,7 +29,14 @@ export const EnhancedPreElement = ({
 
   return (
     <div className="relative group text-start">
-      <pre {...props} ref={snippetRef} className="pointer-events-none">
+      <pre
+        {...props}
+        ref={snippetRef}
+        className={cn(
+          "pointer-events-none border-indigo dark:border-indigo-dark border-8",
+          className,
+        )}
+      >
         {children}
       </pre>
       <button

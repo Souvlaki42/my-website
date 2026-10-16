@@ -6,7 +6,13 @@ type Props = Parameters<typeof AstroCode>[number] & {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
 };
 
-const { code, lang = "plaintext", wrap = true, theme, as } = Astro.props;
+const {
+  code,
+  lang,
+  wrap = true,
+  themes = { light: "catppuccin-latte", dark: "catppuccin-mocha" },
+  as,
+} = Astro.props;
 
 const Element = as ?? Fragment;
 ---
@@ -17,7 +23,7 @@ const Element = as ?? Fragment;
         code={code}
         lang={lang}
         wrap={wrap}
-        theme={theme}
+        themes={themes}
         transformers={[
           {
             name: "inject-links",
