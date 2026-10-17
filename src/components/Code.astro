@@ -11,7 +11,9 @@ const {
   lang,
   wrap = true,
   themes = { light: "catppuccin-latte", dark: "catppuccin-mocha" },
+  tabindex = -1,
   as,
+  ...props
 } = Astro.props;
 
 const Element = as ?? Fragment;
@@ -20,10 +22,12 @@ const Element = as ?? Fragment;
   (
     <Element>
       <AstroCode
+        {...props}
         code={code}
         lang={lang}
         wrap={wrap}
         themes={themes}
+        tabindex={tabindex}
         transformers={[
           {
             name: "inject-links",
