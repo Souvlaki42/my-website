@@ -50,7 +50,7 @@ const [locale, _] = getParsedAcceptLangs(
     code="### I encourage you to take a look. Who knows, you might realize that I'll be a great resource for your company."
     lang={"markdown"}
   />
-  <Search search={search} />
+  <Search search={search} aria-label="Project search" />
   {
     projects && projects.length > 0 ? (
       <section

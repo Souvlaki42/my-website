@@ -44,7 +44,7 @@ const [locale, _] = getParsedAcceptLangs(
     code="### I encourage you to take a look. One wise man once said that what we have to say, will be useful to somebody."
     lang={"markdown"}
   />
-  <Search search={search} />
+  <Search search={search} aria-label="Blog search" />
   {
     posts && posts.length > 0 ? (
       <section

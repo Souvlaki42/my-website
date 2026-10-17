@@ -1,9 +1,10 @@
 ---
 type Props = {
   search?: string;
+  "aria-label": string;
 };
 
-const { search } = Astro.props;
+const { search, "aria-label": al } = Astro.props;
 ---
 
 <section id="search" class="my-4 w-full">
@@ -17,6 +18,7 @@ const { search } = Astro.props;
       value={search ?? ""}
       title="You can prioritize searching for title, summary, or tags by prefixing your search term with these keywords followed by a colon. (e.g., tags:example)"
       data-search-query
+      aria-label={al}
     />
   </form>
 </section>
