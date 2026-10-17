@@ -1,8 +1,8 @@
 ---
-import { SITE_DESCRIPTION, SITE_NAME, TOP_BANNER } from "astro:env/server";
-import { ClientRouter } from "astro:transitions";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import { SITE_DESCRIPTION, SITE_NAME, TOP_BANNER } from "astro:env/server";
+import { ClientRouter } from "astro:transitions";
 import Header from "~/components/Header.astro";
 import TopBanner from "~/components/TopBanner.astro";
 import { cn, type HTMLAtrributesWithSlot } from "~/lib/utils";
@@ -36,7 +36,7 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site);
     <link rel="canonical" href={currentUrl} />
     <ClientRouter />
   </head>
-  <body class="bg-base dark:bg-base-dark flex p-8 pt-24 flex-col items-center justify-center">
+  <body class="bg-castle dark:bg-castle-dark flex p-8 pt-24 flex-col items-center justify-center">
     {TOP_BANNER !== "DISABLED" && <TopBanner />}
     <Header />
     <main
