@@ -33,28 +33,27 @@ const [locale, _] = getParsedAcceptLangs(
 const createdDate = formatDate(created, locale);
 const modifiedDate = formatDate(modified, locale);
 ---
-<!-- TASK(20261015-235122): fix post page responsiveness on mobile -->
 <Base
   title={title}
   description={summary}
-  class="justify-start"
 >
   <Code as="h1" code={`# ${title}`} lang={"markdown"} />
   <Code as="h2" code={`## ${summary}`} lang={"markdown"} />
-  <div class="justify-between">
-    <div>
-      <Code as="h3" code={`### ${tags.join(", ")}`} lang={"markdown"} />
-    </div>
-    <Code
-      as="h4"
-      code={`#### Created: ${createdDate}${createdDate != modifiedDate ? ` | Modified: ${modifiedDate}` : ""}`}
-      lang={"markdown"}
-    />
-  </div>
+  <Code as="h3" code={`### ${tags.join(", ")}`} lang={"markdown"} />
+  <Code
+    as="h4"
+    code={`#### Created: ${createdDate}`}
+    lang={"markdown"}
+  />
+  {createdDate != modifiedDate && <Code
+    as="h5"
+    code={`##### Modified: ${modifiedDate}`}
+    lang={"markdown"}
+  />}
   <hr class="m-4" />
   <article
     id="article"
-    class="prose mx-auto mt-8 max-w-3xl prose-pre:border prose-pre:border-skin-line prose-pre:border-solid dark:prose-invert"
+    class="prose max-w-4/5 md:max-w-full text-pretty md:text-balance flex flex-col justify-center items-center text-sm md:text-base mt-8 prose-pre:border prose-pre:border-skin-line prose-pre:border-solid dark:prose-invert"
   >
     <Content components={components} />
   </article>
