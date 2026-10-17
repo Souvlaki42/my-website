@@ -8,15 +8,17 @@ const TECHNOLOGIES = {
   React: "https://react.dev",
   "Next.js": "https://nextjs.org",
   Typescript: "https://www.typescriptlang.org",
-  "Relational databases": undefined,
+  Databases: undefined,
   Python: "https://www.python.org",
   Astro: "https://astro.build",
   Rust: "https://rust-lang.org",
   Go: "https://go.dev",
   C: "https://www.c-language.org",
   "C++": undefined,
+  Java: "https://www.java.com",
+  Odin: "https://odin-lang.org",
   Docker: "https://www.docker.com",
-  "Zsh shell": "https://www.zsh.org",
+  Zsh: "https://www.zsh.org",
   Linux: undefined,
   KDE: "https://kde.org",
 };
@@ -35,14 +37,18 @@ const technologiesStr =
 {/* TASK(20260917-091543): fix layout shift */}
 <Base class="space-y-4">
   <Code
-    code={`fmt.Println("👋 Hello, World!");`}
+    code={`fmt.Println("👋 Hello, World!")`}
     lang={"go"}
     class={"text-2xl font-extrabold"}
   />
   <Code code={`print("I'm Ilias.")`} lang={"python"} class={"text-xl"} />
   <Code code={`System.out.println("I am from 🇬🇷 Greece.");`} lang={"java"} />
   <Code
-    code={`println!("I also enjoy cats, board games, ethical hacking and indie games.");`}
+    code={`fmt.println("I am obsessed with building cool stuff and solving real problems using computers.")`}
+    lang={"odin"}
+  />
+  <Code
+    code={`println!("I also love ethical hacking, indie games, swimming, animals and board games.");`}
     lang={"rust"}
   />
   <Code
