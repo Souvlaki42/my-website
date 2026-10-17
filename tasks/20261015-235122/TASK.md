@@ -1,6 +1,6 @@
 # fix post page responsiveness on mobile
 
-- STATUS: OPEN
+- STATUS: CLOSED
 - PRIORITY: 130
 - TAGS: bugs
 

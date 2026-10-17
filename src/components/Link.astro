@@ -32,7 +32,7 @@ const isExternal = external || isURLExternal(hrefStr);
   target={isExternal ? "_blank" : undefined}
   rel={isExternal ? "noopener noreferrer" : undefined}
   class={cn(
-    "font-bold",
+    "font-bold text-wrap wrap-anywhere",
     underline ? "hover:underline" : undefined,
     isActive ? "text-sea-blue" : "text-sky-blue hover:text-light-blue",
     className,

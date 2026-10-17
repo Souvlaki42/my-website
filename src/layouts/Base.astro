@@ -36,7 +36,7 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site);
     <link rel="canonical" href={currentUrl} />
     <ClientRouter />
   </head>
-  <body class="bg-base dark:bg-base-dark flex p-8 pt-24 flex-col items-center justify-center">
+  <body class="bg-castle dark:bg-castle-dark flex p-8 pt-24 flex-col items-center justify-center">
     {TOP_BANNER !== "DISABLED" && <TopBanner />}
     <Header />
     <main
