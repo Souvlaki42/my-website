@@ -11,6 +11,10 @@ import { defineConfig, envField } from "astro/config";
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      minify: "oxc",
+      cssMinify: "lightningcss",
+    },
   },
   env: {
     schema: {
