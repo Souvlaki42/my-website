@@ -1,6 +1,6 @@
 # fix layout shift
 
-- STATUS: OPEN
+- STATUS: CLOSED
 - PRIORITY: 50
 - TAGS: bugs
 
