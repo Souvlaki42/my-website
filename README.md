@@ -51,6 +51,7 @@ Ensure you have the following installed:
 
 Github brand icon, is coming from Wikimedia but was adapted using [Simple Icons](https://simpleicons.org) and [their CDN service](https://cdn.simpleicons.org).
 Others, are exactly as listed below:
+
 - [Bluesky logo](https://commons.wikimedia.org/wiki/File:Bluesky_Logo.svg)
 - [Github logo](https://commons.wikimedia.org/wiki/File:Github_logo_svg.svg)
 - [Twitter logo](https://commons.wikimedia.org/wiki/File:Logo_of_Twitter.svg)
