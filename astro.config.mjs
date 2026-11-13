@@ -3,7 +3,6 @@
 import { satteri } from "@astrojs/markdown-satteri";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
-import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
@@ -59,7 +58,7 @@ export default defineConfig({
     imageService: true,
     devImageService: "sharp",
   }),
-  integrations: [react({ compiler: true }), sitemap(), mdx()],
+  integrations: [react({ compiler: true }), mdx()],
   devToolbar: { enabled: true },
   markdown: {
     syntaxHighlight: "shiki",
