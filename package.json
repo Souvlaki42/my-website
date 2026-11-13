@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
-    "check": "biome check --write"
+    "check": "biome check --write ."
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.3",
